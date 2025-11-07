@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V64 - Elegant Denim Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --cream: #FEFEFE;
+            --light-gray: #F8F8F8;
+            --medium-gray: #E8E8E8;
+            --text-dark: #2C2C2C;
+            --text-medium: #6B6B6B;
+            --text-light: #9B9B9B;
+            --gold: #D4AF37;
+            --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--white);
+            font-weight: 300;
+        }
+
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--light-gray);
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center right;
+        }
+
+        .hero-content {
+
+            position: absolute;
+            left: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 900px;
+            z-index: 10;
+            padding: 40px;
+
+        }
+
+        .hero-content img {
+            width: 500px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hero-description {
+            font-size: 22px;
+            line-height: 1.8;
+            color: var(--text-medium);
+            margin-bottom: 40px;
+            font-weight: 300;
+            width: 900px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 16px 48px;
+            background: var(--text-dark);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid var(--text-dark);
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            margin-top: 30px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 300;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin-bottom: 24px;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 24px;
+        }
+
+        .section-description {
+            font-size: 15px;
+            color: var(--text-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .featured-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--light-gray);
+            aspect-ratio: 7/10;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .featured-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s ease;
+        }
+
+        .featured-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 48px 40px;
+            background: linear-gradient(to top, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.85) 60%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .featured-card:hover .featured-overlay {
+            opacity: 1;
+        }
+
+        .featured-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--text-dark);
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .featured-date {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: var(--text-medium);
+        }
+
+        .featured-card.full-width {
+            grid-column: 1 / -1;
+            aspect-ratio: 21/12;
+        }
+
+        /* ==================== NEW BLOG DESIGN ==================== */
+        .blog-section {
+            background: var(--white);
+            position: relative;
+        }
+
+        /* Layout Staggered Grid - Lưới xen kẽ */
+        .blog-staggered-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            /* Báo cho grid biết nó có ít nhất 4 hàng, mỗi hàng tự động co giãn */
+            grid-auto-rows: auto; 
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .blog-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--medium-gray);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .blog-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================================================== */
+        /* === BỐ CỤC ĐỐI XỨNG (6 ẢNH) - ĐÃ SỬA LỖI === */
+        /* ================================================== */
+        
+        /* Dòng 1: Lớn (Trái), Nhỏ (Phải), Nhỏ (Phải) */
+        .blog-card:nth-child(6n+1) {
+            grid-column: 1 / span 8;
+            grid-row: 1 / span 2; /* Bắt đầu từ hàng 1, kéo dài 2 hàng */
+        }
+        .blog-card:nth-child(6n+2) {
+            grid-column: 9 / span 4;
+            grid-row: 1 / span 1; /* Bắt đầu từ hàng 1, kéo dài 1 hàng */
+        }
+        .blog-card:nth-child(6n+3) {
+            grid-column: 9 / span 4;
+            grid-row: 2 / span 1; /* Bắt đầu từ hàng 2, kéo dài 1 hàng */
+        }
+
+        /* Dòng 2: Nhỏ (Trái), Nhỏ (Trái), Lớn (Phải) */
+        .blog-card:nth-child(6n+4) {
+            grid-column: 1 / span 4;
+            grid-row: 3 / span 1; /* Bắt đầu từ hàng 3, kéo dài 1 hàng */
+        }
+        .blog-card:nth-child(6n+5) {
+            grid-column: 1 / span 4;
+            grid-row: 4 / span 1; /* Bắt đầu từ hàng 4, kéo dài 1 hàng */
+        }
+        .blog-card:nth-child(6n+6) {
+            grid-column: 5 / span 8;
+            grid-row: 3 / span 2; /* Bắt đầu từ hàng 3, kéo dài 2 hàng */
+        }
+
+
+        .blog-card:hover {
+            border-color: var(--text-dark);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+        }
+
+        .blog-card-image {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            /* min-height: 400px; Bỏ min-height để layout tự co giãn */
+        }
+
+        /* Style cho các thẻ NHỎ (4 thẻ) */
+        .blog-card:nth-child(6n+2) .blog-card-image,
+        .blog-card:nth-child(6n+3) .blog-card-image,
+        .blog-card:nth-child(6n+4) .blog-card-image,
+        .blog-card:nth-child(6n+5) .blog-card-image {
+            min-height: 320px; /* Vẫn giữ min-height cho thẻ nhỏ */
+        }
+        
+        /* Style cho các thẻ LỚN (2 thẻ) */
+        .blog-card:nth-child(6n+1) .blog-card-image,
+        .blog-card:nth-child(6n+6) .blog-card-image {
+            min-height: 680px; /* (320px * 2) + 40px (gap) = 680px */
+        }
+
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.1);
+        }
+
+        /* Overlay với gradient */
+        .blog-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 48px 40px;
+            background: linear-gradient(to top, 
+                rgba(44, 44, 44, 0.95) 0%, 
+                rgba(44, 44, 44, 0.7) 50%, 
+                transparent 100%);
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .blog-card:hover .blog-card-overlay {
+            transform: translateY(0);
+        }
+
+        .blog-card-category {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--gold);
+            color: var(--text-dark);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .blog-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px; /* Tiêu đề mặc định (cho thẻ lớn) */
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        /* Style cho tiêu đề thẻ NHỎ */
+        .blog-card:nth-child(6n+2) .blog-card-title,
+        .blog-card:nth-child(6n+3) .blog-card-title,
+        .blog-card:nth-child(6n+4) .blog-card-title,
+        .blog-card:nth-child(6n+5) .blog-card-title {
+            font-size: 22px;
+        }
+
+
+        .blog-card-date {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ================================================== */
+        /* === KẾT THÚC BỐ CỤC ĐỐI XỨNG === */
+        /* ================================================== */
+
+
+        /* Pagination với dots indicator */
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-top: 80px;
+            margin-bottom: 100px;
+        }
+
+        .pagination-arrow {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--text-dark);
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .pagination-arrow:hover:not(:disabled) {
+            background: var(--text-dark);
+            transform: scale(1.1);
+        }
+
+        .pagination-arrow:hover:not(:disabled) svg {
+            stroke: var(--white);
+        }
+
+        .pagination-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .pagination-arrow svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .pagination-dots {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .pagination-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--medium-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pagination-dot.active {
+            background: var(--text-dark);
+            transform: scale(1.4);
+        }
+
+        .pagination-dot:hover {
+            background: var(--text-dark);
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 54px;
+            height: 54px;
+            background: var(--white);
+            border: 1px solid var(--medium-gray);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--text-dark);
+            border-color: var(--text-dark);
+        }
+
+        .scroll-top:hover svg {
+            stroke: var(--white);
+        }
+
+        .scroll-top svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-card.full-width {
+                aspect-ratio: 4/3;
+            }
+
+            .blog-staggered-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 24px;
+            }
+
+            /* Cập nhật layout 6 ảnh cho Tablet (6 cột) */
+            /* Pattern: Full, Half, Half, Half, Half, Full */
+            .blog-card:nth-child(6n+1) {
+                grid-column: span 6;
+                grid-row: 1 / span 1; /* Reset row span */
+            }
+            .blog-card:nth-child(6n+2) {
+                grid-column: span 3;
+                grid-row: 2 / span 1;
+            }
+            .blog-card:nth-child(6n+3) {
+                grid-column: span 3;
+                grid-row: 2 / span 1;
+            }
+            .blog-card:nth-child(6n+4) {
+                grid-column: span 3;
+                grid-row: 3 / span 1;
+            }
+            .blog-card:nth-child(6n+5) {
+                grid-column: span 3;
+                grid-row: 3 / span 1;
+            }
+            .blog-card:nth-child(6n+6) {
+                grid-column: span 6;
+                grid-row: 4 / span 1; /* Reset row span */
+            }
+            
+            /* Reset min-height cho tablet */
+            .blog-card:nth-child(6n+1) .blog-card-image,
+            .blog-card:nth-child(6n+6) .blog-card-image {
+                min-height: 400px; 
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                left: 10%;
+                right: 5%;
+                top: 10%;
+                max-width: none;
+                width: 90%;
+                padding: 30px 24px;
+                
+            }
+
+            .hero-content img {
+                width: 400px;
+            }
+
+            .hero-description {
+                display: none;
+            }
+
+            .hero-cta {
+                display: none;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            .blog-section {
+                padding: 80px 0;
+            }
+
+            .blog-staggered-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            /* Cập nhật reset cho 6 ảnh */
+            .blog-card:nth-child(6n+1),
+            .blog-card:nth-child(6n+2),
+            .blog-card:nth-child(6n+3),
+            .blog-card:nth-child(6n+4),
+            .blog-card:nth-child(6n+5),
+            .blog-card:nth-child(6n+6) {
+                grid-column: span 1;
+                grid-row: auto; /* Reset hoàn toàn */
+            }
+
+            .blog-card-image,
+            .blog-card:nth-child(6n+1) .blog-card-image,
+            .blog-card:nth-child(6n+2) .blog-card-image,
+            .blog-card:nth-child(6n+3) .blog-card-image,
+            .blog-card:nth-child(6n+4) .blog-card-image,
+            .blog-card:nth-child(6n+5) .blog-card-image,
+            .blog-card:nth-child(6n+6) .blog-card-image {
+                min-height: 400px !important;
+            }
+
+            .blog-card-overlay {
+                transform: translateY(0);
+                background: linear-gradient(to top, 
+                    rgba(44, 44, 44, 0.9) 0%, 
+                    rgba(44, 44, 44, 0.6) 60%, 
+                    transparent 100%);
+            }
+
+            .blog-card-title {
+                font-size: 22px !important;
+            }
+
+            .blog-pagination {
+                gap: 16px;
+                margin-top: 60px;
+            }
+
+            .pagination-arrow {
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-banner">
+        <div class="hero-slide active">
+            <img src="static/imgs/banner3.png" alt="V64 Collection">
+        </div>
+        <div class="hero-slide">
+            <img src="static/imgs/banner2.png" alt="Denim Stories">
+        
+        </div>
+
+        <div class="hero-content">
+            <img src="static/imgs/logo.png" alt="V64 Logo">
+            <p class="hero-description">Nơi nghệ thuật chế tác denim tinh tế chạm đến vẻ đẹp thanh lịch vĩnh cửu. Mỗi thiết kế là một câu chuyện riêng về chất lượng và phong cách.</p>
+            <a href="#blog" class="hero-cta">Chiêm Ngưỡng Bộ Sưu Tập</a>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Featured Stories</p>
+                <h2 class="section-title">Khám Phá Các Bài Viết Gần Đây</h2>
+                <div class="section-divider"></div>
+                <p class="section-description">Những khoảnh khắc được chọn lọc, nắm bắt tinh hoa của văn hóa denim hiện đại</p>
+            </div>
+
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <img src="static/imgs/image10.png" alt="Denim Skirt">
+                    <div class="featured-overlay">
+                        <h3 class="featured-title">Mix Match chân váy denim</h3>
+                        <p class="featured-date">04/06/2025</p>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <img src="static/imgs/image1.png" alt="Denim Overall">
+                    <div class="featured-overlay">
+                        <h3 class="featured-title">Mix match các mẫu yếm denim nữ</h3>
+                        <p class="featured-date">04/06/2025</p>
+                    </div>
+                </div>
+
+                <div class="featured-card full-width">
+                    <img src="static/imgs/image2.png" alt="Men's Shirt">
+                    <div class="featured-overlay">
+                        <h3 class="featured-title">Địa chỉ bán áo sơ mi nam đẹp tại Hà Nội</h3>
+                        <p class="featured-date">23/07/2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-section" id="blog">
+        <div class="blog-container">
+            <div class="section-header">
+                <p class="section-label">The Journal</p>
+                <h2 class="section-title">Các Bài Viết Khác</h2>
+                <div class="section-divider"></div>
+                <p class="section-description">Khám phá bộ sưu tập câu chuyện độc đáo, xu hướng thời trang và nghệ thuật phối đồ denim hiện đại</p>
+            </div>
+
+            <div class="blog-staggered-grid" id="blogGrid"></div>
+
+            <div class="blog-pagination">
+                <button class="pagination-arrow" id="prevBtn">
+                    <svg viewBox="0 0 20 20" fill="none">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <div class="pagination-dots" id="paginationDots"></div>
+                
+                <button class="pagination-arrow" id="nextBtn">
+                    <svg viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <button class="scroll-top" id="scrollTop">
+        <svg viewBox="0 0 20 20" fill="none">
+            <path d="M10 15V5M10 5L5 10M10 5L15 10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <script>
+        // HERO SLIDER
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        if (totalSlides > 1) {
+            setInterval(nextSlide, 5000);
+        }
+
+        // BLOG DATA
+        const blogPosts = [
+            { image: 'static/imgs/news/image.png', category: 'Style', title: 'Mix Match Chân Váy Denim Thanh Lịch', date: '15 Tháng 10, 2024' },
+            { image: 'static/imgs/news/image1.png', category: 'Guide', title: 'Top 5 Sơ Mi Nam Công Sở', date: '12 Tháng 10, 2024' },
+            { image: 'static/imgs/news/image2.png', category: 'Trends', title: 'Denim Thu Đông 2024', date: '08 Tháng 10, 2024' },
+            { image: 'static/imgs/image13.png', category: 'Trends', title: 'Nghệ Thuật Denim On Denim', date: '28 Tháng 9, 2024' },
+            { image: 'static/imgs/image11.png', category: 'Collection', title: 'Denim Jacket - Must Have Item', date: '05 Tháng 10, 2024' },
+            { image: 'static/imgs/image12.png', category: 'Style', title: 'Chọn Jeans Theo Dáng Người', date: '02 Tháng 10, 2024' },
+            { image: 'static/imgs/image13.png', category: 'DIY', title: 'Làm Cũ Quần Jeans Tại Nhà', date: '20 Tháng 9, 2024' },
+            { image: 'static/imgs/image11.png', category: 'Fashion', title: 'Wide Leg Jeans Trend 2024', date: '25 Tháng 9, 2024' },
+            { image: 'static/imgs/image12.png', category: 'Vintage', title: 'Sức Hút Của Vintage Denim', date: '10 Tháng 9, 2024' }
+        ];
+
+        // PAGINATION
+        let currentPage = 1;
+        // === Vẫn giữ 6 bài mỗi trang ===
+        const postsPerPage = 6;
+        const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+
+        function renderBlogPosts(page) {
+            const blogGrid = document.getElementById('blogGrid');
+            const startIndex = (page - 1) * postsPerPage;
+            const endIndex = startIndex + postsPerPage;
+            const postsToShow = blogPosts.slice(startIndex, endIndex);
+
+            blogGrid.innerHTML = postsToShow.map(post => `
+                <div class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="${post.image}" alt="${post.title}">
+                        <div class="blog-card-overlay">
+                            <span class="blog-card-category">${post.category}</span>
+                            <h3 class="blog-card-title">${post.title}</h3>
+                            <p class="blog-card-date">${post.date}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Animate cards on load
+            setTimeout(() => {
+                document.querySelectorAll('.blog-card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 100);
+                });
+            }, 100);
+        }
+
+        function renderPaginationDots() {
+            const dotsContainer = document.getElementById('paginationDots');
+            dotsContainer.innerHTML = Array.from({length: totalPages}, (_, i) => 
+                `<div class="pagination-dot ${i + 1 === currentPage ? 'active' : ''}" data-page="${i + 1}"></div>`
+            ).join('');
+
+            document.querySelectorAll('.pagination-dot').forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const page = parseInt(dot.dataset.page);
+                    goToPage(page);
+                });
+            });
+        }
+
+        function goToPage(page) {
+            if (page < 1 || page > totalPages || page === currentPage) return;
+            
+            currentPage = page;
+            renderBlogPosts(page);
+            renderPaginationDots();
+            updateButtons();
+
+            // Smooth scroll to blog section
+            const blogSection = document.querySelector('.blog-section');
+            window.scrollTo({
+                top: blogSection.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+        }
+
+        // Initialize
+        renderBlogPosts(currentPage);
+        renderPaginationDots();
+        updateButtons();
+
+        // Event listeners
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentPage > 1) goToPage(currentPage - 1);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentPage < totalPages) goToPage(currentPage + 1);
+        });
+
+        // SCROLL TO TOP
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

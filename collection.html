@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICON DENIM - Collections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.5;
+        }
+
+        /* Header Styles */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo-italic {
+            font-style: italic;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000000;
+            font-size: 14px;
+            transition: color 0.3s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        nav a:hover {
+            color: #666666;
+        }
+
+        nav a.outlet {
+            color: #ef4444;
+        }
+
+        nav a.outlet:hover {
+            color: #dc2626;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: -8px;
+            right: -24px;
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background 0.3s;
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            background: #f3f4f6;
+        }
+
+        .icon-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chevron-down {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Page Title */
+        .page-title {
+            background: #ffffff;
+            padding: 48px 0;
+        }
+
+        .page-title-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .page-title h1 {
+            text-align: center;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* Collections Grid */
+        .collections-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 12px 32px;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .collections-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+        }
+
+        .collection-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            color: #ffffff;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav.mobile-open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: #ffffff;
+                padding: 24px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                gap: 16px;
+            }
+
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    icon<span class="logo-italic">denim</span>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-men-btn" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Navigation -->
+                <nav id="mainNav">
+                    <a href="#">
+                        Sản phẩm
+                        <svg class="chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#" style="position: relative;">
+                        Hàng Mới
+                        <span class="new-badge">New</span>
+                    </a>
+                    <a href="#">Hàng Bán Chạy</a>
+                    <a href="#">
+                        DENIM
+                        <svg class="chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#" class="outlet">-50% OUTLET</a>
+                    <a href="#">
+                        Collection
+                        <svg class="chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="header-icons">
+                    <button class="icon-btn" aria-label="Search">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="icon-btn" aria-label="User">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                    <button class="icon-btn" aria-label="Wishlist">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                    <button class="icon-btn" aria-label="Cart">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span class="cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <div class="page-title">
+        <div class="page-title-container">
+            <h1>CÁC BỘ SƯU TẬP CỦA ICONDENIM</h1>
+        </div>
+    </div>
+
+    <!-- Collections Grid -->
+    <main class="collections-container">
+        <div class="collections-grid" id="collectionsGrid">
+            <!-- Collections will be loaded here by JavaScript -->
+        </div>
+    </main>
+
+    <script>
+        // Collections data
+        const collections = [
+            {
+                id: '1',
+                title: 'SS25 - NỮ',
+                image: 'static/imgs/collection/1.png',
+                link: 'collections/ss25-nu.html'
+            },
+            {
+                id: '2',
+                title: 'SS25 - NAM',
+                image: 'static/imgs/collection/2.png',
+                link: 'collections/ss25-nam.html'
+            },
+            {
+                id: '3',
+                title: 'FW24 - NỮ',
+                image: 'static/imgs/collection/3.png',
+                link: 'collections/fw24-nu.html'
+            },
+            {
+                id: '4',
+                title: 'FW24 - NAM',
+                image: 'static/imgs/collection/4.png',
+                link: 'collections/fw24-nam.html'
+            },
+            {
+                id: '5',
+                title: 'SS24 - NỮ',
+                image: 'static/imgs/collection/5.png',
+                link: 'collections/ss24-nu.html'
+            },
+            {
+                id: '6',
+                title: 'SS24 - NAM',
+                image: 'static/imgs/collection/6.png',
+                link: 'collections/ss24-nam.html'
+            }
+        ];
+
+        // Function to render collections
+        function renderCollections() {
+            const grid = document.getElementById('collectionsGrid');
+            
+            collections.forEach(collection => {
+                const card = document.createElement('a');
+                card.href = collection.link;
+                card.className = 'collection-card';
+                
+                card.innerHTML = `
+                    <img src="${collection.image}" alt="${collection.title}" loading="lazy">
+                    <div class="collection-overlay"></div>
+                    <div class="collection-title">${collection.title}</div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Function to toggle mobile menu
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('mobile-open');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('mainNav');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (nav.classList.contains('mobile-open') && 
+                !nav.contains(event.target) && 
+                !menuBtn.contains(event.target)) {
+                nav.classList.remove('mobile-open');
+            }
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCollections();
+        });
+
+        // Smooth scroll for anchor links
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#collection-')) {
+                e.preventDefault();
+                console.log('Collection clicked:', e.target.getAttribute('href'));
+                // You can add navigation logic here
+            }
+        });
+    </script>
+</body>
+</html>
