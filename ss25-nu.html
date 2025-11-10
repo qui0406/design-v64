@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RETRO SPORTS - ICON DENIM</title>
+   
+
     <style>
         * {
             margin: 0;
@@ -21,11 +22,11 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 100vh;
+            height: 80vh;
             min-height: 600px;
-            background: 
-                        url('static/imgs/collection/ss-25/1.png');
-            background-size: cover;
+            background:
+                        url('static/imgs/banner1.png');
+            background-size: contain;
             background-position: center;
             display: flex;
             align-items: center;
@@ -38,6 +39,18 @@
             z-index: 2;
             max-width: 800px;
             padding: 0 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-logo {
@@ -50,13 +63,7 @@
             gap: 10px;
         }
 
-        .hero-logo::before {
-            content: '';
-            width: 40px;
-            height: 2px;
-            background: white;
-        }
-
+        .hero-logo::before,
         .hero-logo::after {
             content: '';
             width: 40px;
@@ -70,6 +77,7 @@
             letter-spacing: 8px;
             margin-bottom: 10px;
             text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-subtitle {
@@ -78,18 +86,15 @@
             margin-bottom: 60px;
         }
 
-        .hero-collection {
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
         /* Navigation Tabs */
         .nav-tabs {
             background: #1a1a1a;
             padding: 0;
             overflow-x: auto;
-            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .nav-tabs-container {
@@ -113,7 +118,7 @@
         .nav-tabs a:hover,
         .nav-tabs a.active {
             color: white;
-            border-bottom-color: #fff;
+            border-bottom-color: #d4ff00;
         }
 
         /* Section Styles */
@@ -128,293 +133,27 @@
 
         /* New Season Section */
         .new-season {
-            background: white;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
             text-align: center;
         }
 
         .new-season h2 {
-            font-size: 42px;
-            font-weight: 900;
+            font-size: 32px;
+            font-weight: 700;
             letter-spacing: 2px;
             margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .new-season-desc {
-            max-width: 600px;
+            max-width: 900px;
             margin: 0 auto 50px;
             color: #666;
             line-height: 1.8;
-        }
-
-        .video-container {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .video-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: #ff0000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .play-button:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .play-button::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-left: 20px solid white;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            margin-left: 5px;
-        }
-
-        /* Tennis Ball Decoration */
-        .tennis-ball {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle at 30% 30%, #d4ff00, #9ec700);
-            border-radius: 50%;
-            box-shadow: 0 10px 30px rgba(158, 199, 0, 0.4);
-        }
-
-        .tennis-ball-1 {
-            top: 20%;
-            right: 10%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .tennis-ball-2 {
-            bottom: 30%;
-            left: 5%;
-            width: 120px;
-            height: 120px;
-            animation: float 8s ease-in-out infinite 2s;
-            opacity: 0.7;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
-        }
-
-        /* Features Section */
-        .features-section {
-            background: linear-gradient(135deg, #2d3436 0%, #1a1a1a 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .features-content h2 {
-            font-size: 56px;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .features-desc {
-            color: #ccc;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            align-items: flex-start;
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle, #d4ff00, #9ec700);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .feature-text h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .feature-text p {
-            color: #999;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* Product Showcase */
-        .product-showcase {
-            position: relative;
-            padding: 0;
-        }
-
-        .product-hero-image {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-        }
-
-        .product-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 60px 20px 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .product-tab {
-            background: white;
-            color: black;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .product-tab:hover {
-            background: #d4ff00;
-            transform: translateY(-2px);
-        }
-
-        .product-tab.active {
-            background: black;
-            color: white;
-        }
-
-        /* Collection Nav */
-        .collection-nav {
-            background: #f8f8f8;
-            padding: 15px 0;
-            overflow-x: auto;
-        }
-
-        .collection-nav-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 0 20px;
-            min-width: max-content;
-        }
-
-        .collection-nav a {
-            color: #666;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            white-space: nowrap;
-        }
-
-        .collection-nav a:hover {
-            color: black;
-        }
-
-        /* Play Your Styles Section */
-        .play-styles {
-            background: white;
-        }
-
-        .play-styles h2 {
-            font-size: 42px;
-            font-weight: 900;
-            margin-bottom: 15px;
-        }
-
-        .play-styles-subtitle {
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .style-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 50px;
-        }
-
-        .filter-tag {
-            background: white;
-            color: black;
-            border: 2px solid black;
-            padding: 10px 24px;
-            border-radius: 25px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: capitalize;
-        }
-
-        .filter-tag:hover,
-        .filter-tag.active {
-            background: black;
-            color: white;
-        }
-
-        /* Product Grid */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s;
-            cursor: pointer;
+            font-size: 16px;
         }
 
         .video-container {
@@ -423,190 +162,307 @@
             max-width: 900px;
             margin: 40px auto;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            }
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
 
-            .video-container iframe {
+        .video-container iframe {
             width: 100%;
             height: 500px;
             display: block;
             border: none;
-            }
+        }
 
-            @media (max-width: 768px) {
-            .video-container iframe {
-                height: 300px;
+        /* Main Carousel */
+        .main-carousel-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .main-carousel {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .main-slide {
+            min-width: 100%;
+            height: 700px;
+            position: relative;
+        }
+
+        .main-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: #d4ff00;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+
+        .color-btn {
+            border: 2px solid transparent;
+            border-radius: 30px;
+            padding: 12px 28px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .color-btn.eden { background: linear-gradient(135deg, #2d5016 0%, #3a6b1f 100%); }
+        .color-btn.marshmallow { background: linear-gradient(135deg, #f5f1e8 0%, #e6e2cf 100%); color: #333; }
+
+        .color-btn.active {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            border-color: #d4ff00;
+        }
+
+        /* Everyday Hangout Section */
+        .everyday-hangout {
+            background: #ffffff;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .everyday-hangout h2 {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .everyday-hangout .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .style-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .filter-tag {
+            padding: 12px 28px;
+            border: 2px solid #1a1a1a;
+            border-radius: 30px;
+            background-color: white;
+            color: #1a1a1a;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background-color: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Products Carousel (Fading) */
+        .products-carousel-container {
+            position: relative; /* Đã thêm */
+            max-width: 1100px;
+            margin: 0 auto 50px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .products-carousel {
+            position: relative; /* Đã thêm */
+            width: 100%;
+            height: 500px; /* Đã thêm chiều cao cố định */
+        }
+
+        .products-slide {
+            position: absolute; /* Đã sửa */
+            inset: 0; /* Đã thêm */
+            opacity: 0; /* Đã thêm */
+            transition: opacity 0.7s ease-in-out; /* Đã thêm */
+            
+            /* Đã xóa: min-width: 100% */
+        }
+        
+        .products-slide.active { /* Đã thêm */
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .products-slide img {
+            width: 100%;
+            height: 100%; /* Đã sửa */
+            object-fit: cover;
+            display: block;
+        }
+
+        .products-slide::after {
+            content: attr(data-title);
+            position: absolute;
+            left: 40px;
+            bottom: 40px;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            opacity: 1;
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .product-image {
             width: 100%;
-            aspect-ratio: 3/4;
+            height: 350px;
             object-fit: cover;
         }
 
         .product-info {
             padding: 20px;
+            text-align: left;
         }
-
-        .carousel-container {
-        position: relative;
-        width: 90%;
-        max-width: 1200px;
-        margin: 40px auto;
-        overflow: hidden;
-        border-radius: 12px;
-        background: #f5f5f5;
-        }
-
-        /* Giữ tỉ lệ khung ảnh cố định */
-        .carousel {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        }
-
-        .slide {
-        min-width: 100%;
-        height: 500px; /* 👈 ép khung cao cố định */
-        position: relative;
-        }
-
-        .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* 👈 ảnh luôn đầy khung, không méo */
-        border-radius: 12px;
-        display: block;
-        }
-
-        /* Nút điều hướng */
-        .prev, .next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: white;
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        cursor: pointer;
-        color: #333;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        .prev:hover, .next:hover {
-        background: #eee;
-        }
-
-        .prev { left: 10px; }
-        .next { right: 10px; }
-
-        /* Nút chọn màu */
-        .color-options {
-        display: flex;
-        justify-content: center;
-        gap: 16px;
-        margin-top: 16px;
-        flex-wrap: wrap;
-        padding: 10px;
-        }
-
-        .color-options button {
-        border: none;
-        border-radius: 999px;
-        padding: 8px 18px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-        color: #fff;
-        }
-
-        .color-options button.eden { background: #224422; }
-        .color-options button.marshmallow { background: #e6e2cf; color: #333; }
-        .color-options button.darkblue { background: #1a2940; }
-        .color-options button.moonless { background: #0d0d0d; }
-
-        .color-options button.active {
-        transform: scale(1.05);
-        box-shadow: 0 0 8px rgba(0,0,0,0.3);
-        }
-
-
 
         .product-name {
-            font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 8px;
+            color: #1a1a1a;
+            font-size: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .product-price {
-            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 20px;
             font-weight: 700;
-            color: #000;
         }
 
         .product-buy {
             width: 100%;
-            background: black;
-            color: white;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
-            padding: 12px;
-            margin-top: 15px;
+            border-radius: 30px;
+            color: #fff;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
+            transition: all 0.3s;
             text-transform: uppercase;
+            font-size: 12px;
             letter-spacing: 1px;
-            transition: background 0.3s;
         }
 
         .product-buy:hover {
-            background: #333;
-        }
-
-        /* Featured Product */
-        .featured-product {
-            grid-column: span 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            background: #f5f5f5;
-        }
-
-        .featured-product .product-image {
-            aspect-ratio: auto;
-            height: 100%;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
         /* Pagination */
         .pagination {
+            margin-top: 40px;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 50px;
+            gap: 12px;
         }
 
         .page-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: #ddd;
+            background-color: #ddd;
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        .page-dot:hover,
         .page-dot.active {
-            background: black;
+            background-color: #667eea;
             transform: scale(1.3);
         }
 
@@ -615,69 +471,109 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+
+        .promo-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
         }
 
         .promo-section h2 {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 900;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .promo-section p {
             font-size: 18px;
             max-width: 700px;
             margin: 0 auto;
-            opacity: 0.9;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            line-height: 1.8;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 42px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-product {
-                grid-column: span 1;
-                grid-template-columns: 1fr;
-            }
-
-            .nav-tabs,
-            .collection-nav {
-                justify-content: flex-start;
-            }
-
-            .tennis-ball-2 {
-                display: none;
-            }
-
-            section {
-                padding: 50px 20px;
+                letter-spacing: 4px;
             }
 
             .new-season h2,
-            .play-styles h2 {
-                font-size: 32px;
+            .everyday-hangout h2 {
+                font-size: 36px;
             }
 
-            .features-content h2 {
-                font-size: 36px;
+            .main-slide {
+                height: 400px;
+            }
+
+            .products-carousel { /* Đã thêm */
+                height: 300px;
+            }
+
+            .products-slide img {
+                height: 100%;
+            }
+
+            .products-slide::after {
+                font-size: 2rem;
+                left: 20px;
+                bottom: 20px;
+            }
+
+            .video-container iframe {
+                height: 300px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .promo-section h2 {
+                font-size: 38px;
+            }
+
+            section {
+                padding: 60px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
+            
         </div>
     </section>
 
-    <!-- Navigation Tabs -->
     <nav class="nav-tabs">
         <div class="nav-tabs-container">
             <a href="#" class="active">ÁO KHOÁC</a>
@@ -690,216 +586,334 @@
         </div>
     </nav>
 
-    <!-- New Season Section -->
     <section class="new-season">
         <div class="container">
-            
-            <h2>NEW SEASON - NEW STYLE</h2>
+            <h2>V64 – Nâng tầm phong cách với áo khoác thời thượng</h2>
             <p class="new-season-desc">
-                Retro Sports brings out the nostalgia and modern feel from the glory days of court life, 
-                and tells all the off-the-pitch glory and glory from the glory days of the courts.
+                Mỗi chiếc áo khoác của V64 không chỉ là lớp bảo vệ khỏi thời tiết, mà còn là tuyên ngôn cá tính. Với thiết kế tinh tế, chất liệu cao cấp và đường may tỉ mỉ, V64 mang đến sự tự tin và phong cách cho bạn trong mọi khoảnh khắc. Dù là dạo phố, đi làm hay du lịch, áo khoác V64 luôn giúp bạn nổi bật giữa đám đông – đơn giản mà đầy cuốn hút.
             </p>
             <div class="video-container">
                 <iframe
                     src="https://www.youtube.com/embed/OZFynytLtpg?start=1&autoplay=0&mute=0&rel=0"
                     title="ICON DENIM - New Season Style"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
             </div>
-
-            
         </div>
     </section>
 
-
-   <div class="carousel-container">
-        <div class="carousel">
-            <div class="slide active">
-                <img src="static/imgs/banner.png" alt="Eden Green">
-            </div>
-            <div class="slide">
-                <img src="static/imgs/banner1.png" alt="Marshmallow">
+    <div class="main-carousel-container">
+        <div class="main-carousel" id="mainCarousel">
+            <div class="main-slide">
+                <img src="static/imgs/collection/ss-25/ao-khoac/1.png" alt="Crop Hoodie Jacket">
             </div>
         </div>
 
-        <!-- Nút điều hướng -->
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
+        <button class="carousel-btn prev-btn" id="mainPrev">&#10094;</button>
+        <button class="carousel-btn next-btn" id="mainNext">&#10095;</button>
 
-        <!-- Các lựa chọn màu -->
         <div class="color-options">
-            <button data-index="0" class="active eden">CROP HOODIE JACKET</button>
-            <button data-index="1" class="marshmallow">CROP JACKET</button>
+            <button class="color-btn eden active" data-index="0">LIGHT BLUE</button>
         </div>
     </div>
 
-    <!-- Play Your Styles Section -->
-    <section class="play-styles">
-        <div class="container">
-            <h2>PLAY YOUR STYLES</h2>
-            <p class="play-styles-subtitle">Mix it your way, own the field</p>
+    <section class="everyday-hangout">
+        <h2>Everyday Hangout</h2>
+        <p class="subtitle">Thời trang năng động mỗi ngày</p>
 
-            <div class="style-filters">
-                <button class="filter-tag active">Tất cả sản phẩm</button>
-                <button class="filter-tag">Áo khoác</button>
-                <button class="filter-tag">Áo kiểu nữ</button>
-                <button class="filter-tag">Áo sơ mi</button>
-                <button class="filter-tag">Đầm</button>
-                <button class="filter-tag">Quần dài</button>
-                <button class="filter-tag">Quần ngắn</button>
-                <button class="filter-tag">Váy</button>
+        <div class="style-filters">
+            <button class="filter-tag active" data-category="jacket">CROP HOODIE JACKET</button>
+            <button class="filter-tag" data-category="sweater">CROP JACKET</button>
+       
+        </div>
+
+        <div class="products-carousel-container">
+            <div class="products-carousel" id="productsCarousel">
+
+                <div class="products-carousel-container">
+                    <div class="main-image">
+                        <img
+                        id="mainProductImage"
+                        src="https://cdn.hstatic.net/products/1000210295/125wd1042f3_d08fdff8d6044016968de295015a24df_1024x1024.jpg"
+                        alt="Main Jacket"
+                        />
+                    </div>
+
+                    <div class="thumbnails">
+                        <img
+                        class="thumb active"
+                        src="https://cdn.hstatic.net/products/1000210295/125wd1042f3_d08fdff8d6044016968de295015a24df_1024x1024.jpg"
+                        alt="thumb 1"
+                        />
+                        <img
+                        class="thumb"
+                        src="https://cdn.hstatic.net/products/1000210295/125wd1042f3.nghi_ng_99339a23cf4b4c0998e4ccf88c68802f_1024x1024.jpg"
+                        alt="thumb 2"
+                        />
+                        <img
+                        class="thumb"
+                        src="https://cdn.hstatic.net/products/1000210295/vsixtyfour__146_b7334b63926f4ef58e567323652e0715_1024x1024.jpg"
+                        alt="thumb 3"
+                        />
+                        <img
+                        class="thumb"
+                        src="https://cdn.hstatic.net/products/1000210295/vsixtyfour__95_73ab89bd9e6d40458ab35cb65e37cf1b_1024x1024.jpg"
+                        alt="thumb 4"
+                        />
+                    </div>
+                    </div>
             </div>
+        </div>
 
-           
-
-            <!-- Product Grid -->
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1663573688938-2b3e7ea2ab33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhvb2RpZSUyMG1vZGVsfGVufDF8fHx8MTc2MjQ5MDAyNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Product" class="product-image">
-                    <div class="product-info">
-                        <p class="product-name">Hoodie trắng basic</p>
-                        <p class="product-price">450.000₫</p>
-                        <button class="product-buy">MUA NGAY →</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1663573688938-2b3e7ea2ab33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhvb2RpZSUyMG1vZGVsfGVufDF8fHx8MTc2MjQ5MDAyNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Product" class="product-image">
-                    <div class="product-info">
-                        <p class="product-name">Áo sweater xanh</p>
-                        <p class="product-price">520.000₫</p>
-                        <button class="product-buy">MUA NGAY →</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1661181402854-8c9408409e9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHN3ZWF0c2hpcnQlMjBmYXNoaW9ufGVufDF8fHx8MTc2MjQyNzMwNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Product" class="product-image">
-                    <div class="product-info">
-                        <p class="product-name">Sweatshirt đen campus</p>
-                        <p class="product-price">480.000₫</p>
-                        <button class="product-buy">MUA NGAY →</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1661181402854-8c9408409e9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHN3ZWF0c2hpcnQlMjBmYXNoaW9ufGVufDF8fHx8MTc2MjQyNzMwNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Product" class="product-image">
-                    <div class="product-info">
-                        <p class="product-name">Áo thun retro</p>
-                        <p class="product-price">380.000₫</p>
-                        <button class="product-buy">MUA NGAY →</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1760509370919-0a83b592e15d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdGhsZXRpYyUyMHdlYXIlMjBtb2RlbHxlbnwxfHx8fDE3NjI0ODA3NzF8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Product" class="product-image">
-                    <div class="product-info">
-                        <p class="product-name">Jersey thể thao</p>
-                        <p class="product-price">550.000₫</p>
-                        <button class="product-buy">MUA NGAY →</button>
-                    </div>
+        <div class="product-grid" id="productGrid">
+            <div class="product-card" data-category="jacket">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Jacket">
+                <div class="product-info">
+                    <p class="product-name">Áo khoác denim xanh</p>
+                    <p class="product-price">520.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
                 </div>
             </div>
 
-            <!-- Pagination -->
-            <div class="pagination">
-                <span class="page-dot active"></span>
-                <span class="page-dot"></span>
-                <span class="page-dot"></span>
-                <span class="page-dot"></span>
-                <span class="page-dot"></span>
+            <div class="product-card" data-category="jacket">
+                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Jacket">
+                <div class="product-info">
+                    <p class="product-name">Áo khoác bomber đen</p>
+                    <p class="product-price">580.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
             </div>
+
+            <div class="product-card" data-category="jacket">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Jacket">
+                <div class="product-info">
+                    <p class="product-name">Áo khoác jean vintage</p>
+                    <p class="product-price">495.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="jacket">
+                <img src="https://images.unsplash.com/photo-1543076659-9380cdf10613?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Jacket">
+                <div class="product-info">
+                    <p class="product-name">Áo khoác da thời trang</p>
+                    <p class="product-price">650.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="sweater">
+                <img src="https://images.unsplash.com/photo-1663573688938-2b3e7ea2ab33?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Sweater">
+                <div class="product-info">
+                    <p class="product-name">Hoodie trắng basic</p>
+                    <p class="product-price">450.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="sweater">
+                <img src="https://images.unsplash.com/photo-1661181402854-8c9408409e9f?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Sweater">
+                <div class="product-info">
+                    <p class="product-name">Sweatshirt đen retro</p>
+                    <p class="product-price">480.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="sweater">
+                <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Sweater">
+                <div class="product-info">
+                    <p class="product-name">Sweater cổ tròn xám</p>
+                    <p class="product-price">420.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="sweater">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Sweater">
+                <div class="product-info">
+                    <p class="product-name">Hoodie zip nâu</p>
+                    <p class="product-price">510.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="shorts">
+                <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Shorts">
+                <div class="product-info">
+                    <p class="product-name">Quần short thể thao xanh</p>
+                    <p class="product-price">320.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="shorts">
+                <img src="https://images.unsplash.com/photo-1591195851836-4a8d54748a0e?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Shorts">
+                <div class="product-info">
+                    <p class="product-name">Quần short denim</p>
+                    <p class="product-price">350.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="shorts">
+                <img src="https://images.unsplash.com/photo-1555689502-c4b22d76c56f?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Shorts">
+                <div class="product-info">
+                    <p class="product-name">Quần short kaki be</p>
+                    <p class="product-price">340.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="shorts">
+                <img src="https://images.unsplash.com/photo-1565084888279-aca607ecce0c?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Shorts">
+                <div class="product-info">
+                    <p class="product-name">Quần short cargo đen</p>
+                    <p class="product-price">380.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="dress">
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Dress">
+                <div class="product-info">
+                    <p class="product-name">Đầm suông trắng</p>
+                    <p class="product-price">420.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="dress">
+                <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Dress">
+                <div class="product-info">
+                    <p class="product-name">Đầm hoa vintage</p>
+                    <p class="product-price">480.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="dress">
+                <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Dress">
+                <div class="product-info">
+                    <p class="product-name">Đầm denim xanh</p>
+                    <p class="product-price">450.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+
+            <div class="product-card hidden" data-category="dress">
+                <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=800&q=80" class="product-image" alt="Dress">
+                <div class="product-info">
+                    <p class="product-name">Đầm maxi họa tiết</p>
+                    <p class="product-price">520.000₫</p>
+                    <button class="product-buy">MUA NGAY →</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <span class="page-dot active"></span>
+            <span class="page-dot"></span>
         </div>
     </section>
 
-    <!-- Promo Section -->
     <section class="promo-section">
         <div class="container">
-            <h2>KHÁM PHÁ<br>RETRO</h2>
+            <h2>KHÁM PHÁ RETRO</h2>
             <p>Cùng tìm hiểu bộ sưu tập Retro Sports Jacket huyết sắc phá cách, phong cách năng động cho cá nhân đồng hành cùng bạn trong mỗi chuyến đi.</p>
         </div>
     </section>
 
     <script>
-        const slides = document.querySelectorAll('.slide');
-        const buttons = document.querySelectorAll('.color-options button');
-        let currentIndex = 0;
+        // Main Carousel
+        const mainCarousel = document.getElementById('mainCarousel');
+        const mainPrev = document.getElementById('mainPrev');
+        const mainNext = document.getElementById('mainNext');
+        const colorBtns = document.querySelectorAll('.color-btn');
+        let mainIndex = 0;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-            slide.style.display = i === index ? 'block' : 'none';
+        function updateMainCarousel() {
+            mainCarousel.style.transform = `translateX(-${mainIndex * 100}%)`;
+            colorBtns.forEach((btn, i) => {
+                btn.classList.toggle('active', i === mainIndex);
             });
-            buttons.forEach(btn => btn.classList.remove('active'));
-            buttons[index].classList.add('active');
         }
 
-        document.querySelector('.prev').onclick = () => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
-        };
-
-        document.querySelector('.next').onclick = () => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        };
-
-        buttons.forEach((btn, index) => {
-            btn.onclick = () => {
-            currentIndex = index;
-            showSlide(index);
-            };
+        mainNext.addEventListener('click', () => {
+            mainIndex = (mainIndex + 1) % 2; // Chỉ có 2 slide
+            updateMainCarousel();
         });
 
-        showSlide(currentIndex);
-        // Filter functionality
+        mainPrev.addEventListener('click', () => {
+            mainIndex = (mainIndex - 1 + 2) % 2; // Chỉ có 2 slide
+            updateMainCarousel();
+        });
+
+        colorBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                mainIndex = index;
+                updateMainCarousel();
+            });
+        });
+
+        /* ĐÃ SỬA: Gộp logic cho Bộ lọc sản phẩm VÀ Carousel sản phẩm */
         const filterTags = document.querySelectorAll('.filter-tag');
+        const productCards = document.querySelectorAll('.product-card');
+        const productSlides = document.querySelectorAll('.products-slide');
+
         filterTags.forEach(tag => {
             tag.addEventListener('click', function() {
+                // 1. Cập nhật thẻ filter active
                 filterTags.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
+
+                const category = this.getAttribute('data-category');
+
+                // 2. Lọc Product Grid
+                productCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    if (cardCategory === category) {
+                        card.classList.remove('hidden');
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // 3. Cập nhật Fading Carousel
+                productSlides.forEach((slide) => {
+                    slide.classList.toggle("active", slide.dataset.category === category);
+                });
             });
         });
 
-        // Product tabs
-        const productTabs = document.querySelectorAll('.product-tab');
-        productTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                productTabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Pagination
+        // Pagination (Chỉ là hiệu ứng, chưa có logic)
         const pageDots = document.querySelectorAll('.page-dot');
         pageDots.forEach((dot, index) => {
             dot.addEventListener('click', function() {
                 pageDots.forEach(d => d.classList.remove('active'));
                 this.classList.add('active');
+                // (Chưa có logic chuyển trang)
             });
         });
 
-        // Play button
-        const playButton = document.querySelector('.play-button');
-        if (playButton) {
-            playButton.addEventListener('click', function() {
-                alert('Video will play here');
-            });
-        }
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Nav Tabs
+        const navLinks = document.querySelectorAll('.nav-tabs a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
             });
         });
+
+        /* ĐÃ XÓA:
+           - Đoạn mã Products Carousel bị hỏng (vì không có nút prev/next)
+           - Đoạn mã filter thứ hai bị trùng lặp
+           - Đoạn mã Smooth Scroll (bị trùng với logic Nav Tabs)
+        */
+
     </script>
 </body>
 </html>
