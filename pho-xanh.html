@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHÔ XANH - V-SIXTYFOUR</title>
+    <title>PHỐ XANH - V-SIXTYFOUR</title>
     <style>
         * {
             margin: 0;
@@ -47,11 +47,12 @@
 
         .nav a {
             text-decoration: none;
-            color: #000;
+            color: #0c1c3d;
             font-size: 12px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: color 0.3s;
+            font-weight: 600;
         }
 
         .nav a:hover {
@@ -60,22 +61,49 @@
 
         .header-icons {
             display: flex;
-            gap: 15px;
-            font-size: 18px;
+            gap: 18px;
+            align-items: center;
         }
 
         .icon-btn {
             cursor: pointer;
             transition: transform 0.3s;
+            color: #0c1c3d;
+            position: relative;
         }
 
         .icon-btn:hover {
             transform: scale(1.1);
+            color: #d4a574;
         }
+
+        .icon-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background-color: #d4a574;
+            color: #0c1c3d;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
 
         /* Hero Banner */
         .hero-banner {
-            margin-top: 60px;
+            margin-top: 60px; /* Điều chỉnh dựa trên chiều cao header thực tế */
             position: relative;
             height: 80vh;
             background: url('static/imgs/banner1.png');
@@ -217,24 +245,6 @@
             background-color: #ffffff;
         }
 
-        .top-banner-accent {
-            background-color: #ffffff;
-            height: 60px;
-            position: relative;
-        }
-
-        .top-banner-accent .down-arrow {
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 15px solid #000000;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
         .city-moves-background {
             background-image: url('static/imgs/your-crosswalk-image.jpg'); 
             background-size: cover;
@@ -371,7 +381,7 @@
         .tag {
             display: inline-block;
             padding: 12px 28px;
-            border-radius: 25px;
+            border-radius: 8px;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
@@ -430,14 +440,6 @@
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 20px;
-        }
-
-        .vibes-banner h3{
-            color:#04235e;
-        }
-
-        .vibes-banner p{
-            color:#04235e;
         }
 
         .vibes-banner img {
@@ -537,7 +539,6 @@
             color: #d32f2f;
         }
 
-        /* Carousel Arrows */
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -642,238 +643,145 @@
             letter-spacing: 0.5px;
             color: #666;
         }
-
-        .lb-slider-container {
+        
+        /* === CSS CHO GALLERY MỚI === */
+        .gallery-slider-container {
             position: relative;
-            margin: 0 auto 40px;
-            max-width: 800px;
-            height: 1000px;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            background-color: white;
-        }
-
-        .lb-slider {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .lb-slide {
-            min-width: 100%;
+            max-width: 1400px; 
+            margin: 0 auto 40px; 
+            padding: 0 80px; 
             box-sizing: border-box;
         }
 
-        .lb-slide img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        .lb-slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #0c1c3d;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        .lb-slider-btn:hover {
-            background-color: #0c1c3d;
-            color: white;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .lb-prev-btn {
-            left: 20px;
-        }
-
-        .lb-next-btn {
-            right: 20px;
-        }
-
-        .corner-bracket {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-color: rgba(255, 255, 255, 0.9);
-            border-style: solid;
-            z-index: 11;
-        }
-
-        .top-left {
-            top: 25px;
-            left: 25px;
-            border-width: 5px 0 0 5px;
-        }
-
-        .top-right {
-            top: 25px;
-            right: 25px;
-            border-width: 5px 5px 0 0;
-        }
-
-        .bottom-left {
-            bottom: 25px;
-            left: 25px;
-            border-width: 0 0 5px 5px;
-        }
-
-        .bottom-right {
-            bottom: 25px;
-            right: 25px;
-            border-width: 0 5px 5px 0;
-        }
-
-        .lb-grid-container {
+        .gallery-slide-grid {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .lb-grid-item {
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
             width: 100%;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
-            background-color: #f5f5f5;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 700px; 
+            border-radius: 8px; 
+            overflow: hidden; 
         }
 
-        .lb-grid-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .lb-grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .lb-grid-left-column {
-            grid-row: span 2;
-        }
-
-        .lb-grid-left-column .lb-grid-item {
-            height: 700px;
-        }
-
-        .lb-grid-right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .lb-grid-right-column .lb-grid-item {
-            height: calc((700px - 20px) / 2);
-        }
-
-        /* Lookbook Gallery Section */
-        .lookbook {
-            background: #f8f8f8;
-            padding: 80px 40px;
-        }
-
-        .lookbook-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .lookbook-item {
+        .grid-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            cursor: pointer;
+            background: #eee; /* Thêm màu nền cho ô trống */
         }
 
-        .lookbook-item img {
+        /* ===================================== */
+        /* SỬA LỖI: CSS cho ảnh DESKTOP */
+        /* ===================================== */
+        .grid-item img {
             width: 100%;
-            height: 500px;
-            object-fit: cover;
-            transition: transform 0.5s;
+            height: 100%; /* SỬA LẠI: Lấp đầy ô chứa */
+            object-fit: cover; /* SỬA LẠI: Cắt ảnh để lấp đầy */
+            display: block;
+            transition: transform 0.4s ease;
+            border-radius: 8px;
         }
 
-        .lookbook-item:hover img {
+        .grid-item:hover img {
             transform: scale(1.05);
         }
 
-        /* Final Banner - Đã sửa lại để giữ ảnh nền */
-.final-banner {
-    height: 80vh; /* Giữ chiều cao của bạn */
-    background: url('static/imgs/banner3.png');
-    background-size: cover;
-    background-position: center;
+        .grid-item.large-image {
+            grid-column: 1 / 2; 
+            grid-row: 1 / 3;    
+        }
 
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    position: relative;
-}
+        .grid-item.medium-image {
+            grid-column: 2 / 4; 
+            grid-row: 1 / 2;    
+        }
 
-.final-banner h2 {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
-    color:#04235e;
-    font-size: 72px;
-    font-weight: 300; 
-    letter-spacing: 5px;
-    left: 20%;
-    position: absolute;
-    top: 10%;
+        .gallery-slide-grid .grid-item:nth-of-type(3) {
+            grid-column: 2 / 3; 
+            grid-row: 2 / 3;    
+        }
 
-    margin: 0;
-    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
-}
+        .gallery-slide-grid .grid-item:nth-of-type(4) {
+            grid-column: 3 / 4; 
+            grid-row: 2 / 3;    
+        }
 
-.final-banner p {
-    font-size: 20px;
-    margin-top: 15px;
-    color:#04235e;
-    letter-spacing: 3px;
-    left: 20%;
-    position: absolute;
-    top: 25%;
-    text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6);
-}
+        .gallery-slider-container .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #333;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-/* Responsive (giữ nguyên) */
-@media (max-width: 768px) {
-    .final-banner h2 {
-        font-size: 42px;
-        letter-spacing: 8px;
-    }
-    .final-banner p {
-        font-size: 16px;
-    }
-}
+        .gallery-slider-container .nav-arrow:hover {
+            background: white;
+            color: #0c1c3d;
+            transform: translateY(-50%) scale(1.1);
+        }
 
-        /* Responsive */
+        .gallery-slider-container .nav-arrow.left {
+            left: 30px; 
+        }
+
+        .gallery-slider-container .nav-arrow.right {
+            right: 30px; 
+        }
+
+
+        /* Final Banner */
+        .final-banner {
+            height: 80vh; 
+            background: url('static/imgs/banner3.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .final-banner h2 {
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+            color:#04235e;
+            font-size: 72px;
+            font-weight: 300; 
+            letter-spacing: 5px;
+            left: 20%;
+            position: absolute;
+            top: 10%;
+            margin: 0;
+            text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .final-banner p {
+            font-size: 20px;
+            margin-top: 15px;
+            color:#04235e;
+            letter-spacing: 3px;
+            left: 20%;
+            position: absolute;
+            top: 25%;
+            text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ======================== */
+        /* CSS RESPONSIVE */
+        /* ======================== */
+        
         @media (max-width: 1024px) {
             .carousel-wrapper {
                 padding: 0 60px;
@@ -881,10 +789,6 @@
 
             .carousel-scrollbar {
                 padding: 0 60px;
-            }
-
-            .lookbook-grid {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -910,6 +814,10 @@
             .final-banner h2 {
                 font-size: 42px;
                 letter-spacing: 8px;
+            }
+
+            .final-banner p {
+                font-size: 16px;
             }
 
             .style-showcase {
@@ -981,6 +889,7 @@
                 font-size: 3rem;
             }
 
+            /* Responsive cho Lookbook Container */
             .lookbook-container {
                 padding: 40px 15px;
             }
@@ -993,60 +902,46 @@
                 font-size: 0.95rem;
             }
 
-            .lb-slider-container {
-                max-width: 100%;
-                height: 500px;
-                border-radius: 12px;
+            /* Responsive cho Gallery mới */
+            .gallery-slider-container {
+                padding: 0; 
+            }
+            
+            .gallery-slide-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto; 
+                height: auto; 
+                border-radius: 0; 
             }
 
-            .lb-slider-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 1.2rem;
+            .grid-item.large-image,
+            .grid-item.medium-image,
+            .gallery-slide-grid .grid-item:nth-of-type(3),
+            .gallery-slide-grid .grid-item:nth-of-type(4) {
+                grid-column: 1 / -1; 
+                grid-row: auto; 
+                height: auto; 
             }
 
-            .lb-prev-btn {
+            /* ===================================== */
+            /* SỬA LỖI: CSS cho ảnh MOBILE */
+            /* ===================================== */
+            .gallery-slide-grid .grid-item img {
+                height: auto; /* Ghi đè: chiều cao tự động theo tỷ lệ */
+                object-fit: contain; /* Ghi đè: hiển thị toàn bộ ảnh, không cắt */
+            }
+
+
+            .gallery-slider-container .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            .gallery-slider-container .nav-arrow.left {
                 left: 10px;
             }
-
-            .lb-next-btn {
+            .gallery-slider-container .nav-arrow.right {
                 right: 10px;
-            }
-
-            .corner-bracket {
-                width: 35px;
-                height: 35px;
-                border-width: 3px;
-            }
-
-            .top-left, .top-right {
-                top: 15px;
-            }
-
-            .bottom-left, .bottom-right {
-                bottom: 15px;
-            }
-
-            .top-left, .bottom-left {
-                left: 15px;
-            }
-
-            .top-right, .bottom-right {
-                right: 15px;
-            }
-
-            .lb-grid-container {
-                grid-template-columns: 1fr;
-                max-width: 100%;
-            }
-
-            .lb-grid-left-column {
-                grid-row: span 1;
-            }
-
-            .lb-grid-left-column .lb-grid-item,
-            .lb-grid-right-column .lb-grid-item {
-                height: 350px;
             }
         }
 
@@ -1055,33 +950,48 @@
                 font-size: 32px;
                 letter-spacing: 5px;
             }
-
-            .lb-slider-container {
-                height: 400px;
-            }
-
-            .lb-grid-left-column .lb-grid-item,
-            .lb-grid-right-column .lb-grid-item {
-                height: 280px;
-            }
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="logo">V-SIXTYFOUR</div>
+
         <nav class="nav">
             <a href="#">NỮ</a>
             <a href="#">NAM</a>
             <a href="#">PHỤ KIỆN</a>
-            <a href="#">BỘ SƯU TẬP</a>
+            <a href="/collection.html">BỘ SƯU TẬP</a>
             <a href="#">CỬA HÀNG</a>
         </nav>
+
         <div class="header-icons">
-            <span class="icon-btn">🔍</span>
-            <span class="icon-btn">👤</span>
-            <span class="icon-btn">♡</span>
-            <span class="icon-btn">🛍️</span>
+            
+            <span class="icon-btn" id="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+            </span>
+
+            <span class="icon-btn" id="user-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A1.875 1.875 0 0118 22.5H6c-.966 0-1.794-.757-1.875-1.745z" />
+                </svg>
+            </span>
+
+            <span class="icon-btn" id="wishlist-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </span>
+
+            <span class="icon-btn" id="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="cart-badge">0</span>
+            </span>
+
         </div>
     </header>
 
@@ -1089,6 +999,12 @@
 
     <div class="ticker-container">
         <div class="ticker-track">
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
@@ -1150,6 +1066,13 @@
 
     <div class="ticker-container">
         <div class="ticker-track">
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
@@ -1263,49 +1186,40 @@
                 <p>Casual but not Usual</p>
             </header>
 
-            <div class="lb-slider-container">
-                <div class="lb-slider" id="lbSlider">
-                    <div class="lb-slide">
-                        <img src="static/imgs/collection/1.png" alt="Look book 1">
+            <div class="gallery-slider-container">
+
+                <div class="gallery-slide-grid">
+                    
+                    <div class="grid-item large-image">
+                        <img src="static/imgs/collection/1.png" alt="Hai người mẫu mặc đồ collection mới">
                     </div>
-                    <div class="lb-slide">
-                        <img src="static/imgs/collection/2.png" alt="Look book 2">
+
+                    <div class="grid-item medium-image">
+                        <img src="static/imgs/collection/2.png" alt="Người mẫu trên sân tennis">
                     </div>
-                    <div class="lb-slide">
-                        <img src="static/imgs/collection/3.png" alt="Look book 3">
+
+                    <div class="grid-item small-image">
+                        <img src="static/imgs/collection/3.png" alt="Người mẫu mặc áo khoác varsity">
                     </div>
+
+                    <div class="grid-item small-image">
+                        <img src="static/imgs/collection/4.png" alt="Người mẫu mặc sweatshirt Originals">
+                    </div>
+
                 </div>
 
-                <button class="lb-slider-btn lb-prev-btn" id="lbPrevBtn">&lt;</button>
-                <button class="lb-slider-btn lb-next-btn" id="lbNextBtn">&gt;</button>
-
-                <div class="corner-bracket top-left"></div>
-                <div class="corner-bracket top-right"></div>
-                <div class="corner-bracket bottom-left"></div>
-                <div class="corner-bracket bottom-right"></div>
             </div>
-
-            <div class="lb-grid-container">
-                <div class="lb-grid-left-column">
-                    <div class="lb-grid-item">
-                        <img src="static/imgs/collection/4.png" alt="Grid image 1">
-                    </div>
-                </div>
-
-                <div class="lb-grid-right-column">
-                    <div class="lb-grid-item">
-                        <img src="static/imgs/collection/5.png" alt="Grid image 2">
-                    </div>
-                    <div class="lb-grid-item">
-                        <img src="static/imgs/collection/6.png" alt="Grid image 3">
-                    </div>
-                </div>
             </div>
-        </div>
     </section>
 
     <div class="ticker-container">
         <div class="ticker-track">
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
+            <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
             <span class="ticker-item">PHỐ XANH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS25</span>
@@ -1326,16 +1240,16 @@
         // ===== STYLE SHOWCASE GALLERY =====
         const galleryData = {
             casual: [
-                { front: 'static/imgs/collection/1.png', back: 'static/imgs/collection/2.png' },
+                { front: 'static/imgs/collection/5.png', back: 'static/imgs/collection/3.png' },
             ],
             fashion: [
-                { front: 'static/imgs/collection/1.png', back: 'static/imgs/collection/3.png' },
+                { front: 'static/imgs/collection/4.png', back: 'static/imgs/collection/5.png' },
             ],
             aesthetic: [
-                { front: 'static/imgs/collection/1.png', back: 'static/imgs/collection/4.png' },
+                { front: 'static/imgs/collection/6.png', back: 'static/imgs/collection/5.png' },
             ],
             tayloring: [
-                { front: 'static/imgs/collection/2.png', back: 'static/imgs/collection/3.png' },
+                { front: 'static/imgs/collection/3.png', back: 'static/imgs/collection/4.png' },
             ]
         };
 
@@ -1344,91 +1258,99 @@
         let currentCategory = categoryOrder[0];
         let currIndex = 0;
 
-        const nextButton = document.querySelector('.nav-arrow.right');
-        const prevButton = document.querySelector('.nav-arrow.left');
-        const image1 = document.getElementById('gallery-img-1');
-        const image2 = document.getElementById('gallery-img-2');
-        const tags = document.querySelectorAll('.tag');
+        // Sửa lỗi: Phải querySelector trong .style-showcase
+        const showcase = document.querySelector('.style-showcase');
+        if (showcase) {
+            const nextButton = showcase.querySelector('.nav-arrow.right');
+            const prevButton = showcase.querySelector('.nav-arrow.left');
+            const image1 = document.getElementById('gallery-img-1');
+            const image2 = document.getElementById('gallery-img-2');
+            const tags = showcase.querySelectorAll('.tag');
 
-        function updateActiveTag() {
+            function updateActiveTag() {
+                tags.forEach((tag, index) => {
+                    if (index === currentCategoryIndex) {
+                        tag.classList.remove('inactive');
+                        tag.classList.add('active');
+                    } else {
+                        tag.classList.remove('active');
+                        tag.classList.add('inactive');
+                    }
+                });
+            }
+
+            function showImages(category, index) {
+                const images = galleryData[category];
+                if (images && images[index]) {
+                    if(image1) image1.style.opacity = '0';
+                    if(image2) image2.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        if(image1) image1.src = images[index].front;
+                        if(image2) image2.src = images[index].back;
+                        if(image1) image1.style.opacity = '1';
+                        if(image2) image2.style.opacity = '1';
+                    }, 300);
+                }
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', function() {
+                    const maxIndex = galleryData[currentCategory].length - 1;
+                    currIndex++;
+                    
+                    if (currIndex > maxIndex) {
+                        currIndex = 0;
+                        currentCategoryIndex++;
+                        
+                        if (currentCategoryIndex >= categoryOrder.length) {
+                            currentCategoryIndex = 0;
+                        }
+                        
+                        currentCategory = categoryOrder[currentCategoryIndex];
+                        updateActiveTag();
+                    }
+                    
+                    showImages(currentCategory, currIndex);
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', function() {
+                    currIndex--;
+                    
+                    if (currIndex < 0) {
+                        currentCategoryIndex--;
+                        
+                        if (currentCategoryIndex < 0) {
+                            currentCategoryIndex = categoryOrder.length - 1;
+                        }
+                        
+                        currentCategory = categoryOrder[currentCategoryIndex];
+                        const maxIndex = galleryData[currentCategory].length - 1;
+                        currIndex = maxIndex;
+                        updateActiveTag();
+                    }
+                    
+                    showImages(currentCategory, currIndex);
+                });
+            }
+
             tags.forEach((tag, index) => {
-                if (index === currentCategoryIndex) {
-                    tag.classList.remove('inactive');
-                    tag.classList.add('active');
-                } else {
-                    tag.classList.remove('active');
-                    tag.classList.add('inactive');
-                }
+                tag.addEventListener('click', function() {
+                    currentCategoryIndex = index;
+                    currentCategory = categoryOrder[currentCategoryIndex];
+                    currIndex = 0;
+                    
+                    updateActiveTag();
+                    showImages(currentCategory, currIndex);
+                });
             });
-        }
 
-        function showImages(category, index) {
-            const images = galleryData[category];
-            if (images && images[index]) {
-                image1.style.opacity = '0';
-                image2.style.opacity = '0';
-                
-                setTimeout(() => {
-                    image1.src = images[index].front;
-                    image2.src = images[index].back;
-                    image1.style.opacity = '1';
-                    image2.style.opacity = '1';
-                }, 300);
-            }
-        }
-
-        nextButton.addEventListener('click', function() {
-            const maxIndex = galleryData[currentCategory].length - 1;
-            currIndex++;
-            
-            if (currIndex > maxIndex) {
-                currIndex = 0;
-                currentCategoryIndex++;
-                
-                if (currentCategoryIndex >= categoryOrder.length) {
-                    currentCategoryIndex = 0;
-                }
-                
-                currentCategory = categoryOrder[currentCategoryIndex];
-                updateActiveTag();
-            }
-            
-            showImages(currentCategory, currIndex);
-        });
-
-        prevButton.addEventListener('click', function() {
-            currIndex--;
-            
-            if (currIndex < 0) {
-                currentCategoryIndex--;
-                
-                if (currentCategoryIndex < 0) {
-                    currentCategoryIndex = categoryOrder.length - 1;
-                }
-                
-                currentCategory = categoryOrder[currentCategoryIndex];
-                const maxIndex = galleryData[currentCategory].length - 1;
-                currIndex = maxIndex;
-                updateActiveTag();
-            }
-            
-            showImages(currentCategory, currIndex);
-        });
-
-        tags.forEach((tag, index) => {
-            tag.addEventListener('click', function() {
-                currentCategoryIndex = index;
-                currentCategory = categoryOrder[currentCategoryIndex];
-                currIndex = 0;
-                
-                updateActiveTag();
+            if (image1) {
                 showImages(currentCategory, currIndex);
-            });
-        });
-
-        if (image1) {
-            showImages(currentCategory, currIndex);
-            updateActiveTag();
+                updateActiveTag();
+            }
         }
 
         // ===== PRODUCT CAROUSEL =====
@@ -1436,88 +1358,87 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const scrollbarThumb = document.getElementById('scrollbarThumb');
-        const scrollbarTrack = scrollbarThumb.parentElement;
+        
+        // Sửa lỗi: Kiểm tra scrollbarThumb tồn tại
+        if (scrollbarThumb) {
+            const scrollbarTrack = scrollbarThumb.parentElement;
 
-        function updateScrollbar() {
-            const scrollPercentage = carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth);
-            const thumbWidth = (carousel.clientWidth / carousel.scrollWidth) * 100;
+            function updateScrollbar() {
+                if (!carousel) return;
+                // Thêm kiểm tra clientWidth > 0 để tránh lỗi chia cho 0
+                if (carousel.clientWidth > 0 && carousel.scrollWidth > carousel.clientWidth) {
+                    const scrollPercentage = carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth);
+                    const thumbWidth = (carousel.clientWidth / carousel.scrollWidth) * 100;
+                    
+                    scrollbarThumb.style.width = Math.max(thumbWidth, 10) + '%';
+                    scrollbarThumb.style.left = (scrollPercentage * (100 - Math.max(thumbWidth, 10))) + '%';
+                } else {
+                    scrollbarThumb.style.width = '100%';
+                    scrollbarThumb.style.left = '0%';
+                }
+            }
+
+            if (carousel) {
+                carousel.addEventListener('scroll', updateScrollbar);
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: -320, behavior: 'smooth' });
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: 320, behavior: 'smooth' });
+                });
+            }
+
+            let isDragging = false;
+            let startX = 0;
+            let scrollStart = 0;
+
+            scrollbarThumb.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                scrollStart = carousel.scrollLeft;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                const dx = e.clientX - startX;
+                const trackWidth = scrollbarTrack.offsetWidth;
+                const thumbWidth = scrollbarThumb.offsetWidth;
+                // Thêm kiểm tra (trackWidth - thumbWidth) > 0
+                if (trackWidth > thumbWidth) {
+                    const scrollRatio = (carousel.scrollWidth - carousel.clientWidth) / (trackWidth - thumbWidth);
+                    carousel.scrollLeft = scrollStart + (dx * scrollRatio);
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            scrollbarTrack.addEventListener('click', (e) => {
+                if (e.target === scrollbarThumb) return;
+                
+                const rect = scrollbarTrack.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const trackWidth = rect.width;
+                const scrollPercentage = clickX / trackWidth;
+                
+                carousel.scrollLeft = scrollPercentage * (carousel.scrollWidth - carousel.clientWidth);
+            });
             
-            scrollbarThumb.style.width = Math.max(thumbWidth, 10) + '%';
-            scrollbarThumb.style.left = (scrollPercentage * (100 - Math.max(thumbWidth, 10))) + '%';
+            // Chạy lần đầu khi tải
+            updateScrollbar();
+            // Chạy khi resize cửa sổ
+            window.addEventListener('resize', updateScrollbar);
         }
-
-        carousel.addEventListener('scroll', updateScrollbar);
-
-        prevBtn.addEventListener('click', () => {
-            carousel.scrollBy({ left: -320, behavior: 'smooth' });
-        });
-
-        nextBtn.addEventListener('click', () => {
-            carousel.scrollBy({ left: 320, behavior: 'smooth' });
-        });
-
-        let isDragging = false;
-        let startX = 0;
-        let scrollStart = 0;
-
-        scrollbarThumb.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-            scrollStart = carousel.scrollLeft;
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            
-            const dx = e.clientX - startX;
-            const trackWidth = scrollbarTrack.offsetWidth;
-            const thumbWidth = scrollbarThumb.offsetWidth;
-            const scrollRatio = (carousel.scrollWidth - carousel.clientWidth) / (trackWidth - thumbWidth);
-            
-            carousel.scrollLeft = scrollStart + (dx * scrollRatio);
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        scrollbarTrack.addEventListener('click', (e) => {
-            if (e.target === scrollbarThumb) return;
-            
-            const rect = scrollbarTrack.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
-            const trackWidth = rect.width;
-            const scrollPercentage = clickX / trackWidth;
-            
-            carousel.scrollLeft = scrollPercentage * (carousel.scrollWidth - carousel.clientWidth);
-        });
-
-        updateScrollbar();
-        window.addEventListener('resize', updateScrollbar);
-
-        // ===== LOOK BOOK SLIDER =====
-        const lbSlider = document.getElementById('lbSlider');
-        const lbPrevBtn = document.getElementById('lbPrevBtn');
-        const lbNextBtn = document.getElementById('lbNextBtn');
-        let lbCurrentIndex = 0;
-        const lbTotalSlides = document.querySelectorAll('.lb-slide').length;
-
-        function updateLookbookSlider() {
-            const offset = -lbCurrentIndex * 100;
-            lbSlider.style.transform = `translateX(${offset}%)`;
-        }
-
-        lbNextBtn.addEventListener('click', () => {
-            lbCurrentIndex = (lbCurrentIndex + 1) % lbTotalSlides;
-            updateLookbookSlider();
-        });
-
-        lbPrevBtn.addEventListener('click', () => {
-            lbCurrentIndex = (lbCurrentIndex - 1 + lbTotalSlides) % lbTotalSlides;
-            updateLookbookSlider();
-        });
-
+        
         // ===== SMOOTH SCROLL FOR LINKS =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1528,6 +1449,10 @@
                 }
             });
         });
+
+        // ===== Mobile Nav (Nên thêm vào) =====
+        // (Hiện tại code chưa có JS cho nav mobile)
+
     </script>
 </body>
 </html>

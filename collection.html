@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICON DENIM - Collections</title>
+    <title>V-SIXTYFOUR - Bộ Sưu Tập</title>
     <style>
         * {
             margin: 0;
@@ -20,125 +20,100 @@
             line-height: 1.5;
         }
 
-        /* Header Styles */
-        header {
+        /* ======================== */
+        /* CSS HEADER V-SIXTYFOUR */
+        /* ======================== */
+        .header {
             position: sticky;
             top: 0;
             z-index: 1000;
             background: #ffffff;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 80px;
+            padding: 0 24px; /* Thêm padding ngang */
+            height: 80px; /* Thêm chiều cao cố định */
         }
 
         .logo {
             font-size: 20px;
             font-weight: bold;
             letter-spacing: 1px;
+            color: #d4a574; /* Thêm màu logo */
         }
 
-        .logo-italic {
-            font-style: italic;
-        }
-
-        nav {
+        .nav {
             display: flex;
             align-items: center;
             gap: 32px;
         }
 
-        nav a {
+        .nav a {
             text-decoration: none;
-            color: #000000;
-            font-size: 14px;
+            color: #0c1c3d; /* Đổi màu thành xanh đậm */
+            font-size: 12px;
+            letter-spacing: 1.5px; /* Tăng khoảng cách chữ */
+            text-transform: uppercase;
             transition: color 0.3s;
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            font-weight: 600; /* Làm chữ đậm hơn */
         }
 
-        nav a:hover {
-            color: #666666;
-        }
-
-        nav a.outlet {
-            color: #ef4444;
-        }
-
-        nav a.outlet:hover {
-            color: #dc2626;
-        }
-
-        .new-badge {
-            position: absolute;
-            top: -8px;
-            right: -24px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
+        .nav a:hover {
+            color: #d4a574;
         }
 
         .header-icons {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            gap: 18px; /* Tăng khoảng cách icon */
+            align-items: center; /* Căn giữa các icon */
         }
 
         .icon-btn {
-            background: none;
-            border: none;
             cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            transition: background 0.3s;
-            position: relative;
+            transition: transform 0.3s;
+            color: #0c1c3d; /* Đặt màu icon là xanh đậm */
+            position: relative; /* Cần cho cart-badge */
+            background: none; /* Thêm từ code ICONDENIM */
+            border: none; /* Thêm từ code ICONDENIM */
+            padding: 8px; /* Thêm từ code ICONDENIM */
+            border-radius: 50%; /* Thêm từ code ICONDENIM */
         }
 
         .icon-btn:hover {
-            background: #f3f4f6;
+            transform: scale(1.1);
+            color: #d4a574; /* Đổi màu khi hover */
+            background: #f3f4f6; /* Thêm từ code ICONDENIM */
         }
 
         .icon-btn svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
+            width: 22px;
+            height: 22px;
+            stroke: currentColor; /* Lấy màu từ .icon-btn */
+            stroke-width: 1.8; /* Giữ nguyên 1.8 */
+            fill: none; /* Thêm từ code ICONDENIM */
         }
 
         .cart-badge {
             position: absolute;
-            top: 4px;
-            right: 4px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 10px;
+            top: -2px;      /* Điều chỉnh lại vị trí */
+            right: -2px;    /* Điều chỉnh lại vị trí */
+            background-color: #d4a574; /* Màu vàng đồng */
+            color: #0c1c3d; /* Màu chữ xanh đậm */
+            border-radius: 50%;
             width: 16px;
             height: 16px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1;
         }
 
-        .chevron-down {
-            width: 16px;
-            height: 16px;
-        }
+        /* ======================== */
+        /* CSS NỘI DUNG TRANG */
+        /* ======================== */
 
         /* Page Title */
         .page-title {
@@ -198,7 +173,7 @@
 
         .collection-card img {
             width: 100%;
-            height: 500px;
+            height: 500px; /* Kéo dài ảnh để hiệu ứng hover đẹp hơn */
             object-fit: cover;
             transition: transform 0.5s ease;
         }
@@ -226,35 +201,56 @@
             font-weight: 400;
         }
 
-        /* Mobile Menu */
+        /* ======================== */
+        /* CSS MOBILE (Đã thêm) */
+        /* ======================== */
         .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
+            display: none; /* Ẩn trên desktop */
+        }
+        
+        /* Thêm icon hamburger cho nút mobile */
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
         }
 
         @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            nav.mobile-open {
-                display: flex;
+            .nav {
+                display: none; /* Ẩn nav mặc định trên mobile */
                 flex-direction: column;
                 position: absolute;
-                top: 80px;
+                top: 80px; /* Ngay dưới header */
                 left: 0;
                 right: 0;
                 background: #ffffff;
                 padding: 24px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 gap: 16px;
+                z-index: 999;
+            }
+
+            .nav.mobile-open {
+                display: flex; /* Hiện nav khi có class */
+            }
+
+            .mobile-menu-btn {
+                display: block; /* Hiện nút hamburger trên mobile */
+                order: -1; /* Đẩy nút hamburger lên trước icon search */
+            }
+
+            .header-icons {
+                gap: 12px; /* Giảm khoảng cách icon trên mobile */
+            }
+
+            .logo {
+                /* Đẩy logo vào giữa khi nav ẩn đi */
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .header {
+                justify-content: space-between;
             }
 
             .collections-grid {
@@ -262,7 +258,7 @@
             }
         }
 
-        /* Loading skeleton */
+        /* Loading skeleton (Giữ nguyên) */
         .skeleton {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
@@ -280,106 +276,71 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="header-content">
-                <!-- Logo -->
-                <div class="logo">
-                    icon<span class="logo-italic">denim</span>
-                </div>
+    <header class="header">
+        <div class="logo">V-SIXTYFOUR</div>
 
-                <!-- Mobile Menu Button -->
-                <button class="mobile-men-btn" onclick="toggleMobileMenu()">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
+        <nav class="nav" id="mainNav">
+            <a href="#">NỮ</a>
+            <a href="#">NAM</a>
+            <a href="#">PHỤ KIỆN</a>
+            <a href="#">BỘ SƯU TẬP</a>
+            <a href="#">CỬA HÀNG</a>
+        </nav>
 
-                <!-- Navigation -->
-                <nav id="mainNav">
-                    <a href="#">
-                        Sản phẩm
-                        <svg class="chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </a>
-                    <a href="#" style="position: relative;">
-                        Hàng Mới
-                        <span class="new-badge">New</span>
-                    </a>
-                    <a href="#">Hàng Bán Chạy</a>
-                    <a href="#">
-                        DENIM
-                        <svg class="chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </a>
-                    <a href="#" class="outlet">-50% OUTLET</a>
-                    <a href="#">
-                        Collection
-                        <svg class="chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </a>
-                </nav>
+        <div class="header-icons">
+            <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            
+            <span class="icon-btn" id="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+            </span>
 
-                <!-- Icons -->
-                <div class="header-icons">
-                    <button class="icon-btn" aria-label="Search">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.35-4.35"></path>
-                        </svg>
-                    </button>
-                    <button class="icon-btn" aria-label="User">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </button>
-                    <button class="icon-btn" aria-label="Wishlist">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                        </svg>
-                    </button>
-                    <button class="icon-btn" aria-label="Cart">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <path d="M16 10a4 4 0 0 1-8 0"></path>
-                        </svg>
-                        <span class="cart-badge">0</span>
-                    </button>
-                </div>
-            </div>
+            <span class="icon-btn" id="user-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A1.875 1.875 0 0118 22.5H6c-.966 0-1.794-.757-1.875-1.745z" />
+                </svg>
+            </span>
+
+            <span class="icon-btn" id="wishlist-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </span>
+
+            <span class="icon-btn" id="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="cart-badge">0</span>
+            </span>
+
         </div>
     </header>
 
-    <!-- Page Title -->
     <div class="page-title">
         <div class="page-title-container">
-            <h1>CÁC BỘ SƯU TẬP CỦA ICONDENIM</h1>
+            <h1>BỘ SƯU TẬP</h1>
         </div>
     </div>
 
-    <!-- Collections Grid -->
     <main class="collections-container">
         <div class="collections-grid" id="collectionsGrid">
-            <!-- Collections will be loaded here by JavaScript -->
-        </div>
+            </div>
     </main>
 
     <script>
-        // Collections data
+        // Collections data (Giữ nguyên)
         const collections = [
             {
                 id: '1',
-                title: 'SS25 - NỮ',
-                image: 'static/imgs/collection/1.png',
-                link: 'collections/ss25-nu.html'
+                title: 'SS25 - Phố xanh',
+                image: 'static/imgs/mobile_image.png',
+                link: 'pho-xanh.html'
             },
             {
                 id: '2',
@@ -413,9 +374,10 @@
             }
         ];
 
-        // Function to render collections
+        // Function to render collections (Giữ nguyên)
         function renderCollections() {
             const grid = document.getElementById('collectionsGrid');
+            if (!grid) return; // Thoát nếu không tìm thấy grid
             
             collections.forEach(collection => {
                 const card = document.createElement('a');
@@ -432,36 +394,36 @@
             });
         }
 
-        // Function to toggle mobile menu
+        // Function to toggle mobile menu (Đã thêm)
         function toggleMobileMenu() {
             const nav = document.getElementById('mainNav');
-            nav.classList.toggle('mobile-open');
+            if (nav) {
+                nav.classList.toggle('mobile-open');
+            }
         }
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const nav = document.getElementById('mainNav');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            
-            if (nav.classList.contains('mobile-open') && 
-                !nav.contains(event.target) && 
-                !menuBtn.contains(event.target)) {
-                nav.classList.remove('mobile-open');
-            }
-        });
-
-        // Initialize page
+        // Initialize page (Đã cập nhật)
         document.addEventListener('DOMContentLoaded', function() {
+            // 1. Tải collections
             renderCollections();
-        });
 
-        // Smooth scroll for anchor links
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#collection-')) {
-                e.preventDefault();
-                console.log('Collection clicked:', e.target.getAttribute('href'));
-                // You can add navigation logic here
+            // 2. Gán sự kiện cho nút mobile
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            if (menuBtn) {
+                menuBtn.addEventListener('click', toggleMobileMenu);
             }
+
+            // 3. Đóng menu khi click bên ngoài (Giữ nguyên logic)
+            document.addEventListener('click', function(event) {
+                const nav = document.getElementById('mainNav');
+                const menuBtn = document.getElementById('mobileMenuBtn');
+                
+                if (nav && nav.classList.contains('mobile-open') && 
+                    !nav.contains(event.target) && 
+                    !menuBtn.contains(event.target)) {
+                    nav.classList.remove('mobile-open');
+                }
+            });
         });
     </script>
 </body>
