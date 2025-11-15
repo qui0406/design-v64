@@ -33,7 +33,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 24px; /* Thêm padding ngang */
-            height: 80px; /* Thêm chiều cao cố định */
+            height: 60px; /* Thêm chiều cao cố định */
         }
 
         .logo {
@@ -51,12 +51,15 @@
 
         .nav a {
             text-decoration: none;
-            color: #0c1c3d; /* Đổi màu thành xanh đậm */
-            font-size: 12px;
-            letter-spacing: 1.5px; /* Tăng khoảng cách chữ */
             text-transform: uppercase;
             transition: color 0.3s;
-            font-weight: 600; /* Làm chữ đậm hơn */
+
+            font-size: 1rem;
+            font-weight: 600;
+            color: black;
+            text-transform: unset;
+            padding: 20px 15px;
+            display: block;
         }
 
         .nav a:hover {
@@ -118,7 +121,7 @@
         /* Page Title */
         .page-title {
             background: #ffffff;
-            padding: 48px 0;
+            padding: 25px 0;
         }
 
         .page-title-container {
@@ -132,7 +135,8 @@
             font-size: 24px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 400;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
         }
 
         /* Collections Grid */
@@ -185,17 +189,18 @@
         .collection-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+            background: linear-gradient(to top,rgba(0, 0, 0, 0.8), transparent 25%);
         }
 
         .collection-title {
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 27%;
             right: 0;
             padding: 24px;
             color: #ffffff;
-            font-size: 18px;
+            font-size: 22px;
+            font-weight: 900 !important;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 400;
@@ -324,7 +329,7 @@
 
     <div class="page-title">
         <div class="page-title-container">
-            <h1>BỘ SƯU TẬP</h1>
+            <h1>CÁC BỘ SƯU TẬP CỦA V-SIXTYFOUR</h1>
         </div>
     </div>
 
@@ -339,25 +344,25 @@
             {
                 id: '1',
                 title: 'SS25 - Phố xanh',
-                image: 'static/imgs/mobile_image.png',
+                image: 'static/imgs/collection/title/1.png',
                 link: 'pho-xanh.html'
             },
             {
                 id: '2',
                 title: 'SS25 - NAM',
-                image: 'static/imgs/collection/2.png',
+                image: 'static/imgs/collection/title/2.png',
                 link: 'collections/ss25-nam.html'
             },
             {
                 id: '3',
                 title: 'FW24 - NỮ',
-                image: 'static/imgs/collection/3.png',
+                image: 'static/imgs/collection/title/3.png',
                 link: 'collections/fw24-nu.html'
             },
             {
                 id: '4',
                 title: 'FW24 - NAM',
-                image: 'static/imgs/collection/4.png',
+                image: 'static/imgs/collection/title/4.png',
                 link: 'collections/fw24-nam.html'
             },
             {

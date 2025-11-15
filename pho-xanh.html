@@ -12,47 +12,52 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #000;
-            line-height: 1.6;
-            background: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.5;
         }
 
-        /* Header */
+        /* ======================== */
+        /* CSS HEADER V-SIXTYFOUR */
+        /* ======================== */
         .header {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 60px;
         }
 
         .logo {
-            font-size: 16px;
-            letter-spacing: 3px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
             color: #d4a574;
-            font-weight: 600;
         }
 
         .nav {
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 32px;
         }
 
         .nav a {
             text-decoration: none;
-            color: #0c1c3d;
-            font-size: 12px;
-            letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: color 0.3s;
+            font-size: 1rem;
             font-weight: 600;
+            color: black;
+            text-transform: unset;
+            display: block;
         }
 
         .nav a:hover {
@@ -70,23 +75,35 @@
             transition: transform 0.3s;
             color: #0c1c3d;
             position: relative;
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
         }
 
         .icon-btn:hover {
             transform: scale(1.1);
             color: #d4a574;
+            background: #f3f4f6;
         }
 
         .icon-btn svg {
             width: 22px;
             height: 22px;
             stroke: currentColor;
+            stroke-width: 1.8;
+            fill: none;
         }
+
+        .header-icons .icon-btn:not(:first-child) {
+            display: none;
+        }
+
 
         .cart-badge {
             position: absolute;
-            top: -6px;
-            right: -8px;
+            top: -2px;
+            right: -2px;
             background-color: #d4a574;
             color: #0c1c3d;
             border-radius: 50%;
@@ -100,12 +117,10 @@
             line-height: 1;
         }
 
-
         /* Hero Banner */
         .hero-banner {
-            margin-top: 60px; /* Điều chỉnh dựa trên chiều cao header thực tế */
             position: relative;
-            height: 80vh;
+            height: 75vh;
             background: url('static/imgs/banner1.png');
             background-size: cover;
             background-position: center;
@@ -138,7 +153,7 @@
             overflow: hidden;
             background-color: #0c1c3d;
             color: white;
-            padding: 12px 0;
+            padding: 20px 0;
             box-sizing: border-box;
             display: flex;
         }
@@ -183,17 +198,20 @@
 
         .section-subtitle {
             text-align: center;
-            font-size: 14px;
+            font-size: 22px;
             color: #666;
             letter-spacing: 2px;
             margin-bottom: 50px;
+            font-weight: 700;
         }
 
         /* Video Section */
         .section-video {
             padding: 60px 20px;
             background-color: #f9f9f9;
-            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall-3.png');
+            background-image: url('static/imgs/background.png');
+            background-repeat: no-repeat;
+            background-size: cover;
         }
                 
         .section-video .section-title {
@@ -206,8 +224,8 @@
         }
         
         .section-video .section-subtitle {
-            font-size: 1rem;
-            color: #555;
+            font-size: 1.2rem;
+            color:#2a4060;
             line-height: 1.6;
             max-width: 600px;
             margin: 15px auto 0;
@@ -239,27 +257,31 @@
             border: none;
         }
 
-        /* City Moves Section */
+        /* === BẮT ĐẦU SỬA ĐỔI: CITY MOVES SECTION === */
         .section.city-moves {
             padding: 0;
             background-color: #ffffff;
         }
 
         .city-moves-background {
-            background-image: url('static/imgs/your-crosswalk-image.jpg'); 
-            background-size: cover;
-            background-position: center;
-            padding: 80px 20px;
+            padding: 40px 20px;
         }
 
-        .city-moves-content {
-            position: relative; 
-            z-index: 2; 
-            max-width: 1080px; 
+        /* Container mới chứa 2 cột */
+        .city-moves-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+            align-items: center;
+            gap: 40px;
+            
+            max-width: 1224px; 
             margin: 0 auto;
+            position: relative; 
+            z-index: 2;
         }
 
-        .city-moves-background h2 {
+        /* .city-moves-content cũ giờ đổi tên thành .city-moves-text */
+        .city-moves-text h2 {
             font-size: 2.5rem;
             font-weight: 800;
             color: #04235e;
@@ -268,7 +290,7 @@
             line-height: 1.2;
         }
 
-        .city-moves-background h3 {
+        .city-moves-text h3 {
             font-size: 4.5rem;
             font-weight: 800;
             color: #04235e;
@@ -277,7 +299,7 @@
             line-height: 1.1;
         }
 
-        .city-moves-background .subtitle {
+        .city-moves-text .subtitle {
             font-size: 1.5rem;
             font-weight: 700;
             color: #04235e;
@@ -286,25 +308,37 @@
             letter-spacing: 1px;
         }
 
-        .city-moves-background .description {
+        .city-moves-text .description {
             font-size: 0.8rem;
             color: #04235e;
             line-height: 1.7;
             font-weight: 500;
-            max-width: 700px;
+            /* Xóa max-width để nó tự fill cột */
+            /* max-width: 700px; */ 
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
         }
+        
+        /* Style cho ảnh mới */
+        .city-moves-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+        }
+        /* === KẾT THÚC SỬA ĐỔI === */
+
 
         /* Style Showcase */
         .style-showcase {
             width: 100%;
             background: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%);
-            padding: 60px 80px;
+            padding: 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
+            position: relative; /* Cần cho .style-showcase-nav */
         }
 
         .gallery-images {
@@ -312,6 +346,7 @@
             justify-content: center;
             gap: 30px;
             width: 100%;
+            height: 600px;
             max-width: 1000px;
         }
 
@@ -320,7 +355,8 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            width: 48%;
+            width: 100%;
+            height: auto;
             box-sizing: border-box;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -337,9 +373,7 @@
         }
 
         .nav-arrow {
-            position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
+            /* Style chung cho nút */
             width: 50px;
             height: 50px;
             display: flex;
@@ -347,6 +381,7 @@
             justify-content: center;
             font-size: 2rem;
             font-weight: 300;
+            margin:0 -30px;
             color: #333;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 50%;
@@ -359,29 +394,45 @@
         .nav-arrow:hover {
             background: white;
             color: #0c1c3d;
-            transform: translateY(-50%) scale(1.1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
 
         .nav-arrow.left {
-            left: 30px;
+            /* Không cần left/right ở đây nữa */
         }
 
         .nav-arrow.right {
-            right: 30px;
+            /* Không cần left/right ở đây nữa */
         }
-
+        
         .gallery-tags {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 12px;
             margin-top: 35px;
+            white-space: nowrap;
+            overflow-x: auto;
+            
+            padding: 0 20px;
+            padding-bottom: 10px;
+            width: 100%;
+            max-width: 1000px; /* Thêm max-width để khớp với scrollbar */
+
+            scroll-behavior: smooth; 
+
+            /* Ẩn thanh scrollbar GỐC */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .gallery-tags::-webkit-scrollbar {
+            display: none;
         }
 
         .tag {
             display: inline-block;
             padding: 12px 28px;
-            border-radius: 8px;
+            border-radius: 40px;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
@@ -389,6 +440,7 @@
             border: 2px solid transparent;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .tag.active {
@@ -410,9 +462,58 @@
             color: #333;
         }
 
+        
+        /* CSS cho .nav-arrow bên trong .style-showcase */
+        .style-showcase .nav-arrow {
+            position: static; /* Reset về static */
+            transform: none; /* Reset transform */
+            pointer-events: auto; /* Đảm bảo click được */
+        }
+
+        .style-showcase .nav-arrow:hover {
+            transform: scale(1.1); /* Giữ hover scale */
+        }
+
+        .style-showcase h1 {
+            font-size: 2.8rem;
+            font-weight: 800; 
+            color: #0c1c3d; 
+            text-transform: uppercase;
+            letter-spacing: 2px; 
+            margin-bottom: 10px; 
+            text-align: center;
+        }
+
+        .style-showcase h1 + p {
+            font-size: 1.1rem; 
+            color: #555; 
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 40px; 
+            text-align: center;
+        }
+
+        /* CSS cho .style-showcase-nav (Desktop > 1024px) */
+        .style-showcase-nav {
+            position: absolute;
+            top: 45%; 
+            transform: translateY(-50%);
+            
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 1100px; 
+            
+            display: flex;
+            justify-content: space-between; 
+            padding: 0 20px; 
+            
+            pointer-events: none; 
+        }
+
         /* Play Vibes Section */
         .play-vibes-section {
-            padding: 60px 20px;
+            padding: 30px;
         }
 
         .play-vibes-container {
@@ -459,6 +560,7 @@
             font-size: 3rem;
             font-weight: 700;
             text-transform: uppercase;
+            color: #04235e;
             line-height: 1;
             margin: 0;
         }
@@ -467,6 +569,7 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: #04235e;
             margin: 0;
         }
 
@@ -547,7 +650,6 @@
             height: 50px;
             background-color: rgba(255,255,255,0.95);
             color: #0c1c3d;
-            border: 2px solid #0c1c3d;
             font-size: 24px;
             cursor: pointer;
             border-radius: 50%;
@@ -611,6 +713,14 @@
             background: linear-gradient(90deg, #1a2f4f 0%, #2a4060 100%);
         }
 
+        .carousel-scrollbar.tag-scrollbar {
+            max-width: 1000px;
+            margin-top: 20px;
+            margin-bottom: 0;
+            padding: 0 20px;
+        }
+
+
         /* Look Book Container */
         .lookbook-container {
             width: 100%;
@@ -644,12 +754,10 @@
             color: #666;
         }
         
-        /* === CSS CHO GALLERY MỚI === */
         .gallery-slider-container {
             position: relative;
             max-width: 1400px; 
             margin: 0 auto 40px; 
-            padding: 0 80px; 
             box-sizing: border-box;
         }
 
@@ -667,16 +775,13 @@
         .grid-item {
             position: relative;
             overflow: hidden;
-            background: #eee; /* Thêm màu nền cho ô trống */
+            background: #eee;
         }
 
-        /* ===================================== */
-        /* SỬA LỖI: CSS cho ảnh DESKTOP */
-        /* ===================================== */
         .grid-item img {
             width: 100%;
             height: 100%; 
-
+            object-fit: cover;
             display: block;
             transition: transform 0.4s ease;
             border-radius: 8px;
@@ -706,37 +811,27 @@
             grid-row: 2 / 3;    
         }
 
-        .gallery-slider-container .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
+        .gallery-nav-controls {
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: #333;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            gap: 40px;
+            margin-top: 25px; 
         }
 
-        .gallery-slider-container .nav-arrow:hover {
-            background: white;
-            color: #0c1c3d;
-            transform: translateY(-50%) scale(1.1);
+        .gallery-nav-controls .nav-arrow {
+            position: static; 
+            transform: none; 
+            left: auto;
+            right: auto;
+            top: auto;
         }
 
-        .gallery-slider-container .nav-arrow.left {
-            left: 30px; 
+        .gallery-nav-controls .nav-arrow:hover {
+            transform: scale(1.1);
         }
 
-        .gallery-slider-container .nav-arrow.right {
-            right: 30px; 
+        .gallery-slider-container > .nav-arrow {
+            display: none; 
         }
 
 
@@ -779,6 +874,74 @@
         }
 
         /* ======================== */
+        /* CSS MOBILE NAV OVERLAY (ĐÃ THÊM) */
+        /* ======================== */
+        .mobile-menu-btn {
+            display: none;
+            z-index: 1002;
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-nav-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            color: #0c1c3d;
+        }
+        .mobile-nav-close-btn svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            stroke-width: 1.8;
+        }
+
+        .mobile-nav-overlay .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .mobile-nav-overlay .nav a {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0c1c3d;
+            padding: 10px 0;
+        }
+
+        /* ======================== */
         /* CSS RESPONSIVE */
         /* ======================== */
         
@@ -790,6 +953,36 @@
             .carousel-scrollbar {
                 padding: 0 60px;
             }
+            
+            .carousel-scrollbar.tag-scrollbar {
+                padding: 0 60px;
+            }
+
+            .header-icons .icon-btn:not(:first-child) {
+                display: none;
+            }
+
+            /* CSS cho .style-showcase-nav (Mobile <= 1024px) */
+            .style-showcase-nav {
+                position: static; 
+                transform: none; 
+                max-width: none;
+                pointer-events: auto; 
+
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                margin-top: 25px; 
+                width: 100%;
+                padding: 0; 
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                margin: 0 !important;
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -799,6 +992,10 @@
 
             .nav {
                 display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .hero-content h1 {
@@ -827,17 +1024,18 @@
             .nav-arrow {
                 width: 40px;
                 height: 40px;
+                margin: 0 !important;
                 font-size: 1.5rem;
             }
 
-            .nav-arrow.left {
-                left: 10px;
+            /* Ghi đè cho các nút absolute (như product-carousel) */
+            .carousel-arrow.prev {
+                left: 5px;
             }
-
-            .nav-arrow.right {
-                right: 10px;
+            .carousel-arrow.next {
+                right: 5px;
             }
-
+            
             .gallery-images {
                 flex-direction: column;
                 gap: 20px;
@@ -845,6 +1043,10 @@
 
             .image-card {
                 width: 100%;
+            }
+            
+            .carousel-scrollbar.tag-scrollbar {
+                padding: 0 40px;
             }
 
             .carousel-wrapper {
@@ -861,14 +1063,6 @@
                 font-size: 20px;
             }
 
-            .carousel-arrow.prev {
-                left: 5px;
-            }
-
-            .carousel-arrow.next {
-                right: 5px;
-            }
-
             .carousel-scrollbar {
                 padding: 0 40px;
             }
@@ -881,15 +1075,30 @@
                 font-size: 2rem;
             }
 
-            .city-moves-background h2 {
+            /* === SỬA ĐỔI: CSS Responsive cho CITY MOVES === */
+           
+            .city-moves-container {
+                grid-template-columns: 1fr; /* 1 cột */
+                gap: 30px;
+            }
+            .city-moves-text h2 {
                 font-size: 1.8rem;
+                text-align: center;
             }
-
-            .city-moves-background h3 {
+            .city-moves-text h3 {
                 font-size: 3rem;
+                text-align: center;
             }
+            .city-moves-text .subtitle {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            .city-moves-text .description {
+                text-align: center;
+            }
+            /* === HẾT SỬA ĐỔI === */
 
-            /* Responsive cho Lookbook Container */
+
             .lookbook-container {
                 padding: 40px 15px;
             }
@@ -901,47 +1110,38 @@
             .lb-header p {
                 font-size: 0.95rem;
             }
-
-            /* Responsive cho Gallery mới */
+            
             .gallery-slider-container {
-                padding: 0; 
+                display:block;
             }
             
+            /* Sửa bố cục Lookbook cho mobile */
             .gallery-slide-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto; 
+                display: block; 
                 height: auto; 
                 border-radius: 0; 
+                gap: 10px;
             }
 
-            .grid-item.large-image,
+            .grid-item.large-image {
+                /* grid-column: 1 / -1; */
+                /* grid-row: auto;  */
+                height: 400px;
+            }
+            
             .grid-item.medium-image,
             .gallery-slide-grid .grid-item:nth-of-type(3),
             .gallery-slide-grid .grid-item:nth-of-type(4) {
-                grid-column: 1 / -1; 
-                grid-row: auto; 
-                height: auto; 
+                /* grid-column: auto; */
+                /* grid-row: auto;  */
+                height: 300px;
             }
 
-            /* ===================================== */
-            /* SỬA LỖI: CSS cho ảnh MOBILE */
-            /* ===================================== */
             .gallery-slide-grid .grid-item img {
-                height: auto; /* Ghi đè: chiều cao tự động theo tỷ lệ */
-                object-fit: contain; /* Ghi đè: hiển thị toàn bộ ảnh, không cắt */
-            }
-
-
-            .gallery-slider-container .nav-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-            .gallery-slider-container .nav-arrow.left {
-                left: 10px;
-            }
-            .gallery-slider-container .nav-arrow.right {
-                right: 10px;
+                height: 100%;
+                object-fit: cover;
+                width: 100%;
+                margin-top: 30px;
             }
         }
 
@@ -967,6 +1167,11 @@
 
         <div class="header-icons">
             
+            <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
             <span class="icon-btn" id="search-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -1027,24 +1232,30 @@
         </div>
 
         <div class="city-moves-background">
-            <div class="city-moves-content">
-                <h2>CITY MOVES</h2>
-                <h3>DENIM FLOWS</h3>
-                <p class="subtitle">MẶC XANH, NGHĨ XANH, SỐNG CHẤT</p>
-                <p class="description">
-                    TRONG NHỊP SỐNG ĐÔ THỊ KHÔNG NGỪNG CHUYỂN ĐỘNG,<br>
-                    DENIM CỦA V-SIXTYFOUR LÀ TUYÊN NGÔN THỜI TRANG DÀNH CHO THẾ HỆ SỐNG CHẤT.<br>
-                    SỰ KẾT HỢP GIỮA TÍNH ỨNG DỤNG CAO VÀ PHOM DÁNG CHUẨN<br>
-                    TẠO NÊN MỘT BẢN PHỐI HOÀN HẢO GIỮA TIỆN LỢI VÀ CÁ TÍNH.<br>
-                    CHẤT LIỆU DENIM BỀN VỮNG – FORM DÁNG SẮC NÉT – MÀU SẮC THÀNH THỊ.
-                </p>
+            <div class="city-moves-container">
+                <div class="city-moves-text">
+                    <h2>CITY MOVES</h2>
+                    <h3>DENIM FLOWS</h3>
+                    <p class="subtitle">MẶC XANH, NGHĨ XANH, SỐNG CHẤT</p>
+                    <p class="description">
+                        TRONG NHỊP SỐNG ĐÔ THỊ KHÔNG NGỪNG CHUYỂN ĐỘNG,<br>
+                        DENIM CỦA V-SIXTYFOUR LÀ TUYÊN NGÔN THỜI TRANG DÀNH CHO THẾ HỆ SỐNG CHẤT.<br>
+                        SỰ KẾT HỢP GIỮA TÍNH ỨNG DỤNG CAO VÀ PHOM DÁNG CHUẨN<br>
+                        TẠO NÊN MỘT BẢN PHỐI HOÀN HẢO GIỮA TIỆN LỢI VÀ CÁ TÍNH.<br>
+                        CHẤT LIỆU DENIM BỀN VỮNG – FORM DÁNG SẮC NÉT – MÀU SẮC THÀNH THỊ.
+                    </p>
+                </div>
+                <div class="city-moves-image">
+                    <img src="static/imgs/collection/7.png" alt="Người mẫu mặc đồ denim V-SixtyFour">
+                </div>
             </div>
         </div>
-    </section>
+        </section>
 
     <section class="style-showcase">
-        <div class="nav-arrow left">&lt;</div>
-
+        <h1> PLAY YOUR STYLES</h1>
+        <p>Mix it your way, own the game
+        
         <div class="gallery-images">
             <div class="image-card">
                 <img src="static/imgs/AI/image.png" alt="Model front view" id="gallery-img-1">
@@ -1054,14 +1265,28 @@
             </div>
         </div>
 
-        <div class="gallery-tags">
+        <div class="gallery-tags" id="gallery-tags-container">
             <button class="tag active">CASUAL</button>
             <button class="tag inactive">FASHION</button>
             <button class="tag inactive">AESTHETIC</button>
-            <button class="tag inactive">TAYLORING</button>
+            <button class="tag inactive">SEXY</button>
+            <button class="tag inactive">STREETWEAR</button>
+            <button class="tag inactive">MINIMALIST</button>
+            <button class="tag inactive">VINTAGE</button>
+            <button class="tag inactive">OCCASIONS</button>
         </div>
 
-        <div class="nav-arrow right">&gt;</div>
+        <div class="carousel-scrollbar tag-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb" id="tag-scrollbar-thumb"></div>
+            </div>
+        </div>
+        
+        <div class="style-showcase-nav">
+            <div class="nav-arrow left">‹</div>
+            <div class="nav-arrow right">›</div>
+        </div>
+
     </section>
 
     <div class="ticker-container">
@@ -1191,11 +1416,11 @@
                 <div class="gallery-slide-grid">
                     
                     <div class="grid-item large-image">
-                        <img src="static/imgs/AI/4.png" alt="Hai người mẫu mặc đồ collection mới">
+                        <img src="static/imgs/lookbook1.png" alt="Hai người mẫu mặc đồ collection mới">
                     </div>
 
                     <div class="grid-item medium-image">
-                        <img src="static/imgs/image2.png" alt="Người mẫu trên sân tennis">
+                        <img src="static/imgs/lookbook2.png" alt="Người mẫu trên sân tennis">
                     </div>
 
                     <div class="grid-item small-image">
@@ -1205,11 +1430,9 @@
                     <div class="grid-item small-image">
                         <img src="static/imgs/AI/2.png" alt="Người mẫu mặc sweatshirt Originals">
                     </div>
-
                 </div>
-
             </div>
-            </div>
+        </div>
     </section>
 
     <div class="ticker-container">
@@ -1240,29 +1463,53 @@
         // ===== STYLE SHOWCASE GALLERY =====
         const galleryData = {
             casual: [
-                { front: 'static/imgs/collection/5.png', back: 'static/imgs/collection/3.png' },
+                { front: 'static/imgs/collection/ss-25/casual/1.png', back: 'static/imgs/collection/ss-25/casual/2.png' },
             ],
             fashion: [
-                { front: 'static/imgs/collection/4.png', back: 'static/imgs/collection/5.png' },
+                { front: 'static/imgs/collection/ss-25/fashion/1.png', back: 'static/imgs/collection/ss-25/fashion/2.png' },
             ],
             aesthetic: [
-                { front: 'static/imgs/collection/6.png', back: 'static/imgs/collection/5.png' },
+                { front: 'static/imgs/collection/ss-25/aesthetic/1.png', back: 'static/imgs/collection/ss-25/aesthetic/2.png' },
             ],
-            tayloring: [
-                { front: 'static/imgs/collection/3.png', back: 'static/imgs/collection/4.png' },
+            sexy: [
+                { front: 'static/imgs/collection/ss-25/sexy/1.png', back: 'static/imgs/collection/ss-25/sexy/2.png' },
+            ],
+            streetwear: [
+                { front: 'static/imgs/collection/ss-25/streetwear/1.png', back: 'static/imgs/collection/ss-25/streetwear/2.png' },
+            ],
+            minimalist: [
+                { front: 'static/imgs/collection/ss-25/minimalist/1.png', back: 'static/imgs/collection/ss-25/minimalist/2.png' },
+            ],
+            vintage: [
+                { front: 'static/imgs/collection/ss-25/vintage/1.png', back: 'static/imgs/collection/ss-25/vintage/2.png' },
+            ],
+            occasions: [
+                { front: 'static/imgs/collection/ss-25/occasions/1.png', back: 'static/imgs/collection/ss-25/occasions/2.png' },
             ]
         };
 
-        const categoryOrder = ['casual', 'fashion', 'aesthetic', 'tayloring'];
+        const categoryOrder = ['casual', 'fashion', 'aesthetic', 'sexy', 'streetwear', 'minimalist', 'vintage', 'occasions'];
         let currentCategoryIndex = 0;
         let currentCategory = categoryOrder[0];
         let currIndex = 0;
 
-        // Sửa lỗi: Phải querySelector trong .style-showcase
+
+        const carouselItem = document.querySelectorAll('.carousel-item');
+
+        function deriectClothes (){
+            carouselItem.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    window.location.href = 'https://v64.vn/collections/tat-ca-san-pham-nu';
+                });
+            });
+        }
+        deriectClothes();
+
         const showcase = document.querySelector('.style-showcase');
         if (showcase) {
-            const nextButton = showcase.querySelector('.nav-arrow.right');
-            const prevButton = showcase.querySelector('.nav-arrow.left');
+            const nextButton = showcase.querySelector('.style-showcase-nav .nav-arrow.right');
+            const prevButton = showcase.querySelector('.style-showcase-nav .nav-arrow.left');
+            
             const image1 = document.getElementById('gallery-img-1');
             const image2 = document.getElementById('gallery-img-2');
             const tags = showcase.querySelectorAll('.tag');
@@ -1353,55 +1600,46 @@
             }
         }
 
-        // ===== PRODUCT CAROUSEL =====
-        const carousel = document.getElementById('carousel');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const scrollbarThumb = document.getElementById('scrollbarThumb');
-        
-        // Sửa lỗi: Kiểm tra scrollbarThumb tồn tại
-        if (scrollbarThumb) {
-            const scrollbarTrack = scrollbarThumb.parentElement;
 
-            function updateScrollbar() {
-                if (!carousel) return;
-                // Thêm kiểm tra clientWidth > 0 để tránh lỗi chia cho 0
-                if (carousel.clientWidth > 0 && carousel.scrollWidth > carousel.clientWidth) {
-                    const scrollPercentage = carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth);
-                    const thumbWidth = (carousel.clientWidth / carousel.scrollWidth) * 100;
+        // ===== JS SCROLLBAR (HÀM TÁI SỬ DỤNG) =====
+
+        function initCustomScrollbar(containerId, thumbId) {
+            const container = document.getElementById(containerId);
+            const thumb = document.getElementById(thumbId);
+
+            if (!container || !thumb) {
+                return;
+            }
+
+            const track = thumb.parentElement;
+
+            function updateThumbPosition() {
+                if (container.clientWidth > 0 && container.scrollWidth > container.clientWidth) {
+                    const scrollPercentage = container.scrollLeft / (container.scrollWidth - container.clientWidth);
+                    const thumbWidthPercentage = (container.clientWidth / container.scrollWidth) * 100;
                     
-                    scrollbarThumb.style.width = Math.max(thumbWidth, 10) + '%';
-                    scrollbarThumb.style.left = (scrollPercentage * (100 - Math.max(thumbWidth, 10))) + '%';
+                    const minThumbWidth = 10; 
+                    const thumbWidth = Math.max(thumbWidthPercentage, minThumbWidth);
+
+                    thumb.style.width = thumbWidth + '%';
+                    thumb.style.left = (scrollPercentage * (100 - thumbWidth)) + '%';
                 } else {
-                    scrollbarThumb.style.width = '100%';
-                    scrollbarThumb.style.left = '0%';
+                    thumb.style.width = '100%';
+                    thumb.style.left = '0%';
                 }
             }
 
-            if (carousel) {
-                carousel.addEventListener('scroll', updateScrollbar);
-            }
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    carousel.scrollBy({ left: -320, behavior: 'smooth' });
-                });
-            }
-
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    carousel.scrollBy({ left: 320, behavior: 'smooth' });
-                });
-            }
+            container.addEventListener('scroll', updateThumbPosition);
+            window.addEventListener('resize', updateThumbPosition);
 
             let isDragging = false;
             let startX = 0;
             let scrollStart = 0;
 
-            scrollbarThumb.addEventListener('mousedown', (e) => {
+            thumb.addEventListener('mousedown', (e) => {
                 isDragging = true;
                 startX = e.clientX;
-                scrollStart = carousel.scrollLeft;
+                scrollStart = container.scrollLeft;
                 e.preventDefault();
             });
 
@@ -1409,12 +1647,11 @@
                 if (!isDragging) return;
                 
                 const dx = e.clientX - startX;
-                const trackWidth = scrollbarTrack.offsetWidth;
-                const thumbWidth = scrollbarThumb.offsetWidth;
-                // Thêm kiểm tra (trackWidth - thumbWidth) > 0
+                const trackWidth = track.offsetWidth;
+                const thumbWidth = thumb.offsetWidth;
                 if (trackWidth > thumbWidth) {
-                    const scrollRatio = (carousel.scrollWidth - carousel.clientWidth) / (trackWidth - thumbWidth);
-                    carousel.scrollLeft = scrollStart + (dx * scrollRatio);
+                    const scrollRatio = (container.scrollWidth - container.clientWidth) / (trackWidth - thumbWidth);
+                    container.scrollLeft = scrollStart + (dx * scrollRatio);
                 }
             });
 
@@ -1422,22 +1659,42 @@
                 isDragging = false;
             });
 
-            scrollbarTrack.addEventListener('click', (e) => {
-                if (e.target === scrollbarThumb) return;
+            track.addEventListener('click', (e) => {
+                if (e.target === thumb) return;
                 
-                const rect = scrollbarTrack.getBoundingClientRect();
+                const rect = track.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
                 const trackWidth = rect.width;
                 const scrollPercentage = clickX / trackWidth;
                 
-                carousel.scrollLeft = scrollPercentage * (carousel.scrollWidth - carousel.clientWidth);
+                container.scrollLeft = scrollPercentage * (container.scrollWidth - container.clientWidth);
             });
             
-            // Chạy lần đầu khi tải
-            updateScrollbar();
-            // Chạy khi resize cửa sổ
-            window.addEventListener('resize', updateScrollbar);
+            updateThumbPosition(); 
         }
+
+        // ===== KHỞI TẠO CÁC SCROLLBARS =====
+        document.addEventListener('DOMContentLoaded', () => {
+            initCustomScrollbar('carousel', 'scrollbarThumb');
+            initCustomScrollbar('gallery-tags-container', 'tag-scrollbar-thumb');
+        });
+
+
+        // ===== LOGIC NÚT BẤM CỦA PRODUCT CAROUSEL =====
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (carousel && prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -320, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: 320, behavior: 'smooth' });
+            });
+        }
+
         
         // ===== SMOOTH SCROLL FOR LINKS =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1450,8 +1707,31 @@
             });
         });
 
-        // ===== Mobile Nav (Nên thêm vào) =====
-        // (Hiện tại code chưa có JS cho nav mobile)
+        // ===== JAVASCRIPT CHO MOBILE NAV =====
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const nav = document.querySelector('header .nav');
+        
+        if (nav) {
+            const overlay = document.createElement('div');
+            overlay.className = 'mobile-nav-overlay';
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'mobile-nav-close-btn';
+            closeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>`;
+            
+            overlay.appendChild(nav.cloneNode(true)); 
+            overlay.appendChild(closeBtn);
+            document.body.appendChild(overlay);
+
+            const toggleMenu = () => {
+                overlay.classList.toggle('active');
+            };
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', toggleMenu);
+            }
+            closeBtn.addEventListener('click', toggleMenu);
+        }
 
     </script>
 </body>
