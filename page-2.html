@@ -253,7 +253,7 @@
             position: relative;
             background: #f4f4f4;
             overflow: hidden;
-            border: 1px solid #000; 
+            border: 0.3px solid #777; 
         }
 
         .split-text {
@@ -461,11 +461,145 @@
             .duo-group { flex-direction: column-reverse; gap: 20px; }
             .duo-image-wrap { width: 100%; height: auto; aspect-ratio: 3/4; }
         }
+
+
+         .split-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 100px;
+        }
+
+        .split-item {
+            height: 600px;
+            position: relative;
+            background: #f4f4f4;
+            overflow: hidden;
+        }
+
+        .split-text {
+            position: absolute;
+            top: 50%;
+            left: 60px;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .split-text h3 {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.8;
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* --- 7. STYLING PROOF (REDESIGNED) --- */
+        .styling-proof-section {
+            margin-bottom: 100px;
+        }
+
+        /* Header của phần Styling Proof (Title trái, Desc phải) */
+        .proof-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        .proof-title {
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.4;
+            color: #000;
+            flex: 1;
+        }
+
+        .proof-desc {
+            flex: 1;
+            font-size: 12px;
+            color: #888;
+            line-height: 1.8;
+            text-align: right;
+            max-width: 500px;
+        }
+
+        .proof-main-image {
+            width: 100%;
+            height: auto;
+            min-height: 500px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .proof-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- 8. #V64INACTION (REDESIGNED) --- */
+        .action-section {
+            margin-bottom: 100px;
+        }
+
+        .action-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .action-title {
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .action-subtitle {
+            font-size: 12px;
+            color: #aaa;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .lookbook-item {
+            cursor: pointer;
+        }
+
+        .lookbook-img {
+            aspect-ratio: 3/4.5;
+            background: #eee;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .lookbook-img img {
+            transition: transform 0.6s ease;
+        }
+
+        .lookbook-item:hover .lookbook-img img {
+            transform: scale(1.05);
+        }
+
+        .lb-name {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #999;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
-
-    <!-- HEADER (NEW DESIGN) -->
     <header>
         <div class="header-collection-name">OFFICE-CHIC</div>
         <div class="header-brand">V-SIXTYFOUR</div>
@@ -580,69 +714,50 @@
         </div>
     </section>
 
-    <!-- STYLING PROOF -->
-    <section class="container" style="margin-bottom: 100px;">
-        <div class="styling-proof">
-            <div class="proof-text">
-                <div class="proof-text-inner">
-                    <h2 class="proof-title">THE STYLING PROOF:<br>MODERN WORKWEAR</h2>
-                    <p class="proof-desc">
-                        Cân bằng tuyệt đối giữa tính chuyên nghiệp và sự thoải mái. Chất liệu cao cấp giúp bạn tự tin trong mọi hoàn cảnh.
-                    </p>
-                </div>
-            </div>
-            <div class="proof-img" style="height: 500px; overflow: hidden;">
-                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=1888&auto=format&fit=crop" alt="Proof">
-            </div>
+
+
+    <!-- STYLING PROOF (NEW DESIGN) -->
+    <section class="styling-proof-section container">
+        <div class="proof-header">
+            <h2 class="proof-title">THE STYLING PROOF:<br>MODERN WORKWEAR</h2>
+            <p class="proof-desc">
+                Cảm hứng mặc đẹp từ cộng đồng. Chiêm ngưỡng cách Khách hàng và Influencers ứng dụng Office-Chic Denim thanh lịch và linh hoạt nơi công sở, kiến tạo phong cách cá nhân.
+            </p>
+        </div>
+        <div class="proof-main-image">
+            <!-- Ảnh rộng gồm 2 mẫu (ngồi và đứng) trong studio -->
+            <img src="static/imgs/page-2/10.png" alt="Modern Workwear">
         </div>
     </section>
 
-    <!-- IN ACTION -->
-    <section class="container" style="margin-bottom: 100px;">
-        <div class="section-label-container">
-            <span class="section-label">#V64INACTION</span>
-            <p style="font-size: 11px; color: #ccc; margin-top: 10px;">CHIA SẺ PHONG CÁCH CỦA BẠN</p>
+    <!-- IN ACTION (NEW DESIGN) -->
+    <section class="action-section container">
+        <div class="action-header">
+            <h3 class="action-title">#V64INACTION</h3>
+            <p class="action-subtitle">Khám phá những thiết kế tiêu biểu/chủ đạo từ các Bộ sưu tập mới nhất</p>
         </div>
-        <div class="product-grid" style="grid-template-columns: repeat(4, 1fr); gap: 20px;">
-            <div class="product-img" style="aspect-ratio: 1; margin-bottom: 0;"><img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1887&auto=format&fit=crop" alt="1"></div>
-            <div class="product-img" style="aspect-ratio: 1; margin-bottom: 0;"><img src="https://images.unsplash.com/photo-1529139574466-a302d27f6054?q=80&w=1889&auto=format&fit=crop" alt="2"></div>
-            <div class="product-img" style="aspect-ratio: 1; margin-bottom: 0;"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop" alt="3"></div>
-            <div class="product-img" style="aspect-ratio: 1; margin-bottom: 0;"><img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?q=80&w=1887&auto=format&fit=crop" alt="4"></div>
+        <div class="lookbook-grid">
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/11.png" alt="LB 1"></div>
+                <div class="lb-name">OMBRE SLEEVELESS SHIRT DRESS</div>
+            </div>
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/12.png" alt="LB 2"></div>
+                <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
+            </div>
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/13.png" alt="LB 3"></div>
+                <div class="lb-name">OMBRE SLEEVELESS SHIRT DRESS</div>
+            </div>
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/14.png" alt="LB 4"></div>
+                <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
+            </div>
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/15.png" alt="LB 4"></div>
+                <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
+            </div>
         </div>
     </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4 class="f-title">ĐĂNG KÝ NHẬN TIN</h4>
-                    <input type="text" placeholder="Email của bạn..." style="width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 10px 0; margin-bottom: 10px; outline: none; font-size: 12px;">
-                </div>
-                <div class="f-links">
-                    <h4 class="f-title">V-SIXTYFOUR</h4>
-                    <a href="#">Về chúng tôi</a>
-                    <a href="#">Tuyển dụng</a>
-                    <a href="#">Hệ thống cửa hàng</a>
-                </div>
-                <div class="f-links">
-                    <h4 class="f-title">CHÍNH SÁCH</h4>
-                    <a href="#">Đổi trả</a>
-                    <a href="#">Bảo mật</a>
-                    <a href="#">Thanh toán</a>
-                </div>
-                <div>
-                    <h4 class="f-title">KẾT NỐI</h4>
-                    <div style="display: flex; gap: 15px; color: #999;">
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="big-footer-logo">V-SIXTYFOUR</div>
-        </div>
-    </footer>
-
 </body>
 </html>
