@@ -58,7 +58,7 @@
 
         /* --- 2. NEW HEADER DESIGN --- */
         header {
-            padding: 40px 0 20px;
+            padding: 15px 0 10px;
             text-align: center;
             background: #fff;
         }
@@ -69,7 +69,7 @@
             text-transform: uppercase;
             color: #000;
             font-weight: 400;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         .header-brand {
@@ -78,13 +78,14 @@
             color: var(--color-gold);
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
         }
 
         .header-nav {
             display: flex;
             justify-content: center;
             gap: 40px;
+            margin-bottom: 30px;
         }
 
         .header-nav a {
@@ -99,6 +100,8 @@
         /* --- 3. NEW HERO SECTION --- */
         .hero-banner {
             position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
             height: 85vh;
             background: url('static/imgs/page-2/2.png');
             background-size: cover;
@@ -108,6 +111,7 @@
             justify-content: center;
             color: white;
             margin-bottom: 50px;
+           
         }
 
         .hero-content {
@@ -241,38 +245,72 @@
         }
 
         /* --- 6. SPLIT BANNER --- */
+        /* --- SPLIT BANNER FULL SCREEN --- */
         .split-banner {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            margin-bottom: 100px;
+            grid-template-columns: 1fr 1fr; /* Chia đôi màn hình 50-50 */
+            width: 100%;
+            margin-bottom: 0; /* Bỏ margin bottom để liền mạch */
+            overflow: hidden;
+
+            max-width: 1440px;
+            margin: 0 auto;
         }
 
         .split-item {
-            height: 1000px;
             position: relative;
-            background: #f4f4f4;
+            width: 100%;
+            height: 100%; /* Chiếm hết chiều cao của cha */
             overflow: hidden;
-            border: 0.3px solid #777; 
         }
 
+        .split-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Giúp ảnh không bị méo khi co giãn màn hình */
+            object-position: top center; /* Ưu tiên lấy phần trên của ảnh */
+            transition: transform 1s ease;
+            border: 0.5px solid #999999; /* Viền nhẹ phân cách hai ảnh */
+        }
+
+        /* Hiệu ứng zoom nhẹ khi di chuột vào (tuỳ chọn) */
+        .split-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Phần chữ đè lên ảnh */
         .split-text {
             position: absolute;
             top: 50%;
-            left: 60px;
+            left: 80px; /* Canh lề trái cách ra một chút */
             transform: translateY(-50%);
             z-index: 2;
+            pointer-events: none; /* Để chuột có thể click xuyên qua chữ vào ảnh */
         }
 
         .split-text h3 {
-            font-size: 13px;
-            letter-spacing: 3px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            letter-spacing: 4px; /* Giãn chữ rộng ra giống mẫu */
             text-transform: uppercase;
-            line-height: 1.8;
+            line-height: 1.6;
             font-weight: 500;
-            color: #333;
+            color: #1a1a1a; /* Màu chữ đen đậm */
         }
 
+        /* RESPONSIVE: Khi màn hình nhỏ (Mobile) thì xếp chồng lên nhau */
+        @media (max-width: 768px) {
+            .split-banner {
+                grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+                height: auto; /* Chiều cao tự động theo nội dung */
+            }
+            .split-item {
+                height: 70vh; /* Trên mobile mỗi ảnh cao 70% màn hình */
+            }
+            .split-text {
+                left: 30px; /* Mobile thì lề nhỏ hơn */
+            }
+        }
         /* --- 7. STYLING PROOF --- */
         .styling-proof {
             display: grid;
@@ -374,10 +412,10 @@
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-    .product-grid {
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4 cột đều nhau */
-            gap: 30px;
+            gap: 15px;
             margin-bottom: 100px; /* Khoảng cách xuống phần dưới */
             max-width: 1400px;
             margin-left: auto;
@@ -455,6 +493,12 @@
             
             /* Đổi màu nền so le để phân biệt khi xuống dòng trên tablet/mobile */
             .duo-group:nth-child(even) { background-color: #f9f9f9; }
+            .card-image {
+                margin: 0 20px;
+            }
+            .card-info{
+                margin-left: 20px;
+            }
         }
         @media (max-width: 600px) {
             .product-grid { grid-template-columns: 1fr; }
@@ -471,7 +515,7 @@
         }
 
         .split-item {
-            height: 600px;
+            height: auto;
             position: relative;
             background: #f4f4f4;
             overflow: hidden;
@@ -529,7 +573,6 @@
         .proof-main-image {
             width: 100%;
             height: auto;
-            min-height: 500px;
             background-color: #f0f0f0;
             overflow: hidden;
         }
@@ -542,6 +585,9 @@
 
         /* --- 8. #V64INACTION (REDESIGNED) --- */
         .action-section {
+            
+            max-width: 1440px;
+            margin: 0 auto;
             margin-bottom: 100px;
         }
 
@@ -705,12 +751,16 @@
 
     <section class="split-banner">
         <div class="split-item">
-            <img src="static/imgs/page-2/8.png" alt="Men">
-         
+            <a href="#"> <img src="static/imgs/page-2/8.png" alt="Men's Workwear">
+                
+            </a>
         </div>
+
         <div class="split-item">
-            <img src="static/imgs/page-2/9.png" alt="Women">
-       
+            <a href="#">
+                <img src="static/imgs/page-2/9.png" alt="Women's Workwear">
+               
+            </a>
         </div>
     </section>
 

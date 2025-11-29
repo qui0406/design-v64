@@ -92,9 +92,8 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero {
-                padding: 20px 10px; /* Giảm padding trên mobile */
-                min-height: auto;
+            .intro-text{
+                margin: 20px;
             }
         }
    
@@ -150,7 +149,7 @@
             gap: 50px;
             align-items: center;
             max-width: 900px;
-            margin: 0 auto 100px;
+            margin: 0 auto 50px;
 
             margin-top: 40px;
         }
@@ -359,7 +358,6 @@
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 20px;
-    padding: 0 20px;
 }
 
 .standout-title {
@@ -427,6 +425,8 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     padding: 0 20px 40px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .lb-item { cursor: pointer; }
@@ -473,10 +473,18 @@
     .intro-container { grid-template-columns: 1fr; }
     .product-grid { grid-template-columns: 1fr; }
     .lookbook-grid { grid-template-columns: repeat(2, 1fr); }
-    .standout-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .standout-header { 
+        margin-top: 40px;
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 10px; 
+
+    }
+    .v64-title-section{ margin : 0 10px; }
     .standout-desc { text-align: left; }
     .v64-title { font-size: 24px; }
     .v64-subtitle { font-size: 11px; }
+
 }
     </style>
 </head>
