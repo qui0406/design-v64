@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-SIXTYFOUR - Ready To Wear</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@400;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* --- 1. RESET & VARIABLES --- */
+        :root {
+            --font-main: 'Jost', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --font-hand: 'Caveat', cursive; /* Font chữ viết tay cho tờ giấy */
+            
+            --color-gold: #C5A059;
+            --color-text: #1a1a1a;
+            --color-gray: #666;
+            --color-light: #f9f9f9;
+            --color-red: #cc0000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 2. HEADER --- */
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .page-title {
+            font-size: 24px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        .brand-sub {
+            font-size: 12px;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* --- 3. MOODBOARD COLLAGE (GRID PHỨC TẠP) --- */
+
+        .hero {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        /* Container chứa ảnh để giới hạn chiều rộng tối đa */
+        .hero-banner-container {
+            width: 100%;
+            max-width: 1440px; /* Giới hạn độ rộng giống thiết kế web chuẩn */
+            margin: 0 auto;
+            
+            /* Đổ bóng nhẹ cho banner nổi bật lên (tùy chọn) */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Ảnh Banner chính */
+        .hero-banner-img {
+            width: 100%;
+            height: auto; /* Quan trọng: Giữ tỷ lệ ảnh không bị méo */
+            display: block; /* Loại bỏ khoảng trắng thừa dưới chân ảnh */
+            object-fit: contain;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 20px 10px; /* Giảm padding trên mobile */
+                min-height: auto;
+            }
+        }
+   
+
+
+
+
+        /* Các ô ảnh nhỏ xung quanh */
+        .mb-item { background: #fff; overflow: hidden; }
+        .mb-item img { transition: transform 0.5s; }
+        .mb-item:hover img { transform: scale(1.05); }
+
+        /* Ô giấy ghi chú ở giữa (Chiếm cột 3, hàng 1-2) */
+        .mb-note {
+            grid-column: 3 / 4;
+            grid-row: 1 / 3;
+            background: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            transform: rotate(-2deg); /* Nghiêng nhẹ giống giấy thật */
+        }
+
+        /* Cái ghim đỏ */
+        .pin {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, #ff4d4d, #cc0000);
+            border-radius: 50%;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .note-text {
+            font-family: var(--font-hand);
+            font-size: 40px;
+            line-height: 1;
+            color: #333;
+            transform: rotate(2deg); /* Xoay chữ lại cho thẳng hoặc nghệ thuật */
+        }
+
+        /* --- 4. INTRO (SINGLE MODEL) --- */
+        .intro-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto 100px;
+
+            margin-top: 40px;
+        }
+
+        .intro-img {
+            height: 500px;
+            background: #eee;
+        }
+
+        .intro-text h2 {
+            font-size: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .intro-text p {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* --- 5. SELECTED FOR YOU --- */
+        .selected-section { margin-bottom: 100px;
+            max-width: 1440px;
+            margin: 0 auto;
+         }
+        .section-label {
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .p-card { cursor: pointer; }
+        .p-img { aspect-ratio: 3/4.2; background: #f9f9f9; margin-bottom: 15px; }
+        .p-img img { mix-blend-mode: multiply; transition: transform 0.5s; }
+        .p-card:hover .p-img img { transform: scale(1.05); }
+
+        .p-info { display: flex; justify-content: space-between; font-size: 12px; }
+        .p-price { font-weight: 700; color: var(--color-red); margin-right: 5px; }
+        .p-old { text-decoration: line-through; color: #bbb; font-size: 11px; }
+        .p-tag { background: var(--color-red); color: #fff; font-size: 9px; padding: 1px 3px; font-weight: 700; margin-left: 5px; }
+        .p-name { color: #666; text-transform: uppercase; margin-top: 5px; font-size: 11px; }
+
+        /* --- 6. ESSENTIALS CATEGORY GRID (COMPLEX LAYOUT) --- */
+        .selected-section { margin-bottom: 100px; }
+.section-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 40px;
+    display: block;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.p-card { cursor: pointer; }
+.p-img { aspect-ratio: 3/4.2; background: #f9f9f9; margin-bottom: 15px; }
+.p-img img { mix-blend-mode: multiply; transition: transform 0.5s; }
+.p-card:hover .p-img img { transform: scale(1.05); }
+
+.p-info { display: flex; justify-content: space-between; font-size: 12px; }
+.p-price { font-weight: 700; color: var(--color-red); margin-right: 5px; }
+.p-old { text-decoration: line-through; color: #bbb; font-size: 11px; }
+.p-tag { background: var(--color-red); color: #fff; font-size: 9px; padding: 1px 3px; font-weight: 700; margin-left: 5px; }
+.p-name { color: #666; text-transform: uppercase; margin-top: 5px; font-size: 11px; }
+
+/* --- 6. ESSENTIALS CATEGORY GRID --- */
+.essentials-section {
+    margin-bottom: 100px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.category-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+    max-width: 1440px;
+}
+
+.cat-text-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.cat-title {
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    line-height: 1.6;
+    color: #333;
+}
+
+.cat-grid-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    background: #fff;
+}
+
+.cat-item {
+    position: relative;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+}
+
+.cat-item.cat-product {
+    position: relative;
+}
+
+.cat-item.cat-product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cat-product-info {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #999;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+.cat-product-name {
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.cat-product-sub {
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* Heart icon */
+.cat-item.cat-product::after {
+    content: '♡';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #999;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cat-item.cat-product:hover::after {
+    color: var(--color-red);
+}
+
+.cat-item.view-all {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.cat-item.view-all:hover { background: #dcdcdc; }
+
+.view-link {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;
+    font-weight: 500;
+}
+
+.category-row.reverse .cat-text-block { order: 2; }
+.category-row.reverse .cat-grid-block { order: 1; }
+
+/* --- 7. READY TO STAND OUT --- */
+.standout-section {
+    margin-bottom: 50px;
+}
+
+.standout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.standout-title {
+    font-size: 18px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: #666;
+}
+
+.standout-desc {
+    font-size: 11px;
+    color: #aaa;
+    max-width: 400px;
+    text-align: right;
+    line-height: 1.6;
+}
+
+.standout-banner {
+    height: 600px;
+    background: #eee;
+    position: relative;
+}
+
+/* --- 8. FOOTER LOOKBOOK --- */
+.lookbook-section {
+    margin-bottom: 80px;
+}
+
+.v64-hero {
+    height: 60vh;
+    margin-bottom: 0;
+    background: #f9f9f9;
+}
+
+.v64-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.v64-title-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+}
+
+.v64-title {
+    font-size: 32px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: #000;
+}
+
+.v64-subtitle {
+    font-size: 13px;
+    color: #aaa;
+    letter-spacing: 1px;
+}
+
+.lookbook-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 0 20px 40px;
+}
+
+.lb-item { cursor: pointer; }
+.lb-img { 
+    aspect-ratio: 3/4.5; 
+    background: #f9f9f9; 
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.lb-img img {
+    transition: transform 0.5s;
+}
+
+.lb-item:hover .lb-img img {
+    transform: scale(1.05);
+}
+
+.lb-info { 
+    font-size: 10px; 
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.5;
+}
+
+.lb-name {
+    font-weight: 400;
+}
+
+.lb-sub {
+    font-weight: 400;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .category-row { grid-template-columns: 1fr; }
+    .category-row.reverse .cat-text-block { order: -1; }
+    .cat-grid-block { height: 600px; }
+    .lookbook-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .intro-container { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: 1fr; }
+    .lookbook-grid { grid-template-columns: repeat(2, 1fr); }
+    .standout-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .standout-desc { text-align: left; }
+    .v64-title { font-size: 24px; }
+    .v64-subtitle { font-size: 11px; }
+}
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1 class="page-title">READY TO WEAR</h1>
+        <span class="brand-sub">V-SIXTYFOUR</span>
+    </header>
+
+    <section class="hero">
+        <div class="hero-banner-container">
+            <!-- Thay đường dẫn ảnh của bạn vào src -->
+            <!-- Đây là ảnh giả lập cho tấm ảnh moodboard đã ghép sẵn của bạn -->
+            <img src="static/imgs/page-3/2.png" 
+                 alt="Ready To Wear Moodboard" 
+                 class="hero-banner-img">
+        </div>
+    </section>
+
+    <!-- 2. INTRO (SINGLE MODEL) -->
+    <section class="intro-container">
+        <div class="intro-img">
+            <img src="static/imgs/page-3/3.png" alt="Ready To Wear">
+        </div>
+        <div class="intro-text">
+            <h2>READY-TO-WEAR</h2>
+            <p>
+                Ready-to-Wear (RTW) là dòng thời trang ứng dụng cao, mang đến sự tiện lợi nhưng không kém phần sành điệu. 
+                Các thiết kế của V-Sixtyfour tập trung vào chất liệu thoải mái, phom dáng chuẩn mực, phù hợp cho mọi hoạt động hàng ngày.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. SELECTED FOR YOU -->
+    <section class="container selected-section">
+        <span class="section-label">SELECTED FOR YOU</span>
+        <div class="product-grid">
+            <div class="p-card">
+                <div class="p-img"><img src="static/imgs/page-3/4.png" alt="P1"></div>
+                <div class="p-info">
+                    <div><span class="p-price">771.000₫</span><span class="p-old">964.000₫</span><span class="p-tag">-20%</span><div class="p-name">OMBRE DRESS</div></div>
+                    <i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-img"><img src="static/imgs/page-3/5.png" alt="P2"></div>
+                <div class="p-info">
+                    <div><span class="p-price">691.000₫</span><span class="p-old">864.000₫</span><span class="p-tag">-20%</span><div class="p-name">RELAXED JEANS</div></div>
+                    <i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-img"><img src="static/imgs/page-3/6.png" alt="P3"></div>
+                <div class="p-info">
+                    <div><span class="p-price">771.000₫</span><span class="p-old">964.000₫</span><span class="p-tag">-20%</span><div class="p-name">MEN'S TEE</div></div>
+                    <i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-img"><img src="static/imgs/page-3/7.png" alt="P3"></div>
+                <div class="p-info">
+                    <div><span class="p-price">771.000₫</span><span class="p-old">964.000₫</span><span class="p-tag">-20%</span><div class="p-name">MEN'S TEE</div></div>
+                    <i class="far fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 4. CATEGORY ESSENTIALS (PRODUCT GRID WITH TEXT) -->
+    <section class="essentials-section">
+        
+        <!-- WOMEN ROW -->
+        <div class="category-row">
+            <div class="cat-text-block">
+                <h3 class="cat-title">WOMEN'S<br>RTW<br>ESSENTIALS</h3>
+            </div>
+            <div class="cat-grid-block">
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/9.png" alt="W1">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">OMBRE & CLEAN-CUT</div>
+                        <div class="cat-product-sub">SHIRT DRESS</div>
+                    </div>
+                </div>
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/10.png" alt="W2">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">OMBRE & CLEAN-CUT</div>
+                        <div class="cat-product-sub">SHIRT DRESS</div>
+                    </div>
+                </div>
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/11.png" alt="W3">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">OMBRE & CLEAN-CUT</div>
+                        <div class="cat-product-sub">SHIRT DRESS</div>
+                    </div>
+                </div>
+                <div class="cat-item view-all">
+                    <span class="view-link">VIEW<br>THEM<br>ALL →</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEN ROW (REVERSE) -->
+        <div class="category-row reverse">
+            <div class="cat-text-block">
+                <h3 class="cat-title">MEN'S<br>RTW<br>ESSENTIALS</h3>
+            </div>
+            <div class="cat-grid-block">
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/12.png" alt="M1">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">OMBRE & CLEAN-CUT</div>
+                        <div class="cat-product-sub">SHIRT DRESS</div>
+                    </div>
+                </div>
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/13.png" alt="M2">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">OMBRE & CLEAN-CUT</div>
+                        <div class="cat-product-sub">SHIRT DRESS</div>
+                    </div>
+                </div>
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/14.png" alt="M3">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">OMBRE & CLEAN-CUT</div>
+                        <div class="cat-product-sub">SHIRT DRESS</div>
+                    </div>
+                </div>
+                <div class="cat-item view-all">
+                    <span class="view-link">VIEW<br>THEM<br>ALL →</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNISEX ROW -->
+        <div class="category-row">
+            <div class="cat-text-block">
+                <h3 class="cat-title">UNISEX<br>RTW<br>ESSENTIALS</h3>
+            </div>
+            <div class="cat-grid-block">
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/15.png" alt="U1">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">OMBRE & CLEAN-CUT</div>
+                        <div class="cat-product-sub">SHIRT DRESS</div>
+                    </div>
+                </div>
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/16.png" alt="U2">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">RELAXED HIGH-RISE</div>
+                        <div class="cat-product-sub">CUFFED JEANS</div>
+                    </div>
+                </div>
+                <div class="cat-item cat-product">
+                    <img src="static/imgs/page-3/13.png" alt="U3">
+                    <div class="cat-product-info">
+                        <div class="cat-product-name">OMBRE & CLEAN-CUT</div>
+                        <div class="cat-product-sub">SHIRT DRESS</div>
+                    </div>
+                </div>
+                <div class="cat-item view-all">
+                    <span class="view-link">VIEW<br>THEM<br>ALL →</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 5. READY TO STAND OUT -->
+    <section class="standout-section container">
+        <div class="standout-header">
+            <h2 class="standout-title">READY TO WEAR,<br>READY TO STAND OUT</h2>
+            <p class="standout-desc">
+                Sẵn sàng hoàn thiện phong cách cá nhân với những thiết kế tinh tế. Không chỉ dừng lại ở việc mặc đẹp, mà còn là cách thể hiện bản thân và năng lượng của bạn.
+            </p>
+        </div>
+        <div class="standout-banner">
+            <img src="static/imgs/page-3/18.png" alt="Banner">
+        </div>
+    </section>
+
+    <!-- 6. FOOTER LOOKBOOK (#V64INACTION) -->
+    <section class="lookbook-section">
+        <div class="v64-title-section">
+            <h2 class="v64-title">#V64INACTION</h2>
+            <p class="v64-subtitle">Khám phá những thiết kế tiêu biểu/chủ đạo từ các Bộ sưu tập mới nhất</p>
+        </div>
+        <div class="lookbook-grid container">
+            <div class="lb-item">
+                <div class="lb-img"><img src="static/imgs/page-3/19.png" alt="L1"></div>
+                <div class="lb-info">
+                    <div class="lb-name">OMBRE SLEEVELESS</div>
+                    <div class="lb-sub">SHIRT DRESS</div>
+                </div>
+            </div>
+            <div class="lb-item">
+                <div class="lb-img"><img src="static/imgs/page-3/20.png" alt="L2"></div>
+                <div class="lb-info">
+                    <div class="lb-name">RELAXED HIGH-RISE</div>
+                    <div class="lb-sub">CUFFED JEANS</div>
+                </div>
+            </div>
+            <div class="lb-item">
+                <div class="lb-img"><img src="static/imgs/page-3/21.png" alt="L3"></div>
+                <div class="lb-info">
+                    <div class="lb-name">OMBRE SLEEVELESS</div>
+                    <div class="lb-sub">SHIRT DRESS</div>
+                </div>
+            </div>
+            <div class="lb-item">
+                <div class="lb-img"><img src="static/imgs/page-3/22.png" alt="L4"></div>
+                <div class="lb-info">
+                    <div class="lb-name">RELAXED HIGH-RISE</div>
+                    <div class="lb-sub">CUFFED JEANS</div>
+                </div>
+            </div>
+            <div class="lb-item">
+                <div class="lb-img"><img src="static/imgs/page-3/23.png" alt="L5"></div>
+                <div class="lb-info">
+                    <div class="lb-name">OMBRE SLEEVELESS</div>
+                    <div class="lb-sub">SHIRT DRESS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
