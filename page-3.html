@@ -38,16 +38,62 @@
         ul { list-style: none; }
 
         .container {
-            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
         /* --- 2. HEADER --- */
-        header {
-            text-align: center;
-            padding: 40px 0;
-        }
+       /* Container chính: Căn giữa tất cả nội dung theo chiều dọc */
+.ready-to-wear-header {
+    display: flex;
+    flex-direction: column; /* Xếp chồng lên nhau: Tiêu đề -> Logo -> Menu */
+    align-items: center;    /* Căn giữa theo trục ngang */
+    justify-content: center;
+    padding: 30px 0;        /* Khoảng cách trên dưới cho thoáng */
+    background-color: #fff; /* Nền trắng */
+    font-family: sans-serif;
+}
+
+/* 1. Tiêu đề: READY TO WEAR */
+.page-title {
+    font-size: 32px;           /* Cỡ chữ lớn */
+    font-weight: 400;          /* Chữ thường, không quá đậm */
+    color: #0f172a;            /* Màu xanh đen đậm (Dark Navy) */
+    text-transform: uppercase; /* Viết hoa toàn bộ */
+    letter-spacing: 4px;       /* Dãn chữ rộng ra (quan trọng để giống mẫu) */
+    margin: 0 0 15px 0;        /* Khoảng cách dưới xuống logo */
+}
+
+/* 2. Logo ảnh */
+.logo-img {
+    margin-bottom: 25px;       /* Khoảng cách từ Logo xuống menu HIGHLIGHTS */
+}
+
+.logo-img img {
+    height: 14px;              /* Chiều cao logo vừa phải */
+    width: auto;               /* Chiều rộng tự động */
+    display: block;
+}
+
+/* 3. Menu: HIGHLIGHTS LOOKS */
+.header-nav {
+    display: flex;
+    gap: 30px;                 /* Khoảng cách giữa 2 link */
+}
+
+.header-nav a {
+    text-decoration: none;     /* Bỏ gạch chân */
+    color: #cbd5e0;            /* Màu xám rất nhạt (Light Gray) giống hệt ảnh */
+    font-size: 11px;           /* Cỡ chữ nhỏ */
+    letter-spacing: 1px;       /* Dãn chữ nhẹ */
+    text-transform: uppercase; /* Viết hoa */
+    transition: color 0.3s;
+}
+
+/* Hiệu ứng khi di chuột vào link (tùy chọn) */
+.header-nav a:hover {
+    color: #0f172a;            /* Đậm lên khi trỏ chuột */
+}
+
 
         .page-title {
             font-size: 24px;
@@ -68,14 +114,14 @@
         /* --- 3. MOODBOARD COLLAGE (GRID PHỨC TẠP) --- */
 
         .hero {
-            max-width: 1440px;
+            
             margin: 0 auto;
         }
 
         /* Container chứa ảnh để giới hạn chiều rộng tối đa */
         .hero-banner-container {
             width: 100%;
-            max-width: 1440px; /* Giới hạn độ rộng giống thiết kế web chuẩn */
+         
             margin: 0 auto;
             
             /* Đổ bóng nhẹ cho banner nổi bật lên (tùy chọn) */
@@ -148,14 +194,15 @@
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
-            max-width: 900px;
             margin: 0 auto 50px;
+            max-width: 1000px;
 
             margin-top: 40px;
         }
 
         .intro-img {
-            height: 500px;
+           
+            height: auto;
             background: #eee;
         }
 
@@ -176,7 +223,7 @@
 
         /* --- 5. SELECTED FOR YOU --- */
         .selected-section { margin-bottom: 100px;
-            max-width: 1440px;
+          
             margin: 0 auto;
          }
         .section-label {
@@ -238,7 +285,7 @@
 /* --- 6. ESSENTIALS CATEGORY GRID --- */
 .essentials-section {
     margin-bottom: 100px;
-    max-width: 1440px;
+
     margin: 0 auto;
 }
 
@@ -246,7 +293,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 600px;
-    max-width: 1440px;
+
 }
 
 .cat-text-block {
@@ -357,7 +404,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 20px;
+    margin: 100px;
+    margin-bottom: 50px;
 }
 
 .standout-title {
@@ -369,15 +417,15 @@
 }
 
 .standout-desc {
-    font-size: 11px;
+    font-size: 13px;
     color: #aaa;
-    max-width: 400px;
+    max-width: 500px;
     text-align: right;
     line-height: 1.6;
+    letter-spacing: 1px;
 }
 
 .standout-banner {
-    height: 600px;
     background: #eee;
     position: relative;
 }
@@ -425,7 +473,7 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     padding: 0 20px 40px;
-    max-width: 1440px;
+   
     margin: 0 auto;
 }
 
@@ -471,7 +519,9 @@
 
 @media (max-width: 768px) {
     .intro-container { grid-template-columns: 1fr; }
-    .product-grid { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: 1fr; 
+        margin: 20px;
+    }
     .lookbook-grid { grid-template-columns: repeat(2, 1fr); }
     .standout-header { 
         margin-top: 40px;
@@ -491,9 +541,19 @@
 <body>
 
     <!-- HEADER -->
-    <header>
+    <header class="ready-to-wear-header">
         <h1 class="page-title">READY TO WEAR</h1>
-        <span class="brand-sub">V-SIXTYFOUR</span>
+        
+        <div class="logo-img">
+            <a href="/">
+                <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR"/>
+            </a>
+        </div>
+
+        <nav class="header-nav">
+            <a href="#">HIGHLIGHTS</a>
+            <a href="#">LOOKS</a>
+        </nav>
     </header>
 
     <section class="hero">
