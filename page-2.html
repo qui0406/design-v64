@@ -50,11 +50,6 @@
         img { width: 100%; height: 100%; object-fit: cover; display: block; }
         ul { list-style: none; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
 
         /* --- 2. NEW HEADER DESIGN --- */
         header {
@@ -63,44 +58,62 @@
             background: #fff;
         }
 
-        .header-collection-name {
-            font-size: 24px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #000;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
+        .collection-header {
+    display: flex;
+    flex-direction: column; /* Xếp các phần tử theo chiều dọc */
+    align-items: center;    /* Căn giữa theo chiều ngang */
+    padding: 30px 0;        /* Khoảng cách trên dưới cho thoáng */
+    background-color: #fff;
+}
 
-        .header-brand {
-            font-size: 14px;
-            letter-spacing: 2px;
-            color: var(--color-gold);
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
+/* 1. Dòng chữ to nhất: OFFICE-CHIC */
+.header-collection-name {
+    font-size: 28px;           /* Cỡ chữ lớn */
+    color: #0f172a;            /* Màu xanh đen đậm (Navy) */
+    letter-spacing: 4px;       /* Dãn khoảng cách chữ rộng ra */
+    text-transform: uppercase; /* Viết hoa */
+    margin-bottom: 10px;       /* Khoảng cách xuống logo bên dưới */
+    font-weight: 400;          /* Độ đậm vừa phải, không quá dày */
+}
 
-        .header-nav {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 30px;
-        }
+/* 2. Phần Logo (V-SIXTYFOUR) */
+.logo-img {
+    margin-bottom: 25px;       /* Khoảng cách từ Logo xuống Menu */
+}
 
-        .header-nav a {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: #ccc;
-            letter-spacing: 1px;
-        }
+.logo-img img {
+    height: 14px;              /* Chiều cao cố định cho ảnh logo cân đối */
+    width: auto;               /* Chiều rộng tự động */
+    display: block;            /* Giúp căn chỉnh dễ hơn */
+}
+
+/* 3. Phần Menu dưới cùng: HIGHLIGHTS LOOKS */
+.header-nav {
+    display: flex;
+    gap: 40px;                 /* Khoảng cách giữa 2 chữ HIGHLIGHTS và LOOKS */
+}
+
+.header-nav a {
+    text-decoration: none;     /* Bỏ gạch chân */
+    color: #cbd5e0;            /* Màu xám nhạt (Light Gray) giống ảnh */
+    font-size: 12px;           /* Cỡ chữ nhỏ */
+    letter-spacing: 1px;       /* Dãn chữ nhẹ */
+    text-transform: uppercase; /* Viết hoa */
+    font-weight: 300;          /* Chữ mảnh */
+    transition: color 0.3s;    /* Hiệu ứng khi rê chuột vào */
+}
+
+/* (Tuỳ chọn) Đổi màu khi rê chuột vào link */
+.header-nav a:hover {
+    color: #0f172a;
+}
+
         
-        .header-nav a:hover { color: #000; }
 
         /* --- 3. NEW HERO SECTION --- */
         .hero-banner {
             position: relative;
-            max-width: 1440px;
+       
             margin: 0 auto;
             height: 85vh;
             background: url('static/imgs/page-2/2.png');
@@ -142,7 +155,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
-            max-width: 1000px; /* Thu hẹp grid lại chút cho giống mẫu */
             margin: 0 auto;
         }
 
@@ -187,6 +199,187 @@
             margin: 0 auto;
         }
 
+        /* --- 1. BASE LAYOUT & CONTAINER --- */
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.content-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px; 
+}
+
+.col {
+    width: 100%;
+}
+
+.col-image {
+    display: flex;
+    justify-content: center;
+}
+
+.col-text {
+    text-align: center;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- 2. IMAGE STYLES --- */
+.image-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #f9fafb; /* bg-gray-50 */
+    aspect-ratio: 3/4;
+    width: 100%;
+    height: 75vh;
+    max-width: 500px;
+}
+
+.model-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.7s ease-in-out;
+}
+
+.image-container:hover .model-image {
+    transform: scale(1.05);
+}
+
+/* --- 3. TYPOGRAPHY (TEXT CONTENT) --- */
+.main-title {
+    font-size: 40px !important; 
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    max-width: 400px;
+    color: #000000;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    color: #959292; 
+    font-size: 18px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em; 
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.separator {
+    margin: 0 8px;
+}
+
+.description {
+    color: #9ca3af; /* text-gray-400 */
+    font-size: 14px !important;
+    line-height: 1.75; 
+    margin-bottom: 48px;
+    max-width: 500px; 
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* --- 4. BUTTON / CTA LINK --- */
+.cta-link {
+    display: inline-block;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e5e7eb; 
+    transition: border-color 0.3s;
+}
+
+.cta-link:hover {
+    border-bottom-color: #000000;
+}
+
+.cta-text {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em; 
+    color: #9ca3af; 
+    transition: color 0.3s;
+}
+
+.cta-link:hover .cta-text {
+    color: #000000;
+}
+
+/* --- 5. BOTTOM LABEL --- */
+.bottom-label-container {
+    margin-top: 60px; 
+    text-align: center;
+}
+
+.bottom-label {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000000; 
+}
+
+/* --- 6. RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablet & Desktop (min-width: 768px) */
+@media (min-width: 768px) {
+    .section-wrapper {
+        padding: 50px 0; 
+    }
+
+    .content-grid {
+        flex-direction: row; /* Chuyển sang bố cục ngang */
+        gap: 120px; 
+    }
+
+    .col {
+        width: 41.666667%; /* Chia cột tỉ lệ ~ 5/12 */
+    }
+
+    .col-image {
+        justify-content: flex-end;
+    }
+
+    .col-text {
+        text-align: left;
+    }
+    
+    .main-title {
+        font-size: 48px; 
+    }
+
+    .subtitle {
+        font-size: 14px; 
+    }
+
+    .description {
+        font-size: 14px; 
+    }
+
+    .cta-text {
+        font-size: 12px; 
+    }
+}
+
+/* Large Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .main-title {
+        font-size: 60px; 
+    }
+}
+
         /* --- 5. SELECTED FOR YOU --- */
         .section-label-container {
             text-align: center;
@@ -204,7 +397,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-bottom: 100px;
+            margin: 0 20px;
+
         }
 
         .product-card { cursor: pointer; }
@@ -215,6 +409,8 @@
             margin-bottom: 20px;
             overflow: hidden;
         }
+
+        
         
         .product-img img { transition: transform 0.6s ease; mix-blend-mode: multiply; }
         .product-card:hover .product-img img { transform: scale(1.05); }
@@ -250,10 +446,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr; /* Chia đôi màn hình 50-50 */
             width: 100%;
-            margin-bottom: 0; /* Bỏ margin bottom để liền mạch */
+            margin-bottom: 100px; /* Bỏ margin bottom để liền mạch */
             overflow: hidden;
 
-            max-width: 1440px;
+       
             margin: 0 auto;
         }
 
@@ -319,6 +515,58 @@
             margin-bottom: 100px;
             align-items: center;
         }
+
+        .styling-section {
+    padding: 60px 0;
+}
+
+/* --- PHẦN QUAN TRỌNG NHẤT: BỐ CỤC --- */
+.section-header {
+    display: flex;              /* Xếp hàng ngang */
+    align-items: center;        /* Căn giữa theo trục dọc */
+    justify-content: space-between; /* Đẩy 2 khối ra xa nhau */
+    gap: 60px;                  /* Khoảng cách giữa tiêu đề và đoạn văn */
+    margin: 0 100px;
+    margin-bottom: 100px;        /* Khoảng cách xuống ảnh bên dưới */
+
+}
+
+/* Style cho Tiêu đề (Bên trái) */
+.header-title {
+    flex: 1;                    /* Chiếm không gian tương đối */
+    font-size: 28px;            /* Cỡ chữ to vừa phải */
+    font-weight: 400;           /* Độ đậm */
+    color: #0f172a;             /* Màu xanh đen đậm (Navy dark) */
+    text-transform: uppercase;  /* Viết hoa toàn bộ */
+    letter-spacing: 3px;        /* Dãn chữ rộng ra (giống mẫu) */
+    line-height: 1.4;           /* Khoảng cách dòng */
+    margin: 0;
+}
+
+/* Style cho Đoạn văn (Bên phải) */
+.header-desc {
+    flex: 1;                    /* Chiếm không gian tương đối bằng tiêu đề */
+    font-size: 16px;            /* Cỡ chữ nhỏ thanh lịch */
+    font-weight: 300;           /* Chữ mảnh */
+    color: #8898aa;             /* Màu xám nhạt (quan trọng để giống mẫu) */
+    line-height: 1.6;           /* Dễ đọc */
+    margin: 0;
+    text-align: left;           /* Căn trái */
+}
+
+/* --- RESPONSIVE: Khi xem trên điện thoại --- */
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column; /* Xếp dọc lại */
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .header-title {
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+}
 
         .proof-text {
             padding: 0 60px;
@@ -394,6 +642,9 @@
 
         @media (max-width: 768px) {
             /* Mobile Adjustments */
+            .section-wrapper {
+                padding: 50px 0; /* md:py-32 */
+            }
             .hero-section { height: 60vh; flex-direction: column; }
             .hero-text-left, .hero-text-right { 
                 position: relative; 
@@ -416,14 +667,24 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4 cột đều nhau */
             gap: 15px;
+            margin: 0;
             margin-bottom: 100px; /* Khoảng cách xuống phần dưới */
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .product-card {
             cursor: pointer;
+        }
+        .text-wrapper{
+            margin: 20px;
+        }
+
+        .section-header{
+            margin: 100px 20px;
+            margin-top: 50px;
+        }
+
+        .lookbook-grid{
+            margin: 0 !important;
         }
 
         /* Ảnh sản phẩm */
@@ -452,7 +713,64 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            margin-right: 20px;
+            margin-top: 10px;
         }
+
+        /* Container chung để căn giữa nội dung trang */
+
+
+.styling-proof-section {
+    padding: 60px 0; /* Khoảng cách trên dưới */
+    font-family: sans-serif; /* Hoặc font chữ website bạn đang dùng */
+}
+
+/* BỐ CỤC CHIA ĐÔI: TIÊU ĐỀ - MÔ TẢ */
+.proof-header {
+    display: flex;             /* Xếp hàng ngang */
+    justify-content: space-between; /* Đẩy 2 phần tử ra 2 đầu hoặc tạo khoảng cách */
+    align-items: center;       /* Căn giữa theo trục dọc */
+    gap: 50px;                 /* Khoảng cách giữa tiêu đề và đoạn văn */
+    margin-bottom: 40px;       /* Khoảng cách xuống hình ảnh bên dưới */
+}
+
+/* PHẦN TIÊU ĐỀ (BÊN TRÁI) */
+.proof-title {
+    flex: 1;                   /* Chiếm 1 phần không gian */
+    font-size: 32px;           /* Cỡ chữ to */
+    font-weight: 600;          /* In đậm vừa phải */
+    text-transform: uppercase; /* Viết hoa toàn bộ */
+    letter-spacing: 2px;       /* Khoảng cách giữa các ký tự rộng ra như ảnh */
+    line-height: 1.3;          /* Khoảng cách dòng */
+    color: #1a202c;            /* Màu xanh đen đậm */
+    margin: 0;
+    white-space: nowrap;       /* Giữ cho tiêu đề không bị ngắt dòng lung tung nếu muốn */
+}
+
+/* PHẦN MÔ TẢ (BÊN PHẢI) */
+.proof-desc {
+    flex: 1;                   /* Chiếm 1 phần không gian tương đương tiêu đề */
+    font-size: 15px;
+    line-height: 1.6;          /* Dãn dòng cho dễ đọc */
+    color: #718096;            /* Màu xám nhạt như trong ảnh */
+    text-align: justify;       /* Căn đều 2 bên (tùy chọn) hoặc để left */
+    margin: 0;
+    max-width: 900px;          /* Giới hạn chiều rộng để chữ không quá dài */
+}
+
+/* RESPONSIVE (Cho điện thoại) */
+@media (max-width: 768px) {
+    .proof-header {
+        flex-direction: column; /* Trên mobile sẽ xếp dọc lại */
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .proof-title {
+        font-size: 24px;
+        white-space: normal;
+    }
+}
 
         .info-left { flex: 1; }
 
@@ -507,12 +825,6 @@
         }
 
 
-         .split-banner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            margin-bottom: 100px;
-        }
 
         .split-item {
             height: auto;
@@ -586,7 +898,7 @@
         /* --- 8. #V64INACTION (REDESIGNED) --- */
         .action-section {
             
-            max-width: 1440px;
+         
             margin: 0 auto;
             margin-bottom: 100px;
         }
@@ -597,18 +909,18 @@
         }
 
         .action-title {
-            font-size: 22px;
+            font-size: 30px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #1a1a1a;
             margin-bottom: 10px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .action-subtitle {
-            font-size: 12px;
+            font-size: 16px;
             color: #aaa;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             font-weight: 300;
         }
 
@@ -616,6 +928,7 @@
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 10px;
+            margin: 0 20px;
         }
 
         .lookbook-item {
@@ -646,9 +959,15 @@
     </style>
 </head>
 <body>
-    <header>
+    <header class="collection-header">
         <div class="header-collection-name">OFFICE-CHIC</div>
-        <div class="header-brand">V-SIXTYFOUR</div>
+        
+        <div class="logo-img">
+            <a href="/">
+                <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR"/>
+            </a>
+        </div>
+
         <nav class="header-nav">
             <a href="#">HIGHLIGHTS</a>
             <a href="#">LOOKS</a>
@@ -659,17 +978,38 @@
 
     
     <!-- INTRO SECTION (NEW DESIGN) -->
-    <section class="intro-section container">
-        <div class="intro-grid">
-            <div class="intro-img">
-                <img src="static/imgs/page-2/3.png" alt="Model Sitting">
+    <section class="section-wrapper container">
+        <div class="content-grid">
+            
+            <div class="col col-image">
+                <div class="image-container">
+                    <!-- Ảnh placeholder người mẫu mặc áo trễ vai và quần jeans -->
+                    <img src="static/imgs/page-2/3.png"
+                         alt="Shades of Denim Model" 
+                         class="model-image">
+                </div>
             </div>
-            <div class="intro-text-col">
-                <h2 class="intro-title">OFFICE BUT<br>MAKE IT FASHION</h2>
-                <p class="intro-desc">
-                    Giữa nhịp sống đô thị không ngừng chuyển động, phong cách công sở của thế hệ mới đã vượt ra khỏi giới hạn gò bó. V-SIXTYFOUR mang đến tuyên ngôn thời trang không khiến bạn tách biệt, nhưng phải đủ để bạn khác biệt.
-                </p>
+            <div class="col col-text">
+                <!-- Wrapper để căn giữa nội dung trong cột bên phải -->
+                <div class="text-wrapper">
+                    
+                    <!-- Main Title -->
+                    <h2 class="main-title">
+                        Office but make it fashion
+                    </h2>
+
+                    <p class="description">
+                        Giữa nhịp sống đô thị không ngừng chuyển động, phong cách công sở của thế hệ mới đã vượt ra khỏi giới hạn gò bó. V-SIXTYFOUR mang đến tuyên ngôn thời trang không khiến bạn tách biệt, nhưng phải đủ để bạn khác biệt.
+
+                </div>
             </div>
+        </div>
+
+        <!-- Bottom Section Label -->
+        <div class="bottom-label-container">
+            <h3 class="bottom-label">
+                SELECTED FOR YOU
+            </h3>
         </div>
     </section>
 
@@ -678,7 +1018,7 @@
         <!-- SP 1 -->
         <div class="product-card">
             <div class="card-image">
-                <img src="static/imgs/page-2/3.png" alt="SP1">
+                <img src="static/imgs/page-2/4.png" alt="SP1">
             </div>
             <div class="card-info">
                 <div class="info-left">
@@ -696,7 +1036,7 @@
         <!-- SP 2 -->
         <div class="product-card">
             <div class="card-image">
-                <img src="static/imgs/page-2/4.png" alt="SP2">
+                <img src="static/imgs/page-2/5.png" alt="SP2">
             </div>
             <div class="card-info">
                 <div class="info-left">
@@ -714,7 +1054,7 @@
         <!-- SP 3 -->
         <div class="product-card">
             <div class="card-image">
-                <img src="static/imgs/page-2/5.png" alt="SP3">
+                <img src="static/imgs/page-2/6.png" alt="SP3">
             </div>
             <div class="card-info">
                 <div class="info-left">
@@ -733,7 +1073,7 @@
         <div class="product-card">
             <div class="card-image">
                 <!-- Ảnh cô gái áo trắng giống hình mẫu -->
-                <img src="static/imgs/page-2/6.png" alt="SP4">
+                <img src="static/imgs/page-2/7.png" alt="SP4">
             </div>
             <div class="card-info">
                 <div class="info-left">
@@ -767,16 +1107,21 @@
 
 
     <!-- STYLING PROOF (NEW DESIGN) -->
-    <section class="styling-proof-section container">
-        <div class="proof-header">
-            <h2 class="proof-title">THE STYLING PROOF:<br>MODERN WORKWEAR</h2>
-            <p class="proof-desc">
-                Cảm hứng mặc đẹp từ cộng đồng. Chiêm ngưỡng cách Khách hàng và Influencers ứng dụng Office-Chic Denim thanh lịch và linh hoạt nơi công sở, kiến tạo phong cách cá nhân.
-            </p>
-        </div>
-        <div class="proof-main-image">
-            <!-- Ảnh rộng gồm 2 mẫu (ngồi và đứng) trong studio -->
-            <img src="static/imgs/page-2/10.png" alt="Modern Workwear">
+    <section class="styling-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="header-title">
+                    THE STYLING PROOF:<br>
+                    MODERN WORKWEAR
+                </h2>
+                <p class="header-desc">
+                    Cảm hứng mặc đẹp từ cộng đồng. Chiêm ngưỡng cách Khách hàng và Influencers ứng dụng Office-Chic Denim thanh lịch và linh hoạt nơi công sở, kiến tạo phong cách cá nhân.
+                </p>
+            </div>
+
+            <div class="section-image">
+                <img src="static/imgs/page-2/10.png" alt="Modern Workwear Image">
+            </div>
         </div>
     </section>
 

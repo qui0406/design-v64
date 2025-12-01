@@ -16,7 +16,7 @@
 
             --color-text-title: #1a1a1a;
             --color-text-desc: #999999;
-            --color-btn-bg: #0f1c2e; /* Màu xanh đen đậm của nút */
+            --color-btn-bg: #132b4d; /* Màu xanh đen đậm của nút */
             --color-btn-text: #ffffff;
             --spacing-section: 0; /* Không khoảng cách giữa các hàng */
 
@@ -35,100 +35,103 @@
             line-height: 1.6;
         }
 
-          .header {
+  /* --- HEADER CHÍNH --- */
+.header {
     position: sticky;
     top: 0;
     z-index: 1000;
     background: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Bóng mờ nhẹ hơn cho sang */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    height: 60px;
+    padding: 0 40px; /* Padding hai bên */
+
+    /* KEY CHANGE: Dùng flexbox đẩy đều 3 phần tử sang 2 bên và giữa */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 40px; /* Padding rộng hơn giống hình mẫu */
-    height: 70px;
+    justify-content: space-between; 
 }
 
-/* Logo màu vàng giống hình */
-.logo {
-    font-size: 26px; /* Chữ to hơn chút */
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: #c4a059; /* Mã màu vàng kim loại giống ảnh */
-    font-family:'Times New Roman', Times, serif;
+/* --- 1. LOGO (Bên trái) --- */
+.logo-img {
+    /* Xóa position absolute để logo nằm trong dòng chảy flexbox */
+    display: flex;
+    align-items: center;
+    width: 200px; /* Đặt chiều rộng cố định để cân đối layout */
 }
 
-/* Menu Navigation */
+.logo-img img {
+    width: 100%;
+    max-width: 180px; /* Giới hạn kích thước logo cho vừa mắt */
+    display: block;
+    object-fit: contain;
+}
+
+/* --- 2. MENU NAVIGATION (Ở giữa) --- */
 .nav {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 40px; /* Khoảng cách giữa các chữ rộng hơn cho thoáng */
+    flex: 1; /* Chiếm phần không gian còn lại để căn giữa tốt hơn */
+    justify-content: center; /* Căn chữ vào giữa khu vực nav */
 }
 
 .nav a {
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #0c1c3d; /* Màu xanh đen đậm */
+    font-size: 15px; /* Cỡ chữ vừa phải */
+    font-weight: 500;
+    color: #0c1c3d; /* Màu xanh đen đậm như hình */
     letter-spacing: 0.5px;
     transition: color 0.3s;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .nav a:hover {
-    color: #c4a059;
+    color: #c4a059; /* Hover màu vàng */
 }
 
-/* Khu vực Icons bên phải */
+/* --- 3. ICONS (Bên phải) --- */
 .header-icons {
     display: flex;
-    gap: 20px;
     align-items: center;
-}
-
-#mobile-menu-btn{
-    display: none;
+    justify-content: flex-end; /* Đẩy icon về sát phải */
+    gap: 25px; /* Khoảng cách giữa các icon */
+    width: 200px; /* Bằng width của logo để Menu nằm chính giữa màn hình */
 }
 
 .icon-btn {
     cursor: pointer;
     background: none;
     border: none;
-    padding: 5px;
-    color: #000; /* Icon màu đen nét mảnh */
+    padding: 0;
+    color: #000;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s;
+    transition: transform 0.2s, color 0.2s;
 }
 
-
-
 .icon-btn:hover {
-    transform: scale(1.1);
-    color: #c4a059;
+    color: #c4a059; /* Hover icon sang màu vàng */
 }
 
 .icon-btn svg {
-    width: 26px;
-    height: 26px;
-    stroke-width: 1.5; /* Nét mảnh giống hình */
-}
-
-.mobile-menu-btn {
-    display: none; 
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.5;
 }
 
 /* Badge số lượng (Vòng tròn vàng) */
 .badge {
     position: absolute;
-    top: -6px;
+    top: -5px;
     right: -8px;
-    background-color: #c4a059; /* Màu vàng */
+    background-color: #c4a059; /* Màu vàng gold */
     color: #ffffff;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,9 +139,26 @@
     font-weight: bold;
 }
 
+/* Nút Mobile Menu */
+#mobile-menu-btn {
+    display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .header { padding: 0 20px; }
+    .nav { display: none; } /* Ẩn menu chữ trên mobile */
+    .desktop-icon { display: none; } /* Ẩn icon user/tim nếu muốn */
+    #mobile-menu-btn { display: block; }
+    
+    /* Trên mobile, logo và icon đẩy ra 2 đầu */
+    .logo-img { width: auto; }
+    .header-icons { width: auto; gap: 15px; }
+}
+
         .hero-banner {
             position: relative;
-            height: 85vh;
+            height: 93vh;
             background: url('static/imgs/trang-chu/1.png');
             background-size: cover;
             background-position: center;
@@ -146,6 +166,7 @@
             align-items: center;
             justify-content: center;
             color: white;
+            margin: 0 auto;
         }
 
         .hero-content {
@@ -169,7 +190,7 @@
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1500px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -178,8 +199,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 48px; /* Gap 12 (3rem) */
+            gap: 70px; 
         }
 
         /* COLUMNS */
@@ -210,7 +230,8 @@
             background-color: #f9fafb; /* bg-gray-50 */
             aspect-ratio: 3/4;
             width: 100%;
-            max-width: 384px; /* max-w-sm */
+            height: 75vh;
+            max-width: 500px;
         }
 
         .model-image {
@@ -227,8 +248,8 @@
 
         /* TYPOGRAPHY */
         .main-title {
-            font-size: 40px !important; /* text-4xl */
-            font-weight: 700;
+            font-size: 60px !important; /* text-4xl */
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.025em; /* tracking-wide */
             color: #000000;
@@ -236,8 +257,8 @@
         }
 
         .subtitle {
-            color: #d1d5db; /* text-gray-300 */
-            font-size: 12px !important;
+            color: #959292; /* text-gray-300 */
+            font-size: 18px !important;
             text-transform: uppercase;
             letter-spacing: 0.1em; /* tracking-widest */
             margin-bottom: 40px;
@@ -250,7 +271,7 @@
 
         .description {
             color: #9ca3af; /* text-gray-400 */
-            font-size: 12px;
+            font-size: 14px;
             line-height: 1.75; /* leading-7 */
             margin-bottom: 48px;
             max-width: 20rem; /* max-w-md */
@@ -275,7 +296,7 @@
 
         .cta-text {
             font-size: 10px;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.2em; /* tracking-extra-wide */
             color: #9ca3af; /* text-gray-400 */
@@ -286,9 +307,67 @@
             color: #000000;
         }
 
+        /* --- COLLECTION INTRO SECTION --- */
+.collection-intro {
+    padding-bottom: 200px; /* Khoảng cách trên dưới rộng rãi tạo cảm giác sang trọng */
+    background-color: #ffffff;
+    text-align: center; /* Căn giữa toàn bộ nội dung */
+    font-family: 'Jost', sans-serif; /* Sử dụng font chữ chính của web bạn */
+    border-bottom: 1px solid #bbb7b7; /* Viền nhẹ bao quanh */
+}
+
+.intro-container {
+    max-width: 800px; /* Giới hạn chiều rộng để chữ không bị tràn ra mép màn hình */
+    margin: 0 auto;
+}
+
+/* 1. Tiêu đề: BEYOND THE BLUE */
+.intro-title {
+    font-size: 20px;
+    letter-spacing: 4px; /* Giãn cách chữ cái rộng ra */
+    text-transform: uppercase; /* Viết hoa toàn bộ */
+    color: #0c1c3d; /* Màu xanh đen đậm */
+    margin-bottom: 60px; /* Khoảng cách lớn xuống dòng dưới */
+    font-weight: 500;
+}
+
+/* 2. Slogan: Hơn cả một chất liệu... */
+.intro-subtitle {
+    font-size: 14px;
+    color: #333333; /* Màu đen xám */
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+/* 3. Mô tả: Đừng đóng khung... */
+.intro-desc {
+    font-size: 13px;
+    color: #999999; /* Màu xám nhạt */
+    line-height: 2; /* Khoảng cách dòng thoáng (gấp đôi cỡ chữ) */
+    letter-spacing: 1.5px;
+    font-weight: 300;
+}
+
+/* RESPONSIVE: Trên mobile thì bỏ ngắt dòng cứng <br> để chữ tự xuống dòng */
+@media (max-width: 768px) {
+    .collection-intro {
+        padding: 60px 20px;
+    }
+    
+    .intro-desc br {
+        display: none; /* Ẩn thẻ <br> trên mobile */
+    }
+    
+    .intro-title {
+        margin-bottom: 30px;
+        font-size: 18px;
+    }
+}
+
         /* BOTTOM LABEL */
         .bottom-label-container {
-            margin-top: 96px; /* mt-24 */
+            margin-top: 60px; /* mt-24 */
             text-align: center;
         }
 
@@ -300,15 +379,137 @@
             color: #6b7280; /* text-gray-500 */
         }
 
+         .mobile-menu-btn {
+            display: none;
+            z-index: 1002;
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-nav-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            color: #0c1c3d;
+        }
+        .mobile-nav-close-btn svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            stroke-width: 1.8;
+        }
+
+        .mobile-nav-overlay .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .mobile-nav-overlay .nav a {
+            font-size: 2rem;
+            font-weight: 400;
+            color: #0c1c3d;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 992px) {
+              .nav{
+                display: none;
+            }
+
+            #mobile-menu-btn {
+                display: block;
+            }
+
+            #user-icon{
+                display: none;
+            }
+
+            .header-icons .icon-btn:last-child {
+                display: none;
+            }
+
+            /* CSS cho .style-showcase-nav (Mobile <= 1024px) */
+            .style-showcase-nav {
+                position: static; 
+                transform: none; 
+                max-width: none;
+                pointer-events: auto; 
+
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                margin-top: 25px; 
+                width: 100%;
+                padding: 0; 
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                margin: 0 !important;
+                font-size: 1.5rem;
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+           .header {
+                padding: 15px 20px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+        }
+
         /* MEDIA QUERIES (RESPONSIVE) */
         @media (min-width: 768px) {
             .section-wrapper {
-                padding: 128px 0; /* md:py-32 */
+                padding: 50px 0; /* md:py-32 */
             }
 
             .content-grid {
                 flex-direction: row;
-                gap: 80px; /* md:gap-20 */
+                gap: 120px; /* md:gap-20 */
             }
 
             .col {
@@ -342,9 +543,7 @@
                 font-size: 12px; /* md:text-xs */
             }
 
-            .bottom-label-container {
-                margin-top: 128px; /* md:mt-32 */
-            }
+           
         }
 
         @media (min-width: 1024px) {
@@ -511,14 +710,11 @@
             text-transform: uppercase;
         }
 
-.product-grid {
+    .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4 cột đều nhau */
-            gap: 30px;
-            margin-bottom: 100px; /* Khoảng cách xuống phần dưới */
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
+            gap: 15px;
+            margin: 50px 20px ;
         }
 
         .product-card {
@@ -583,54 +779,59 @@
         }
         .wishlist-icon:hover { color: var(--color-red); }
 
+        
 
-        /* --- 2. DUO FEATURE SECTION (GIFT FOR HIM/HER) - FULL WIDTH --- */
-        .duo-section {
-            display: flex;
+       .split-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Chia đôi màn hình 50-50 */
             width: 100%;
-            max-width: 100%; /* Chiếm hết chiều rộng */
-            margin: 0;
-            padding: 80px 0;
-            border-top: 1px solid #f0f0f0; /* Đường kẻ nhẹ phân cách nếu cần */
-        }
-
-        .duo-group {
-            flex: 1; /* Mỗi bên chiếm 50% */
-            display: flex;
-            align-items: center; 
-            justify-content: center; /* Căn giữa nội dung trong 50% đó */
-            gap: 40px; /* Khoảng cách giữa CHỮ và ẢNH */
-        }
-
-        .duo-text {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #1a1a1a;
-            font-weight: 600;
-            white-space: nowrap; 
-        }
-
-        .duo-image-wrap {
-            width: 400px; /* Tăng kích thước ảnh lớn hơn cho cân đối với full width */
-            height: 520px;
+            /* Bỏ margin bottom để liền mạch */
             overflow: hidden;
-            background-color: #fafafa;
+            
+            margin: 0 auto;
+            margin-bottom: 100px;
         }
 
-        .duo-image-wrap img {
+        .split-item {
+            position: relative;
+            width: 100%;
+            height: 100%; /* Chiếm hết chiều cao của cha */
+            overflow: hidden;
+        }
+
+        .split-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            transition: transform 0.7s ease;
+            object-fit: cover; /* Giúp ảnh không bị méo khi co giãn màn hình */
+            object-position: top center; /* Ưu tiên lấy phần trên của ảnh */
+            transition: transform 1s ease;
+            border-bottom: 0.5px solid #999999; /* Viền nhẹ phân cách hai ảnh */
         }
 
-        /* Hiệu ứng zoom nhẹ khi hover vào ảnh */
-        .duo-group:hover .duo-image-wrap img {
-            transform: scale(1.03);
+        /* Hiệu ứng zoom nhẹ khi di chuột vào (tuỳ chọn) */
+        .split-item:hover img {
+            transform: scale(1.05);
         }
 
+        /* Phần chữ đè lên ảnh */
+        .split-text {
+            position: absolute;
+            top: 50%;
+            left: 80px; /* Canh lề trái cách ra một chút */
+            transform: translateY(-50%);
+            z-index: 2;
+            pointer-events: none; /* Để chuột có thể click xuyên qua chữ vào ảnh */
+        }
+
+        .split-text h3 {
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            letter-spacing: 4px; /* Giãn chữ rộng ra giống mẫu */
+            text-transform: uppercase;
+            line-height: 1.6;
+            font-weight: 500;
+            color: #1a1a1a; /* Màu chữ đen đậm */
+        }
         /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); }
@@ -640,6 +841,13 @@
             
             /* Đổi màu nền so le để phân biệt khi xuống dòng trên tablet/mobile */
             .duo-group:nth-child(even) { background-color: #f9f9f9; }
+
+            .card-image{
+                margin: 10px;
+            }
+            .card-info{
+                margin: 10px;
+            }
         }
         @media (max-width: 600px) {
             .product-grid { grid-template-columns: 1fr; }
@@ -648,7 +856,7 @@
         }
 .story-section {
             width: 100%;
-            max-width: 1920px; /* Giới hạn chiều rộng để giống khung hình */
+   
             margin: 0 auto;
             text-align: center;
             padding-top: 100px;
@@ -669,12 +877,15 @@
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
+            border-bottom: 1px solid #aba8a8;
         }
 
         .collection-row {
             display: grid;
             grid-template-columns: 1fr 1fr; /* Chia đôi 50-50 */
             min-height: 600px; /* Chiều cao tối thiểu cho mỗi hàng */
+            margin: 0 auto;
+         
         }
 
         /* --- 3. IMAGE COLUMN --- */
@@ -711,7 +922,7 @@
 
         /* Typography */
         .collection-title {
-            font-size: 24px;
+            font-size: 40px;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -721,11 +932,11 @@
         }
 
         .collection-desc {
-            font-size: 12px;
+            font-size: 18px;
             color: var(--color-text-desc);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             margin-bottom: 40px;
-            max-width: 400px; /* Giới hạn độ rộng dòng chữ */
+            max-width: 700px; /* Giới hạn độ rộng dòng chữ */
             line-height: 1.6;
             font-weight: 300;
         }
@@ -740,7 +951,7 @@
             font-size: 11px;
             letter-spacing: 2px;
             font-weight: 500;
-            padding: 12px 30px;
+            padding: 12px 50px;
             border: 1px solid var(--color-btn-bg);
             transition: all 0.3s ease;
         }
@@ -777,8 +988,8 @@
         }
 
         .story-title {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 20px;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: #1a1a1a;
@@ -960,6 +1171,18 @@
                 border-bottom: 15px solid transparent;
                 border-left: 25px solid var(--play-btn-color);
             }
+
+            .split-banner {
+                grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+                height: auto; /* Chiều cao tự động theo nội dung */
+            }
+            .split-item {
+                height: 70vh; /* Trên mobile mỗi ảnh cao 70% màn hình */
+            }
+            .split-text {
+                left: 30px; /* Mobile thì lề nhỏ hơn */
+            }
+            .split-banner, .styling-proof { grid-template-columns: 1fr; }
         }
 
         .footer-bottom {
@@ -988,8 +1211,11 @@
 </head>
 <body>
     <header class="header">
-
-        <div class="logo">V-SIXTYFOUR</div>
+        <div class="logo-img">
+            <a href="/">
+                <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR"/>
+            </a>
+        </div>
 
         <nav class="nav">
             <a href="#">NỮ</a>
@@ -1001,39 +1227,36 @@
 
         <div class="header-icons">
             <button class="icon-btn" id="search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
             </button>
 
             <button class="icon-btn desktop-icon" id="user-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A1.875 1.875 0 0118 22.5H6c-.966 0-1.794-.757-1.875-1.745z" />
                 </svg>
             </button>
 
             <button class="icon-btn desktop-icon" id="wishlist-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                 </svg>
                 <span class="badge">1</span>
             </button>
-
             
             <button class="icon-btn" id="cart-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                 </svg>
                 <span class="badge">0</span>
             </button>
 
             <button class="icon-btn" id="mobile-menu-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
             </button>
-
-            
         </div>
     </header>
 
@@ -1165,29 +1388,37 @@
 
     </div>
 
-    <!-- PHẦN 2: DUO FEATURE (GIFT FOR HIM / HER) -->
-    <div class="duo-section">
-        
-        <!-- Nhóm Nam (Him) -->
-        <div class="duo-group">
-   
-            <div class="duo-image-wrap">
-                <!-- Ảnh Nam quay mặt sang phải -->
-                <img src="static/imgs/trang-chu/7.png" alt="Him">
-            </div>
+    <section class="split-banner">
+        <div class="split-item">
+            <a href="#"> <img src="static/imgs/page-2/8.png" alt="Men's Workwear">
+                
+            </a>
         </div>
 
-        <!-- Nhóm Nữ (Her) -->
-        <div class="duo-group">
- 
-            <div class="duo-image-wrap">
-                <!-- Ảnh Nữ quay mặt sang trái (hoặc thẳng) -->
-                <img src="static/imgs/trang-chu/8.png" alt="Her">
-            </div>
+        <div class="split-item">
+            <a href="#">
+                <img src="static/imgs/page-2/9.png" alt="Women's Workwear">
+               
+            </a>
         </div>
+    </section>
 
-    </div>
+    <section class="collection-intro">
+        <div class="intro-container">
+            <h2 class="intro-title">BEYOND THE BLUE</h2>
+            
+            <p class="intro-subtitle">
+                Hơn cả một chất liệu, Denim là ngôn ngữ của phong cách sống
+            </p>
 
+            <p class="intro-desc">
+                Đừng đóng khung Denim chỉ trong sự bụi bặm. Từ góc phố<br>
+                ồn ào đến văn phòng hiện đại, Denim thiên biến vạn hóa<br>
+                để cùng bạn kể những câu chuyện riêng biệt. Khám phá<br>
+                3 sắc thái định hình nên tủ đồ của người hiện đại
+            </p>
+        </div>
+    </section>
 
 
 
