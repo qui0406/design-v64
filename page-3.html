@@ -12,7 +12,7 @@
     <style>
         /* --- 1. RESET & VARIABLES --- */
         :root {
-            --font-main: 'Jost', sans-serif;
+            --font-main: 'Roboto', sans-serif;
             --font-serif: 'Playfair Display', serif;
             --font-hand: 'Caveat', cursive; /* Font chữ viết tay cho tờ giấy */
             
@@ -431,9 +431,6 @@
 }
 
 /* --- 8. FOOTER LOOKBOOK --- */
-.lookbook-section {
-    margin-bottom: 80px;
-}
 
 .v64-hero {
     height: 60vh;
@@ -509,6 +506,59 @@
     font-weight: 400;
 }
 
+        .footer { padding: 100px 0 20px; background-color: #fff;  }
+        
+        .footer-top { display: flex; flex-wrap: wrap; gap: 40px; margin: 100px }
+        .footer-col { min-width: 200px; }
+        .wide-col { flex: 1.4; }
+        .narrow-col { flex: 1; }
+
+        .footer-col h3 { font-size: 15px; font-weight: 700; color: #272727;; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; }
+        
+        /* Newsletter */
+        .newsletter-form { display: flex; border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; }
+        .newsletter-form input { border: none; outline: none; flex-grow: 1; font-size: 13px; color: #333; }
+        .newsletter-form button { border: none; background: none; color: #999; cursor: pointer; font-size: 12px; text-transform: uppercase; font-weight: bold; }
+        .desc { font-size: 12px; color: #999; margin-bottom: 30px; text-align: justify; line-height: 1.5; }
+
+        /* Socials */
+        .social-media h3 { margin-bottom: 15px; margin-top: 20px; }
+        .social-icons { display: flex; gap: 12px; align-items: center; }
+        .social-btn {
+            width: 38px; height: 38px; background-color: #6d6d6d; color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+        .social-btn:hover { background-color: #333; transform: translateY(-2px); }
+
+        /* Zalo Custom Icon */
+        .zalo-btn img { display: none; }
+        .zalo-bubble {
+            width: 22px; height: 22px; background-color: #fff; color: #6d6d6d;
+            border-radius: 8px; border-bottom-left-radius: 2px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: sans-serif; font-weight: 900; font-size: 10px; line-height: 1; letter-spacing: -0.5px;
+        }
+        .social-btn:hover .zalo-bubble { color: #333; }
+        
+        .bct-logo { margin-top: 25px; }
+        .bct-logo img { width: 140px; height: auto; object-fit: contain; }
+
+        /* Info Links */
+        .info-group { margin-bottom: 25px; }
+        .footer-col p, .address-list a, .contact-info a, .footer-links a {
+            display: block; font-size: 13px; color: #777; line-height: 1.6; margin-bottom: 6px;
+        }
+        .contact-info a { font-weight: 500; color: #555; }
+        .footer-links a:hover, .address-list a:hover, .contact-info a:hover { color: #000; padding-left: 3px; }
+        .contact-info a:hover { color: var(--color-accent); }
+
+        /* Big Logo & Bottom */
+        .footer-big-logo { text-align: center; margin: 0 20px 100px; padding: 0 20px; }
+        .footer-big-logo img { width: 100%; max-width: 80%; height: auto; margin: 0 auto; }
+        .footer-bottom { text-align: center; border-top: 1px solid #eee; padding-top: 25px; font-size: 12px; color: #999; }
+
+
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .category-row { grid-template-columns: 1fr; }
@@ -534,7 +584,10 @@
     .standout-desc { text-align: left; }
     .v64-title { font-size: 24px; }
     .v64-subtitle { font-size: 11px; }
-
+    .footer-top { flex-direction: column; gap: 30px; margin: 30px; }
+    .wide-col, .narrow-col { flex: 1 1 100%; }
+    .footer-big-logo { margin: 20px 0; }
+    .footer-big-logo img { width: 90%; max-width: 100%; }
 }
     </style>
 </head>
@@ -776,6 +829,95 @@
             </div>
         </div>
     </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col wide-col">
+                    <h3>ĐĂNG KÝ NHẬN KHUYẾN MÃI</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Nhập email khuyến mãi">
+                        <button type="submit">Đăng ký</button>
+                    </form>
+                    <p class="desc">
+                        Khi nhấn chọn "Đăng ký", quý khách đã tham khảo và đồng ý với Chính sách Bảo mật. Điều này đồng nghĩa với việc quý khách chấp nhận nhận Bản tin, thông tin khuyến mãi từ chúng tôi.
+                    </p>
+                    <div class="social-media">
+                        <h3>MẠNG XÃ HỘI</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+                            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-btn zalo-btn">
+                                <div class="zalo-bubble">Zalo</div>
+                            </a>
+                        </div>
+                        <div class="bct-logo">
+                            <a href="http://online.gov.vn/" target="_blank">
+                                <img src="static/imgs/boCongThuong.png" alt="Đã thông báo Bộ Công Thương">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-col wide-col">
+                    <h3>V-SIXTYFOUR</h3>
+                    <div class="info-group">
+                        <p>MSDN: 0314840916 do Sở Kế Hoạch và Đầu Tư TP.HCM</p>
+                    </div>
+                    <div class="info-group address-list">
+                        <a href="#" target="_blank">Văn Phòng: 6 Thái Văn Lung, Phường Bến Nghé, Q.1, Tp. HCM</a>
+                        <a href="#" target="_blank">Q7 - Tp.HCM: Tầng Trệt - TTTM Lotte Mart Q7</a>
+                        <a href="#" target="_blank">Q10 - Tp.HCM: Tầng 3 - TTTM Vạn Hạnh Mall</a>
+                        <a href="#" target="_blank">Cần Thơ: Tầng 1 - TTTM Sense</a>
+                        <a href="#" target="_blank">Phan Thiết: Tầng 2 - TTTM Lotte Mart Phan Thiết</a>
+                        <a href="#" target="_blank">Hải Phòng: Tầng 1 - TTTM Aeon Mall Hải Phòng</a>
+                    </div>
+                    <div class="info-group contact-info">
+                        <a href="tel:0907026564">0907 026.564</a>
+                        <a href="mailto:cskh@v64.vn">cskh@v64.vn</a>
+                    </div>
+                </div>
+
+                <div class="footer-col narrow-col">
+                    <h3>CHÍNH SÁCH</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Phương thức thanh toán</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="#">Chính sách kiểm và đổi hàng</a></li>
+                        <li><a href="#">Hướng dẫn đổi trả sản phẩm</a></li>
+                        <li><a href="#">Hướng dẫn bảo quản sản phẩm</a></li>
+                        <li><a href="#">Chính sách bảo vệ thông tin khách hàng</a></li>
+                        <li><a href="#">Chính Sách Thành Viên</a></li>
+                        <li><a href="#">Những câu hỏi thường gặp</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col narrow-col">
+                    <h3>LIÊN KẾT</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Nhà sáng lập</a></li>
+                        <li><a href="#">Công ty VITAJEANS</a></li>
+                        <li><a href="#">Xu hướng - Phong cách</a></li>
+                        <li><a href="#">Bản Tin V-SIXTYFOUR</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-big-logo">
+            <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR Logo">
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 V-SIXTYFOUR. Powered by VIET THANG JEAN Company Limited</p>
+        </div>
+    </footer>
 
 </body>
 </html>

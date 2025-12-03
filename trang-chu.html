@@ -4,1212 +4,319 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>V-SIXTYFOUR - Shades of Denim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&family=Oswald:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-
+        /* =========================================
+           1. VARIABLES & RESET
+           ========================================= */
         :root {
             --font-main: 'Jost', sans-serif;
-            --color-red: #cc0000;       /* Màu đỏ của giá và nhãn */
-            --color-text-gray: #666666; /* Màu xám của tên sản phẩm */
-            --color-price-old: #999999; /* Màu xám của giá cũ */
-            --color-bg-img: #f4f4f4;    /* Màu nền xám nhẹ sau lưng mẫu */
-            --color-heart: #cccccc;     /* Màu icon tim */
-
+            --font-body: 'Roboto', sans-serif;
+            --color-primary: #0c1c3d;
+            --color-accent: #c4a059; /* Vàng Gold */
+            --color-red: #cc0000;
             --color-text-title: #1a1a1a;
-            --color-text-desc: #999999;
-            --color-btn-bg: #132b4d; /* Màu xanh đen đậm của nút */
-            --color-btn-text: #ffffff;
-            --spacing-section: 0; /* Không khoảng cách giữa các hàng */
+            --color-text-gray: #666;
+            --color-text-light: #999;
+            --color-bg-product: #f4f4f4;
+            --btn-bg: #132b4d;
+            --btn-text: #ffffff;
+        }
 
-            --color-text-caption: #ffffff;
-            --play-btn-color: #0f1c2e;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: var(--font-body);
             color: #333;
             line-height: 1.6;
+            font-size: 14px;
         }
 
-  /* --- HEADER CHÍNH --- */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    height: 60px;
-    padding: 0 40px; /* Padding hai bên */
-
-    /* KEY CHANGE: Dùng flexbox đẩy đều 3 phần tử sang 2 bên và giữa */
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-}
-
-/* --- 1. LOGO (Bên trái) --- */
-.logo-img {
-    /* Xóa position absolute để logo nằm trong dòng chảy flexbox */
-    display: flex;
-    align-items: center;
-    width: 200px; /* Đặt chiều rộng cố định để cân đối layout */
-}
-
-.logo-img img {
-    width: 100%;
-    max-width: 180px; /* Giới hạn kích thước logo cho vừa mắt */
-    display: block;
-    object-fit: contain;
-}
-
-/* --- 2. MENU NAVIGATION (Ở giữa) --- */
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 40px; /* Khoảng cách giữa các chữ rộng hơn cho thoáng */
-    flex: 1; /* Chiếm phần không gian còn lại để căn giữa tốt hơn */
-    justify-content: center; /* Căn chữ vào giữa khu vực nav */
-}
-
-.nav a {
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 15px; /* Cỡ chữ vừa phải */
-    font-weight: 500;
-    color: #0c1c3d; /* Màu xanh đen đậm như hình */
-    letter-spacing: 0.5px;
-    transition: color 0.3s;
-    font-family: 'Roboto', sans-serif !important;
-}
-
-.nav a:hover {
-    color: #c4a059; /* Hover màu vàng */
-}
-
-/* --- 3. ICONS (Bên phải) --- */
-.header-icons {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Đẩy icon về sát phải */
-    gap: 25px; /* Khoảng cách giữa các icon */
-    width: 200px; /* Bằng width của logo để Menu nằm chính giữa màn hình */
-}
-
-.icon-btn {
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    color: #000;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s, color 0.2s;
-}
-
-.icon-btn:hover {
-    color: #c4a059; /* Hover icon sang màu vàng */
-}
-
-.icon-btn svg {
-    width: 24px;
-    height: 24px;
-    stroke-width: 1.5;
-}
-
-/* Badge số lượng (Vòng tròn vàng) */
-.badge {
-    position: absolute;
-    top: -5px;
-    right: -8px;
-    background-color: #c4a059; /* Màu vàng gold */
-    color: #ffffff;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-/* Nút Mobile Menu */
-#mobile-menu-btn {
-    display: none;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-    .header { padding: 0 20px; }
-    .nav { display: none; } /* Ẩn menu chữ trên mobile */
-    .desktop-icon { display: none; } /* Ẩn icon user/tim nếu muốn */
-    #mobile-menu-btn { display: block; }
-    
-    /* Trên mobile, logo và icon đẩy ra 2 đầu */
-    .logo-img { width: auto; }
-    .header-icons { width: auto; gap: 15px; }
-}
-
-        .hero-banner {
-            position: relative;
-            height: 93vh;
-            background: url('static/imgs/trang-chu/1.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin: 0 auto;
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 96px;
-            font-weight: 300;
-            letter-spacing: 15px;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 16px;
-            letter-spacing: 3px;
-        }
-
-
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
 
         .container {
             width: 100%;
-            max-width: 1500px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        .content-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 70px; 
+        /* =========================================
+           2. HEADER
+           ========================================= */
+        .header {
+            position: sticky; top: 0; z-index: 1000;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            height: 60px;
+            padding: 0 40px;
+            display: flex; align-items: center; justify-content: space-between;
         }
 
-        /* COLUMNS */
-        .col {
-            width: 100%;
+        /* Logo */
+        .logo-img { width: 200px; display: flex; align-items: center; }
+        .logo-img img { width: 100%; max-width: 180px; object-fit: contain; }
+
+        /* Nav */
+        .nav { display: flex; align-items: center; gap: 40px; flex: 1; justify-content: center; }
+        .nav a {
+            text-transform: uppercase; font-size: 15px; font-weight: 500;
+            color: var(--color-primary); letter-spacing: 0.5px;
         }
+        .nav a:hover { color: var(--color-accent); }
 
-        .col-image {
-            display: flex;
-            justify-content: center;
+        /* Icons */
+        .header-icons { display: flex; align-items: center; justify-content: flex-end; gap: 25px; width: 200px; }
+        .icon-btn {
+            background: none; border: none; cursor: pointer;
+            color: #000; position: relative; display: flex; align-items: center; justify-content: center;
         }
-
-        .col-text {
-            text-align: center;
-        }
-
-        .text-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* IMAGE STYLES */
-        .image-container {
-            position: relative;
-            overflow: hidden;
-            background-color: #f9fafb; /* bg-gray-50 */
-            aspect-ratio: 3/4;
-            width: 100%;
-            height: 75vh;
-            max-width: 500px;
-        }
-
-        .model-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.7s ease-in-out;
-        }
-
-        .image-container:hover .model-image {
-            transform: scale(1.05);
-        }
-
-        /* TYPOGRAPHY */
-        .main-title {
-            font-size: 60px !important; /* text-4xl */
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.025em; /* tracking-wide */
-            color: #000000;
-            margin-bottom: 16px;
-        }
-
-        .subtitle {
-            color: #959292; /* text-gray-300 */
-            font-size: 18px !important;
-            text-transform: uppercase;
-            letter-spacing: 0.1em; /* tracking-widest */
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .separator {
-            margin: 0 8px;
-        }
-
-        .description {
-            color: #9ca3af; /* text-gray-400 */
-            font-size: 14px;
-            line-height: 1.75; /* leading-7 */
-            margin-bottom: 48px;
-            max-width: 20rem; /* max-w-md */
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-            letter-spacing: 0.025em;
-        }
-
-        /* BUTTON / LINK */
-        .cta-link {
-            display: inline-block;
-            text-decoration: none;
-            padding-bottom: 4px;
-            border-bottom: 1px solid #e5e7eb; /* border-gray-200 */
-            transition: border-color 0.3s;
-        }
-
-        .cta-link:hover {
-            border-bottom-color: #000000;
-        }
-
-        .cta-text {
-            font-size: 10px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.2em; /* tracking-extra-wide */
-            color: #9ca3af; /* text-gray-400 */
-            transition: color 0.3s;
-        }
-
-        .cta-link:hover .cta-text {
-            color: #000000;
-        }
-
-        /* --- COLLECTION INTRO SECTION --- */
-.collection-intro {
-    padding-bottom: 200px; /* Khoảng cách trên dưới rộng rãi tạo cảm giác sang trọng */
-    background-color: #ffffff;
-    text-align: center; /* Căn giữa toàn bộ nội dung */
-    font-family: 'Jost', sans-serif; /* Sử dụng font chữ chính của web bạn */
-    border-bottom: 1px solid #bbb7b7; /* Viền nhẹ bao quanh */
-}
-
-.intro-container {
-    max-width: 800px; /* Giới hạn chiều rộng để chữ không bị tràn ra mép màn hình */
-    margin: 0 auto;
-}
-
-/* 1. Tiêu đề: BEYOND THE BLUE */
-.intro-title {
-    font-size: 20px;
-    letter-spacing: 4px; /* Giãn cách chữ cái rộng ra */
-    text-transform: uppercase; /* Viết hoa toàn bộ */
-    color: #0c1c3d; /* Màu xanh đen đậm */
-    margin-bottom: 60px; /* Khoảng cách lớn xuống dòng dưới */
-    font-weight: 500;
-}
-
-/* 2. Slogan: Hơn cả một chất liệu... */
-.intro-subtitle {
-    font-size: 14px;
-    color: #333333; /* Màu đen xám */
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-    font-weight: 400;
-}
-
-/* 3. Mô tả: Đừng đóng khung... */
-.intro-desc {
-    font-size: 13px;
-    color: #999999; /* Màu xám nhạt */
-    line-height: 2; /* Khoảng cách dòng thoáng (gấp đôi cỡ chữ) */
-    letter-spacing: 1.5px;
-    font-weight: 300;
-}
-
-/* RESPONSIVE: Trên mobile thì bỏ ngắt dòng cứng <br> để chữ tự xuống dòng */
-@media (max-width: 768px) {
-    .collection-intro {
-        padding: 60px 20px;
-    }
-    
-    .intro-desc br {
-        display: none; /* Ẩn thẻ <br> trên mobile */
-    }
-    
-    .intro-title {
-        margin-bottom: 30px;
-        font-size: 18px;
-    }
-}
-
-        /* BOTTOM LABEL */
-        .bottom-label-container {
-            margin-top: 60px; /* mt-24 */
-            text-align: center;
-        }
-
-        .bottom-label {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: #6b7280; /* text-gray-500 */
-        }
-
-         .mobile-menu-btn {
-            display: none;
-            z-index: 1002;
-        }
-
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1001;
-            
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-20px);
-            transition: all 0.3s ease;
-        }
-
-        .mobile-nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .mobile-nav-close-btn {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 8px;
-            border-radius: 50%;
-            color: #0c1c3d;
-        }
-        .mobile-nav-close-btn svg {
-            width: 28px;
-            height: 28px;
-            stroke: currentColor;
-            stroke-width: 1.8;
-        }
-
-        .mobile-nav-overlay .nav {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            text-align: center;
-        }
-
-        .mobile-nav-overlay .nav a {
-            font-size: 2rem;
-            font-weight: 400;
-            color: #0c1c3d;
-            padding: 10px 0;
-        }
-
-        @media (max-width: 992px) {
-              .nav{
-                display: none;
-            }
-
-            #mobile-menu-btn {
-                display: block;
-            }
-
-            #user-icon{
-                display: none;
-            }
-
-            .header-icons .icon-btn:last-child {
-                display: none;
-            }
-
-            /* CSS cho .style-showcase-nav (Mobile <= 1024px) */
-            .style-showcase-nav {
-                position: static; 
-                transform: none; 
-                max-width: none;
-                pointer-events: auto; 
-
-                display: flex;
-                justify-content: center;
-                gap: 40px;
-                margin-top: 25px; 
-                width: 100%;
-                padding: 0; 
-            }
-
-            .nav-arrow {
-                width: 40px;
-                height: 40px;
-                margin: 0 !important;
-                font-size: 1.5rem;
-            }
-
-        }
-
-
-        @media (max-width: 768px) {
-           .header {
-                padding: 15px 20px;
-            }
-
-            .nav {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-        }
-
-        /* MEDIA QUERIES (RESPONSIVE) */
-        @media (min-width: 768px) {
-            .section-wrapper {
-                padding: 50px 0; /* md:py-32 */
-            }
-
-            .content-grid {
-                flex-direction: row;
-                gap: 120px; /* md:gap-20 */
-            }
-
-            .col {
-                width: 41.666667%; /* md:w-5/12 */
-            }
-
-            .col-image {
-                justify-content: flex-end;
-            }
-
-            .col-text {
-                text-align: left;
-            }
-            
-            /* On desktop, keep text center aligned inside the right column as per original design logic 
-               (flex-col items-center), but the column itself is part of a row. */
-            
-            .main-title {
-                font-size: 48px; /* md:text-5xl */
-            }
-
-            .subtitle {
-                font-size: 14px; /* md:text-sm */
-            }
-
-            .description {
-                font-size: 14px; /* md:text-sm */
-            }
-
-            .cta-text {
-                font-size: 12px; /* md:text-xs */
-            }
-
-           
-        }
-
-        @media (min-width: 1024px) {
-            .main-title {
-                font-size: 60px; /* lg:text-6xl */
-            }
-        }
-
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Mobile: 1 column */
-            gap: 2rem;
-        }
-
-        /* --- 3. PRODUCT CARD STYLES --- */
-        .product-card {
-            cursor: pointer;
-            position: relative;
-        }
-
-        /* Image Area */
-        .image-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 3 / 4; /* Tỉ lệ khung hình 3:4 */
-            background-color: var(--color-bg-product);
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            mix-blend-mode: multiply; /* Hòa trộn ảnh vào nền xám */
-            padding: 1rem;
-            transition: transform var(--transition-speed) ease-in-out;
-        }
-
-        /* Hover Effect */
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
-
-        /* Info Area */
-        .product-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .info-left {
-            flex: 1;
-            padding-right: 1rem;
-        }
-
-        /* Price Styling */
-        .price-row {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.25rem;
-            font-size: 0.875rem; /* 14px */
-        }
-
-        .current-price {
-            color: var(--color-sale-red);
-            font-weight: 700;
-        }
-
-        .original-price {
-            color: var(--color-text-light);
-            text-decoration: line-through;
-            font-size: 0.75rem; /* 12px */
-        }
-
-        .discount-badge {
-            background-color: var(--color-sale-red);
-            color: var(--color-white);
-            font-size: 0.625rem; /* 10px */
-            font-weight: 700;
-            padding: 2px 4px;
-            margin-left: 4px;
-        }
-
-        /* Name Styling */
-        .product-name {
-            color: var(--color-text-gray);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            line-height: 1.6;
-            font-weight: 400;
-            letter-spacing: 0.025em;
-        }
-
-        /* Wishlist Icon */
-        .btn-wishlist {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #d1d5db; /* gray-300 */
-            font-size: 1.25rem;
-            padding-top: 0.25rem;
-            transition: color 0.3s ease;
-        }
-
-        .btn-wishlist:hover {
-            color: var(--color-sale-red);
-        }
-
-        /* Partial Opacity Item (Item 4) */
-        .product-card.faded {
-            opacity: 0.5;
-            display: none; /* Hide on mobile by default */
-        }
-
-        /* --- 4. RESPONSIVE DESIGN --- */
+        .icon-btn:hover { color: var(--color-accent); }
+        .icon-btn svg { width: 24px; height: 24px; stroke-width: 1.5; }
         
-        /* Tablet (>= 768px) */
-        @media (min-width: 768px) {
-
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns */
-            }
-
-            .price-row {
-                font-size: 0.875rem;
-            }
+        .badge {
+            position: absolute; top: -5px; right: -8px;
+            background-color: var(--color-accent); color: #fff;
+            border-radius: 50%; width: 16px; height: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: bold;
         }
 
-        /* Desktop (>= 1024px) */
-        @media (min-width: 1024px) {
-            .product-grid {
-                grid-template-columns: repeat(4, 1fr); /* 4 columns */
-            }
+        #mobile-menu-btn { display: none; }
 
-            .product-card.faded {
-                display: block; /* Show item 4 on desktop */
-            }
+        /* =========================================
+           3. HERO BANNER & INTRO SECTION
+           ========================================= */
+        .hero-banner {
+            height: 93vh;
+            background: url('static/imgs/trang-chu/1.png') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center;
         }
 
+        /* Shades of Denim Section */
+        .section-wrapper { padding: 50px 0; }
+        .content-grid { display: flex; flex-direction: column; align-items: center; gap: 70px; }
+        
+        .col { width: 100%; }
+        .col-image { display: flex; justify-content: center; }
+        .col-text { text-align: center; }
+        .text-wrapper { display: flex; flex-direction: column; align-items: center; text-align: center; }
 
+        .image-container {
+            background-color: #f9fafb; aspect-ratio: 3/4;
+            width: 100%; height: 75vh; max-width: 500px; overflow: hidden;
+        }
+        .model-image { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.7s; }
+        .image-container:hover .model-image { transform: scale(1.05); }
 
+        .main-title { font-size: 60px; font-weight: 600; text-transform: uppercase; color: #000; margin-bottom: 16px; }
+        .subtitle { color: #959292; font-size: 18px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 40px; font-weight: 300; }
+        .description { color: #9ca3af; margin-bottom: 48px; max-width: 20rem; font-weight: 300; }
+        
+        .cta-link { border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; }
+        .cta-link:hover { border-bottom-color: #000; }
+        .cta-text { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; color: #9ca3af; }
+        .cta-link:hover .cta-text { color: #000; }
 
+        .bottom-label-container { margin-top: 60px; text-align: center; }
+        .bottom-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #6b7280; }
 
-        .section-title {
-            text-align: center;
-            padding: 80px 20px 50px;
-            background: white;
+        /* =========================================
+           4. PRODUCT GRID
+           ========================================= */
+        .product-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 15px; margin: 50px 20px;
         }
 
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 300;
-            letter-spacing: 5px;
-            margin-bottom: 15px;
-        }
-
-        .section-title p {
-            font-size: 13px;
-            color: #888;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-    .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 cột đều nhau */
-            gap: 15px;
-            margin: 50px 20px ;
-        }
-
-        .product-card {
-            cursor: pointer;
-        }
-
-        /* Ảnh sản phẩm */
+        .product-card { cursor: pointer; position: relative; }
+        
         .card-image {
-            background-color: var(--color-bg-product);
-            aspect-ratio: 3 / 4.2; /* Tỉ lệ ảnh dọc */
-            overflow: hidden;
-            margin-bottom: 15px;
-            position: relative;
+            background-color: var(--color-bg-product); aspect-ratio: 3/4.2;
+            overflow: hidden; margin-bottom: 15px; position: relative;
         }
-
         .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            mix-blend-mode: multiply; /* Hòa trộn nền xám */
-            transition: transform 0.5s ease;
+            width: 100%; height: 100%; object-fit: cover;
+            mix-blend-mode: multiply; transition: transform 0.5s ease;
         }
+        .product-card:hover .card-image img { transform: scale(1.05); }
 
-        .product-card:hover .card-image img {
-            transform: scale(1.05);
-        }
-
-        /* Thông tin sản phẩm */
-        .card-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .info-left { flex: 1; }
-
-        .price-row {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
+        .card-info { display: flex; justify-content: space-between; align-items: flex-start; }
+        .price-row { display: flex; align-items: center; font-size: 14px; font-weight: 600; margin-bottom: 5px; }
         .current-price { color: var(--color-red); margin-right: 8px; }
-        .old-price { color: var(--color-gray-price); text-decoration: line-through; font-size: 13px; margin-right: 8px; font-weight: 400; }
+        .old-price { color: var(--color-text-light); text-decoration: line-through; font-size: 13px; margin-right: 8px; font-weight: 400; }
         .discount-tag { background: var(--color-red); color: #fff; font-size: 10px; padding: 1px 4px; font-weight: 700; }
-
-        .product-name {
-            font-size: 12px;
-            color: var(--color-gray-text);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            line-height: 1.4;
-        }
-
-        .wishlist-icon {
-            color: #ccc;
-            font-size: 18px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
+        
+        .product-name { font-size: 12px; color: var(--color-text-gray); text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4; }
+        .wishlist-icon { color: #ccc; font-size: 18px; cursor: pointer; transition: color 0.3s; }
         .wishlist-icon:hover { color: var(--color-red); }
 
-        
-
-       .split-banner {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Chia đôi màn hình 50-50 */
-            width: 100%;
-            /* Bỏ margin bottom để liền mạch */
-            overflow: hidden;
-            
-            margin: 0 auto;
-            margin-bottom: 100px;
+        /* =========================================
+           5. SPLIT BANNER & COLLECTION INTRO
+           ========================================= */
+        .split-banner {
+            display: grid; grid-template-columns: 1fr 1fr;
+            width: 100%; margin-bottom: 100px; overflow: hidden;
         }
-
-        .split-item {
-            position: relative;
-            width: 100%;
-            height: 100%; /* Chiếm hết chiều cao của cha */
-            overflow: hidden;
-        }
-
+        .split-item { position: relative; width: 100%; height: 100%; overflow: hidden; }
         .split-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Giúp ảnh không bị méo khi co giãn màn hình */
-            object-position: top center; /* Ưu tiên lấy phần trên của ảnh */
-            transition: transform 1s ease;
-            border-bottom: 0.5px solid #999999; /* Viền nhẹ phân cách hai ảnh */
+            width: 100%; height: 100%; object-fit: cover; object-position: top center;
+            transition: transform 1s ease; border-bottom: 0.5px solid #999;
         }
+        .split-item:hover img { transform: scale(1.05); }
 
-        /* Hiệu ứng zoom nhẹ khi di chuột vào (tuỳ chọn) */
-        .split-item:hover img {
-            transform: scale(1.05);
+        .collection-intro {
+            padding-bottom: 200px; background-color: #fff; text-align: center;
+            font-family: var(--font-main); border-bottom: 1px solid #aba8a8;
         }
+        .intro-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        .intro-title { font-size: 20px; letter-spacing: 4px; text-transform: uppercase; color: var(--color-primary); margin-bottom: 60px; font-weight: 500; }
+        .intro-subtitle { font-size: 14px; color: #333; letter-spacing: 2px; margin-bottom: 30px; }
+        .intro-desc { font-size: 13px; color: var(--color-text-light); line-height: 2; letter-spacing: 1.5px; font-weight: 300; }
 
-        /* Phần chữ đè lên ảnh */
-        .split-text {
-            position: absolute;
-            top: 50%;
-            left: 80px; /* Canh lề trái cách ra một chút */
-            transform: translateY(-50%);
-            z-index: 2;
-            pointer-events: none; /* Để chuột có thể click xuyên qua chữ vào ảnh */
-        }
+        /* =========================================
+           6. COLLECTION ROWS (Checkerboard)
+           ========================================= */
+        .collection-section { width: 100%; border-bottom: 1px solid #aba8a8; }
+        .collection-row { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
 
-        .split-text h3 {
-            font-family: 'Jost', sans-serif;
-            font-size: 14px;
-            letter-spacing: 4px; /* Giãn chữ rộng ra giống mẫu */
-            text-transform: uppercase;
-            line-height: 1.6;
-            font-weight: 500;
-            color: #1a1a1a; /* Màu chữ đen đậm */
+        .collection-section .col-image { position: relative; overflow: hidden; height: 100%; width: 100%; }
+        .collection-section .col-image img {
+            width: 100%; height: 100%; object-fit: cover; object-position: center top;
+            transition: transform 0.7s ease; display: block;
         }
-        /* --- RESPONSIVE --- */
-        @media (max-width: 1024px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
-            
-            .duo-section { flex-direction: column; gap: 0; }
-            .duo-group { width: 100%; padding: 40px 0; }
-            
-            /* Đổi màu nền so le để phân biệt khi xuống dòng trên tablet/mobile */
-            .duo-group:nth-child(even) { background-color: #f9f9f9; }
+        .collection-section .col-image:hover img { transform: scale(1.03); }
 
-            .card-image{
-                margin: 10px;
-            }
-            .card-info{
-                margin: 10px;
-            }
-        }
-        @media (max-width: 600px) {
-            .product-grid { grid-template-columns: 1fr; }
-            .duo-group { flex-direction: column-reverse; gap: 20px; }
-            .duo-image-wrap { width: 100%; height: auto; aspect-ratio: 3/4; }
-        }
-.story-section {
-            width: 100%;
-   
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 100px;
-        }
-
-        /* --- 3. SECTION TITLE --- */
-        .story-title {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--color-text-title);
-            margin-bottom: 40px; /* Khoảng cách giữa tiêu đề và video */
-        }
-
-
-.collection-section {
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            border-bottom: 1px solid #aba8a8;
-        }
-
-        .collection-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Chia đôi 50-50 */
-            min-height: 600px; /* Chiều cao tối thiểu cho mỗi hàng */
-            margin: 0 auto;
-         
-        }
-
-        /* --- 3. IMAGE COLUMN --- */
-        .col-image {
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-        }
-
-        .col-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Đảm bảo ảnh full khung không bị méo */
-            object-position: center top;
-            display: block;
-            transition: transform 0.7s ease;
-        }
-
-        /* Hiệu ứng zoom nhẹ khi hover vào ảnh */
-        .col-image:hover img {
-            transform: scale(1.03);
-        }
-
-        /* --- 4. TEXT CONTENT COLUMN --- */
         .col-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 60px;
-            background-color: #fff;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 60px; background-color: #fff;
         }
-
-        /* Typography */
-        .collection-title {
-            font-size: 40px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--color-text-title);
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .collection-desc {
-            font-size: 18px;
-            color: var(--color-text-desc);
-            letter-spacing: 2px;
-            margin-bottom: 40px;
-            max-width: 700px; /* Giới hạn độ rộng dòng chữ */
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        /* Button Style */
+        .collection-title { font-size: 40px; font-weight: 500; text-transform: uppercase; letter-spacing: 3px; color: var(--color-text-title); margin-bottom: 20px; line-height: 1.4; }
+        .collection-desc { font-size: 18px; color: var(--color-text-light); letter-spacing: 2px; margin-bottom: 40px; max-width: 700px; line-height: 1.6; font-weight: 300; }
+        
         .btn-collection {
-            display: inline-block;
-            background-color: var(--color-btn-bg);
-            color: var(--color-btn-text);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 2px;
-            font-weight: 500;
-            padding: 12px 50px;
-            border: 1px solid var(--color-btn-bg);
-            transition: all 0.3s ease;
+            display: inline-block; background-color: var(--btn-bg); color: var(--btn-text);
+            text-transform: uppercase; font-size: 11px; letter-spacing: 2px; font-weight: 500;
+            padding: 12px 50px; border: 1px solid var(--btn-bg);
         }
+        .btn-collection:hover { background-color: transparent; color: var(--btn-bg); }
 
-        .btn-collection:hover {
-            background-color: transparent;
-            color: var(--color-btn-bg);
-        }
-
-        /* --- 5. RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .collection-row {
-                grid-template-columns: 1fr; /* Mobile: 1 cột */
-                min-height: auto;
-            }
-
-            .col-image {
-                height: 500px; /* Chiều cao ảnh trên mobile */
-            }
-
-            /* Đảo thứ tự cho hàng thứ 2 để ảnh luôn nằm trên chữ trên mobile */
-            .row-reverse {
-                display: flex;
-                flex-direction: column-reverse;
-            }
-        }
-
-        .story-section {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .story-title {
-            font-size: 20px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #1a1a1a;
-            margin-bottom: 40px;
-        }
-
+        /* =========================================
+           7. STORY SECTION (Video)
+           ========================================= */
+        .story-section { width: 100%; max-width: 1200px; margin: 0 auto; text-align: center; padding: 80px 0; }
+        .story-title { font-size: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: 3px; color: #1a1a1a; margin-bottom: 40px; }
         .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* Tỉ lệ khung hình 16:9 (aspect ratio) */
-            background-color: #000;
-            overflow: hidden;
+            position: relative; width: 100%; padding-top: 56.25%; /* 16:9 */
+            background-color: #000; overflow: hidden;
+        }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* =========================================
+           8. FOOTER
+           ========================================= */
+        .footer { padding: 100px 0 20px; background-color: #fff;  }
+        
+        .footer-top { display: flex; flex-wrap: wrap; gap: 40px; margin: 100px }
+        .footer-col { min-width: 200px; }
+        .wide-col { flex: 1.4; }
+        .narrow-col { flex: 1; }
+
+        .footer-col h3 { font-size: 15px; font-weight: 700; color: #272727; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; }
+        
+        /* Newsletter */
+        .newsletter-form { display: flex; border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; }
+        .newsletter-form input { border: none; outline: none; flex-grow: 1; font-size: 13px; color: #333; }
+        .newsletter-form button { border: none; background: none; color: #999; cursor: pointer; font-size: 12px; text-transform: uppercase; font-weight: bold; }
+        .desc { font-size: 12px; color: #999; margin-bottom: 30px; text-align: justify; line-height: 1.5; }
+
+        /* Socials */
+        .social-media h3 { margin-bottom: 15px; margin-top: 20px; }
+        .social-icons { display: flex; gap: 12px; align-items: center; }
+        .social-btn {
+            width: 38px; height: 38px; background-color: #6d6d6d; color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+        .social-btn:hover { background-color: #333; transform: translateY(-2px); }
+
+        /* Zalo Custom Icon */
+        .zalo-btn img { display: none; }
+        .zalo-bubble {
+            width: 22px; height: 22px; background-color: #fff; color: #6d6d6d;
+            border-radius: 8px; border-bottom-left-radius: 2px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: sans-serif; font-weight: 900; font-size: 10px; line-height: 1; letter-spacing: -0.5px;
+        }
+        .social-btn:hover .zalo-bubble { color: #333; }
+        
+        .bct-logo { margin-top: 25px; }
+        .bct-logo img { width: 140px; height: auto; object-fit: contain; }
+
+        /* Info Links */
+        .info-group { margin-bottom: 25px; }
+        .footer-col p, .address-list a, .contact-info a, .footer-links a {
+            display: block; font-size: 13px; color: #777; line-height: 1.6; margin-bottom: 6px;
+        }
+        .contact-info a { font-weight: 500; color: #555; }
+        .footer-links a:hover, .address-list a:hover, .contact-info a:hover { color: #000; padding-left: 3px; }
+        .contact-info a:hover { color: var(--color-accent); }
+
+        /* Big Logo & Bottom */
+        .footer-big-logo { text-align: center; margin: 0 20px 100px; padding: 0 20px; }
+        .footer-big-logo img { width: 100%; max-width: 80%; height: auto; margin: 0 auto; }
+        .footer-bottom { text-align: center; border-top: 1px solid #eee; padding-top: 25px; font-size: 12px; color: #999; }
+
+        /* =========================================
+           9. RESPONSIVE (MOBILE & TABLET)
+           ========================================= */
+        @media (min-width: 768px) {
+            .content-grid { flex-direction: row; gap: 120px; }
+            .col { width: 41.66%; }
+            .col-image { justify-content: flex-end; }
+            .col-text { text-align: left; }
+            .text-wrapper { align-items: flex-start; text-align: left; }
+            .main-title { font-size: 48px; }
         }
 
-        /* CSS cho iframe để responsive */
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
+            .header { padding: 0 20px; }
+            .nav { display: none; }
+            .desktop-icon { display: none; }
+            #mobile-menu-btn { display: block; }
+            .logo-img, .header-icons { width: auto; }
+            
             .product-grid { grid-template-columns: repeat(2, 1fr); }
             
-            .duo-section { flex-direction: column; gap: 0; }
-            .duo-group { width: 100%; padding: 40px 0; }
-            
-            /* Đổi màu nền so le để phân biệt khi xuống dòng trên tablet/mobile */
-            .duo-group:nth-child(even) { background-color: #f9f9f9; }
+            .collection-intro { padding: 60px 20px; }
+            .intro-desc br { display: none; }
         }
-        @media (max-width: 600px) {
+
+        @media (max-width: 768px) {
+            .header { padding: 15px 20px; }
+            
             .product-grid { grid-template-columns: 1fr; }
-            .duo-group { flex-direction: column-reverse; gap: 20px; }
-            .duo-image-wrap { width: 100%; height: auto; aspect-ratio: 3/4; }
-        }
-
-        .footer {
-            background: #2c3e50;
-            color: white;
-            padding: 60px 50px 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            font-size: 13px;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-weight: normal;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section ul li a {
-            color: #bbb;
-            text-decoration: none;
-            font-size: 12px;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: white;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            width: 35px;
-            height: 35px;
-            border: 1px solid #bbb;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #bbb;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-icons a:hover {
-            background: white;
-            color: #2c3e50;
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* Tỉ lệ khung hình 16:9 (aspect ratio) */
-            background-color: #000; /* Nền đen phòng khi ảnh chưa load */
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .video-poster {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.9; /* Làm tối nhẹ để chữ dễ đọc hơn nếu cần */
-            transition: transform 0.5s ease;
-        }
-
-        /* Hiệu ứng zoom nhẹ khi hover */
-        .video-wrapper:hover .video-poster {
-            transform: scale(1.02);
-        }
-
-        /* --- 5. PLAY BUTTON --- */
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 0; 
-            height: 0; 
-            border-top: 25px solid transparent;
-            border-bottom: 25px solid transparent;
-            border-left: 40px solid var(--play-btn-color); /* Tam giác hướng phải */
-            transition: transform 0.3s ease;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); /* Viền sáng nhẹ */
-        }
-
-        /* Hiệu ứng nút play khi hover */
-        .video-wrapper:hover .play-button {
-            transform: translate(-50%, -50%) scale(1.2);
-        }
-
-        /* --- 6. CAPTION TEXT --- */
-        .video-caption {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            width: 100%;
-            padding: 0 20px;
-            color: var(--color-text-caption);
-            text-align: center;
-            z-index: 2;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Bóng chữ để nổi bật trên nền ảnh */
-        }
-
-        .video-caption p {
-            font-size: 16px;
-            line-height: 1.5;
-            font-weight: 500;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* --- 7. RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .video-caption p {
-                font-size: 13px; /* Chữ nhỏ hơn trên mobile */
-                padding: 0 10px;
-            }
             
-            .play-button {
-                border-top: 15px solid transparent;
-                border-bottom: 15px solid transparent;
-                border-left: 25px solid var(--play-btn-color);
-            }
-
-            .split-banner {
-                grid-template-columns: 1fr; /* Chuyển thành 1 cột */
-                height: auto; /* Chiều cao tự động theo nội dung */
-            }
-            .split-item {
-                height: 70vh; /* Trên mobile mỗi ảnh cao 70% màn hình */
-            }
-            .split-text {
-                left: 30px; /* Mobile thì lề nhỏ hơn */
-            }
-            .split-banner, .styling-proof { grid-template-columns: 1fr; }
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #444;
-        }
-
-        .footer-logo {
-            font-size: 32px;
-            font-weight: bold;
-            letter-spacing: 4px;
-            color: #d4af37;
-        }
-
-        @media (max-width: 768px) {
-            .hero, .products, .dual-section, .collection-section {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
+            .collection-row { grid-template-columns: 1fr; min-height: auto; }
+            .collection-section .col-image { height: 500px; }
+            .row-reverse { flex-direction: column-reverse; display: flex; }
+            
+            .split-banner { grid-template-columns: 1fr; }
+            .split-item { height: 70vh; }
+            
+            .footer-top { flex-direction: column; gap: 30px; margin: 30px }
+            .wide-col, .narrow-col { flex: 1 1 100%; }
+            .footer-big-logo { margin: 20px 0; }
+            .footer-big-logo img { width: 90%; max-width: 100%; }
         }
     </style>
 </head>
 <body>
+
     <header class="header">
         <div class="logo-img">
             <a href="/">
@@ -1231,27 +338,23 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
             </button>
-
             <button class="icon-btn desktop-icon" id="user-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A1.875 1.875 0 0118 22.5H6c-.966 0-1.794-.757-1.875-1.745z" />
                 </svg>
             </button>
-
             <button class="icon-btn desktop-icon" id="wishlist-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                 </svg>
                 <span class="badge">1</span>
             </button>
-            
             <button class="icon-btn" id="cart-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                 </svg>
                 <span class="badge">0</span>
             </button>
-
             <button class="icon-btn" id="mobile-menu-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -1264,62 +367,28 @@
 
     <section class="section-wrapper container">
         <div class="content-grid">
-            
-            <!-- Left Column: Image -->
             <div class="col col-image">
                 <div class="image-container">
-                    <!-- Ảnh placeholder người mẫu mặc áo trễ vai và quần jeans -->
-                    <img src="static/imgs/trang-chu/2.png" 
-                         alt="Shades of Denim Model" 
-                         class="model-image">
+                    <img src="static/imgs/trang-chu/2.png" alt="Shades of Denim Model" class="model-image">
                 </div>
             </div>
-
-            <!-- Right Column: Text Content -->
             <div class="col col-text">
-                <!-- Wrapper để căn giữa nội dung trong cột bên phải -->
                 <div class="text-wrapper">
-                    
-                    <!-- Main Title -->
-                    <h2 class="main-title">
-                        Shades of Denim
-                    </h2>
-
-                    <!-- Subtitle / Meta -->
-                    <p class="subtitle">
-                        Collection '25 <span class="separator">|</span> Denim Expert
-                    </p>
-
-                    <!-- Description Paragraph -->
-                    <p class="description">
-                        Explore the new spectrum of blue celebrating structure and comfort for the modern, versatile wardrobe.
-                    </p>
-
-                    <!-- CTA Link -->
-                    <a href="#" class="cta-link">
-                        <span class="cta-text">
-                            View The Lookbook
-                        </span>
-                    </a>
+                    <h2 class="main-title">Shades of Denim</h2>
+                    <p class="subtitle">Collection '25 <span class="separator">|</span> Denim Expert</p>
+                    <p class="description">Explore the new spectrum of blue celebrating structure and comfort for the modern, versatile wardrobe.</p>
+                    <a href="#" class="cta-link"><span class="cta-text">View The Lookbook</span></a>
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Section Label -->
         <div class="bottom-label-container">
-            <h3 class="bottom-label">
-                Shades of Denim Collection
-            </h3>
+            <h3 class="bottom-label">Shades of Denim Collection</h3>
         </div>
     </section>
 
     <div class="product-grid">
-        
-        <!-- SP 1 -->
         <div class="product-card">
-            <div class="card-image">
-                <img src="static/imgs/trang-chu/3.png" alt="SP1">
-            </div>
+            <div class="card-image"><img src="static/imgs/trang-chu/3.png" alt="SP1"></div>
             <div class="card-info">
                 <div class="info-left">
                     <div class="price-row">
@@ -1332,12 +401,8 @@
                 <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
-
-        <!-- SP 2 -->
         <div class="product-card">
-            <div class="card-image">
-                <img src="static/imgs/trang-chu/4.png" alt="SP2">
-            </div>
+            <div class="card-image"><img src="static/imgs/trang-chu/4.png" alt="SP2"></div>
             <div class="card-info">
                 <div class="info-left">
                     <div class="price-row">
@@ -1350,12 +415,8 @@
                 <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
-
-        <!-- SP 3 -->
         <div class="product-card">
-            <div class="card-image">
-                <img src="static/imgs/trang-chu/5.png" alt="SP3">
-            </div>
+            <div class="card-image"><img src="static/imgs/trang-chu/5.png" alt="SP3"></div>
             <div class="card-info">
                 <div class="info-left">
                     <div class="price-row">
@@ -1368,49 +429,27 @@
                 <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
-
-        <!-- SP 4 -->
         <div class="product-card">
-            <div class="card-image">
-                <!-- Ảnh cô gái áo trắng giống hình mẫu -->
-                <img src="static/imgs/trang-chu/6.png" alt="SP4">
-            </div>
+            <div class="card-image"><img src="static/imgs/trang-chu/6.png" alt="SP4"></div>
             <div class="card-info">
                 <div class="info-left">
-                    <div class="price-row">
-                        <span class="current-price">691.200₫</span>
-                    </div>
+                    <div class="price-row"><span class="current-price">691.200₫</span></div>
                     <div class="product-name">Relaxed High-Rise<br>Cuffed...</div>
                 </div>
                 <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
-
     </div>
 
     <section class="split-banner">
-        <div class="split-item">
-            <a href="#"> <img src="static/imgs/page-2/8.png" alt="Men's Workwear">
-                
-            </a>
-        </div>
-
-        <div class="split-item">
-            <a href="#">
-                <img src="static/imgs/page-2/9.png" alt="Women's Workwear">
-               
-            </a>
-        </div>
+        <div class="split-item"><a href="#"><img src="static/imgs/page-2/8.png" alt="Men's Workwear"></a></div>
+        <div class="split-item"><a href="#"><img src="static/imgs/page-2/9.png" alt="Women's Workwear"></a></div>
     </section>
 
     <section class="collection-intro">
         <div class="intro-container">
             <h2 class="intro-title">BEYOND THE BLUE</h2>
-            
-            <p class="intro-subtitle">
-                Hơn cả một chất liệu, Denim là ngôn ngữ của phong cách sống
-            </p>
-
+            <p class="intro-subtitle">Hơn cả một chất liệu, Denim là ngôn ngữ của phong cách sống</p>
             <p class="intro-desc">
                 Đừng đóng khung Denim chỉ trong sự bụi bặm. Từ góc phố<br>
                 ồn ào đến văn phòng hiện đại, Denim thiên biến vạn hóa<br>
@@ -1420,80 +459,141 @@
         </div>
     </section>
 
-
-
-        <section class="collection-section">
-        
-        <!-- ROW 1: OFFICE-CHIC (Ảnh Trái - Chữ Phải) -->
-        <!-- Ảnh tương ứng: 8.jpg -->
+    <section class="collection-section">
         <div class="collection-row">
-            <div class="col-image">
-                <img src="static/imgs/trang-chu/9.png" alt="Office Chic">
-            </div>
+            <div class="col-image"><img src="static/imgs/trang-chu/9.png" alt="Office Chic"></div>
             <div class="col-content">
                 <h2 class="collection-title">Office-Chic<br>Collection</h2>
                 <p class="collection-desc">Modern workwear for the new generation - confident, refined, unmistakably you.</p>
                 <a href="#" class="btn-collection">Find Your Fit</a>
             </div>
         </div>
-
-        <!-- ROW 2: READY-TO-WEAR (Chữ Trái - Ảnh Phải) -->
-        <!-- Ảnh tương ứng: 9.jpg -->
         <div class="collection-row row-reverse">
             <div class="col-content">
                 <h2 class="collection-title">Ready-To-Wear<br>Collection</h2>
                 <p class="collection-desc">The secret of great style is to feel good in what you wear.</p>
                 <a href="#" class="btn-collection">Discover Now</a>
             </div>
-            <div class="col-image">
-                <img src="static/imgs/trang-chu/10.png" alt="Ready To Wear">
-            </div>
+            <div class="col-image"><img src="static/imgs/trang-chu/10.png" alt="Ready To Wear"></div>
         </div>
-
-        <!-- ROW 3: DENIM FOCUS (Ảnh Trái - Chữ Phải) -->
-        <!-- Ảnh tương ứng: 10.jpg -->
         <div class="collection-row">
-            <div class="col-image">
-                <img src="static/imgs/trang-chu/11.png" alt="Denim Focus">
-            </div>
+            <div class="col-image"><img src="static/imgs/trang-chu/11.png" alt="Denim Focus"></div>
             <div class="col-content">
                 <h2 class="collection-title">Denim Focus</h2>
                 <p class="collection-desc">Focus on the finish. Define Your Fiber.</p>
                 <a href="#" class="btn-collection">Explore The Collection</a>
             </div>
         </div>
-
     </section>
 
     <section class="story-section">
-        <!-- Tiêu đề nhỏ phía trên -->
         <h3 class="story-title">Our Quality Story</h3>
-
-        <!-- Khung Video (Iframe YouTube) -->
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/OZFynytLtpg" 
-                    title="Công nghệ sản xuất quần jeans V-SIXTYFOUR" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/OZFynytLtpg" title="Công nghệ sản xuất quần jeans V-SIXTYFOUR" allowfullscreen></iframe>
         </div>
     </section>
 
+    <footer class="footer">
+
+            <div class="footer-top">
+                <div class="footer-col wide-col">
+                    <h3>ĐĂNG KÝ NHẬN KHUYẾN MÃI</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Nhập email khuyến mãi">
+                        <button type="submit">Đăng ký</button>
+                    </form>
+                    <p class="desc">
+                        Khi nhấn chọn "Đăng ký", quý khách đã tham khảo và đồng ý với Chính sách Bảo mật. Điều này đồng nghĩa với việc quý khách chấp nhận nhận Bản tin, thông tin khuyến mãi từ chúng tôi.
+                    </p>
+                    <div class="social-media">
+                        <h3>MẠNG XÃ HỘI</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+                            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-btn zalo-btn">
+                                <div class="zalo-bubble">Zalo</div>
+                            </a>
+                        </div>
+                        <div class="bct-logo">
+                            <a href="http://online.gov.vn/" target="_blank">
+                                <img src="static/imgs/boCongThuong.png" alt="Đã thông báo Bộ Công Thương">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-col wide-col">
+                    <h3>V-SIXTYFOUR</h3>
+                    <div class="info-group">
+                        <p>MSDN: 0314840916 do Sở Kế Hoạch và Đầu Tư TP.HCM</p>
+                    </div>
+                    <div class="info-group address-list">
+                        <a href="#" target="_blank">Văn Phòng: 6 Thái Văn Lung, Phường Bến Nghé, Q.1, Tp. HCM</a>
+                        <a href="#" target="_blank">Q7 - Tp.HCM: Tầng Trệt - TTTM Lotte Mart Q7</a>
+                        <a href="#" target="_blank">Q10 - Tp.HCM: Tầng 3 - TTTM Vạn Hạnh Mall</a>
+                        <a href="#" target="_blank">Cần Thơ: Tầng 1 - TTTM Sense</a>
+                        <a href="#" target="_blank">Phan Thiết: Tầng 2 - TTTM Lotte Mart Phan Thiết</a>
+                        <a href="#" target="_blank">Hải Phòng: Tầng 1 - TTTM Aeon Mall Hải Phòng</a>
+                    </div>
+                    <div class="info-group contact-info">
+                        <a href="tel:0907026564">0907 026.564</a>
+                        <a href="mailto:cskh@v64.vn">cskh@v64.vn</a>
+                    </div>
+                </div>
+
+                <div class="footer-col narrow-col">
+                    <h3>CHÍNH SÁCH</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Phương thức thanh toán</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="#">Chính sách kiểm và đổi hàng</a></li>
+                        <li><a href="#">Hướng dẫn đổi trả sản phẩm</a></li>
+                        <li><a href="#">Hướng dẫn bảo quản sản phẩm</a></li>
+                        <li><a href="#">Chính sách bảo vệ thông tin khách hàng</a></li>
+                        <li><a href="#">Chính Sách Thành Viên</a></li>
+                        <li><a href="#">Những câu hỏi thường gặp</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col narrow-col">
+                    <h3>LIÊN KẾT</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Nhà sáng lập</a></li>
+                        <li><a href="#">Công ty VITAJEANS</a></li>
+                        <li><a href="#">Xu hướng - Phong cách</a></li>
+                        <li><a href="#">Bản Tin V-SIXTYFOUR</a></li>
+                    </ul>
+                </div>
+           
+        </div>
+
+        <div class="footer-big-logo">
+            <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR Logo">
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 V-SIXTYFOUR. Powered by VIET THANG JEAN Company Limited</p>
+        </div>
+    </footer>
 
     <script>
+        // Smooth scroll cho các thẻ anchor
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                // Chỉ chặn mặc định nếu href là #id cụ thể, không chặn href="#" rỗng
+                if (this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
-        });
-
-        const playBtn = document.querySelector('.play-btn');
-        playBtn.addEventListener('click', () => {
-            alert('Video đang được tải...');
         });
     </script>
 </body>
