@@ -170,19 +170,19 @@
         .split-item:hover img { transform: scale(1.05); }
 
         .collection-intro {
-            padding-bottom: 200px; background-color: #fff; text-align: center;
+            padding-bottom: 100px; background-color: #fff; text-align: center;
             font-family: var(--font-main); border-bottom: 1px solid #aba8a8;
         }
-        .intro-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        .intro-title { font-size: 20px; letter-spacing: 4px; text-transform: uppercase; color: var(--color-primary); margin-bottom: 60px; font-weight: 500; }
-        .intro-subtitle { font-size: 14px; color: #333; letter-spacing: 2px; margin-bottom: 30px; }
-        .intro-desc { font-size: 13px; color: var(--color-text-light); line-height: 2; letter-spacing: 1.5px; font-weight: 300; }
+        .intro-container { max-width: 800px; margin: 0 auto; padding: 0 20px; margin-top: 60px; }
+        .intro-title { font-size: 48px; letter-spacing: 4px; text-transform: uppercase; color: var(--color-primary); margin-bottom: 60px; font-weight: 500; }
+        .intro-subtitle { font-size: 16px; color: #333; letter-spacing: 2px; margin-bottom: 30px; font-family: "Arial", Sans-Serif !important; }
+        .intro-desc { font-size: 14px; color: var(--color-text-light); line-height: 2; letter-spacing: 1.5px; font-weight: 300; font-family: "Arial", Sans-Serif !important;}
 
         /* =========================================
            6. COLLECTION ROWS (Checkerboard)
            ========================================= */
         .collection-section { width: 100%; border-bottom: 1px solid #aba8a8; }
-        .collection-row { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+        .collection-row { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; cursor: pointer; }
 
         .collection-section .col-image { position: relative; overflow: hidden; height: 100%; width: 100%; }
         .collection-section .col-image img {
@@ -328,7 +328,7 @@
             <a href="#">NỮ</a>
             <a href="#">NAM</a>
             <a href="#">PHỤ KIỆN</a>
-            <a href="/collection.html">BỘ SƯU TẬP</a>
+            <a href="/trang-chu.html">BỘ SƯU TẬP</a>
             <a href="#">CỬA HÀNG</a>
         </nav>
 
@@ -365,7 +365,7 @@
 
     <section class="hero-banner"></section>
 
-    <section class="section-wrapper container">
+    <!-- <section class="section-wrapper container">
         <div class="content-grid">
             <div class="col col-image">
                 <div class="image-container">
@@ -384,8 +384,8 @@
         <div class="bottom-label-container">
             <h3 class="bottom-label">Shades of Denim Collection</h3>
         </div>
-    </section>
-
+    </section> -->
+<!-- 
     <div class="product-grid">
         <div class="product-card">
             <div class="card-image"><img src="static/imgs/trang-chu/3.png" alt="SP1"></div>
@@ -439,13 +439,9 @@
                 <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <section class="split-banner">
-        <div class="split-item"><a href="#"><img src="static/imgs/page-2/8.png" alt="Men's Workwear"></a></div>
-        <div class="split-item"><a href="#"><img src="static/imgs/page-2/9.png" alt="Women's Workwear"></a></div>
-    </section>
-
+    
     <section class="collection-intro">
         <div class="intro-container">
             <h2 class="intro-title">BEYOND THE BLUE</h2>
@@ -461,20 +457,20 @@
 
     <section class="collection-section">
         <div class="collection-row">
-            <div class="col-image"><img src="static/imgs/trang-chu/9.png" alt="Office Chic"></div>
+            <div id="office-chic" class="col-image"><img src="static/imgs/trang-chu/9.png" alt="Office Chic"></div>
             <div class="col-content">
                 <h2 class="collection-title">Office-Chic<br>Collection</h2>
                 <p class="collection-desc">Modern workwear for the new generation - confident, refined, unmistakably you.</p>
-                <a href="#" class="btn-collection">Find Your Fit</a>
+                <a href="http://127.0.0.1:5500/page-2.html" class="btn-collection">Find Your Fit</a>
             </div>
         </div>
         <div class="collection-row row-reverse">
             <div class="col-content">
                 <h2 class="collection-title">Ready-To-Wear<br>Collection</h2>
                 <p class="collection-desc">The secret of great style is to feel good in what you wear.</p>
-                <a href="#" class="btn-collection">Discover Now</a>
+                <a href="http://127.0.0.1:5500/page-3.html" class="btn-collection">Discover Now</a>
             </div>
-            <div class="col-image"><img src="static/imgs/trang-chu/10.png" alt="Ready To Wear"></div>
+            <div id="ready-to-wear" class="col-image"><img src="static/imgs/trang-chu/10.png" alt="Ready To Wear"></div>
         </div>
         <div class="collection-row">
             <div class="col-image"><img src="static/imgs/trang-chu/11.png" alt="Denim Focus"></div>
@@ -485,6 +481,12 @@
             </div>
         </div>
     </section>
+
+    <section class="split-banner">
+        <div class="split-item"><a href="#"><img src="static/imgs/page-2/8.png" alt="Men's Workwear"></a></div>
+        <div class="split-item"><a href="#"><img src="static/imgs/page-2/9.png" alt="Women's Workwear"></a></div>
+    </section>
+
 
     <section class="story-section">
         <h3 class="story-title">Our Quality Story</h3>
@@ -572,9 +574,6 @@
            
         </div>
 
-        <div class="footer-big-logo">
-            <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR Logo">
-        </div>
 
         <div class="footer-bottom">
             <p>© 2025 V-SIXTYFOUR. Powered by VIET THANG JEAN Company Limited</p>
@@ -594,6 +593,17 @@
                     }
                 }
             });
+        });
+
+
+        let officeChic = document.getElementById('office-chic');
+        officeChic.addEventListener('click', function() {
+            window.location.href = "http://127.0.0.1:5500/page-2.html";
+        });
+
+        let readyToWear = document.getElementById('ready-to-wear');
+        readyToWear.addEventListener('click', function() {
+            window.location.href = "http://127.0.0.1:5500/page-3.html";
         });
     </script>
 </body>
