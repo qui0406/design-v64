@@ -21,6 +21,18 @@
             --color-gray: #666;
             --color-light: #f9f9f9;
             --color-red: #cc0000;
+
+
+                        --font-main: 'Roboto', sans-serif;
+            /* Colors */
+            --color-primary: #0f172a;   /* Navy Dark */
+            --color-text-main: #1a1a1a;
+            --color-text-gray: #666;
+            --color-text-light: #999; /* #aaa, #bbb, #cbd5e0 merged visually to generic light gray logic or kept specific if needed. Keeping original hexes in classes for safety. */
+            --color-sale: #cc0000;
+            --color-bg-product: #f4f4f4;
+            
+            --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,13 +45,55 @@
             overflow-x: hidden;
         }
 
-        img { width: 100%; height: 100%; object-fit: cover; display: block; }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
+        img { max-width: 100%; display: block; }
 
-        .container {
-            margin: 0 auto;
+
+        /* =========================================
+           2. HEADER
+           ========================================= */
+        .header {
+            position: sticky; top: 0; z-index: 1000;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            height: 60px;
+            padding: 0 40px;
+            display: flex; align-items: center; justify-content: space-between;
         }
+
+        /* Logo */
+        .logo-img { width: 200px; display: flex; align-items: center; }
+        .logo-img img { width: 100%; max-width: 180px; object-fit: contain; }
+
+        /* Nav */
+        .nav { display: flex; align-items: center; gap: 40px; flex: 1; justify-content: center; }
+        .nav a {
+            text-transform: uppercase; font-size: 15px; font-weight: 500;
+            color: var(--color-primary); letter-spacing: 0.5px;
+        }
+        .nav a:hover { color: var(--color-accent); }
+
+        /* Icons */
+        .header-icons { display: flex; align-items: center; justify-content: flex-end; gap: 25px; width: 200px; }
+        .icon-btn {
+            background: none; border: none; cursor: pointer;
+            color: #000; position: relative; display: flex; align-items: center; justify-content: center;
+        }
+        .icon-btn:hover { color: var(--color-accent); }
+        .icon-btn svg { width: 24px; height: 24px; stroke-width: 1.5; }
+        
+        .badge {
+            position: absolute; top: -5px; right: -8px;
+            background-color: var(--color-accent); color: #fff;
+            border-radius: 50%; width: 16px; height: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: bold;
+        }
+
+        #mobile-menu-btn { display: none; }
+
+
 
         /* --- 2. HEADER --- */
        /* Container chính: Căn giữa tất cả nội dung theo chiều dọc */
@@ -63,16 +117,6 @@
     margin: 0 0 15px 0;        /* Khoảng cách dưới xuống logo */
 }
 
-/* 2. Logo ảnh */
-.logo-img {
-    margin-bottom: 25px;       /* Khoảng cách từ Logo xuống menu HIGHLIGHTS */
-}
-
-.logo-img img {
-    height: 14px;              /* Chiều cao logo vừa phải */
-    width: auto;               /* Chiều rộng tự động */
-    display: block;
-}
 
 /* 3. Menu: HIGHLIGHTS LOOKS */
 .header-nav {
@@ -94,6 +138,49 @@
     color: #0f172a;            /* Đậm lên khi trỏ chuột */
 }
 
+/* Khung chính của phần hình ảnh intro */
+.intro-img {
+    position: relative; /* Để định vị nút mũi tên */
+}
+
+/* Khung giới hạn, ẩn các hình chưa trượt tới */
+.intro-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Dải chứa 3 ảnh: Dùng flex để xếp hàng ngang */
+.intro-slides-wrapper {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out; /* Hiệu ứng lướt êm */
+}
+
+/* Bắt buộc mỗi ảnh phải rộng bằng 100% khung chứa */
+.intro-slides-wrapper img {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;       /* Hoặc height auto tùy bố cục của bạn */
+    object-fit: cover;  /* Giữ ảnh không bị méo */
+    display: block;
+}
+
+/* Nút bấm (Tận dụng lại class nav-btn cũ hoặc viết mới) */
+.intro-img .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+.intro-img .prev-btn { left: 10px; }
+.intro-img .next-btn { right: 10px; }
 
         .page-title {
             font-size: 24px;
@@ -207,18 +294,24 @@
         }
 
         .intro-text h2 {
-            font-size: 20px;
+            font-size: 40px;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 20px;
             font-weight: 400;
+            text-align: center;
         }
 
         .intro-text p {
-            font-size: 12px;
-            color: #888;
-            line-height: 1.8;
-            margin-bottom: 20px;
+            color: #9ca3af;
+            font-size: 14px !important;
+            line-height: 1.75;
+            margin-bottom: 48px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
         /* --- 5. SELECTED FOR YOU --- */
@@ -466,13 +559,11 @@
 }
 
 .lookbook-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    padding: 0 20px 40px;
-   
-    margin: 0 auto;
-}
+            display: grid;
+            /* Ví dụ: chia 5 cột đều nhau */
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px;
+        }
 
 .lb-item { cursor: pointer; }
 .lb-img { 
@@ -505,6 +596,88 @@
 .lb-sub {
     font-weight: 400;
 }
+
+.product-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.card-image {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg-product);
+    aspect-ratio: 3 / 4.2;
+    margin-bottom: 15px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* Ẩn hình hover mặc định */
+.card-image .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* Hiện hình hover khi hover */
+.product-card:hover .hover-img {
+    opacity: 1;
+}
+
+/* Ẩn hình chính khi hover */
+.product-card:hover .main-img {
+    opacity: 0;
+}
+
+
+ .product-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 5px; margin: 5px 5px 100px 5px; /* Updated to match the last definition in original */
+        }
+
+        .product-card { cursor: pointer; }
+
+        .card-image {
+            background-color: var(--color-bg-product); aspect-ratio: 3 / 4.2;
+            overflow: hidden; margin-bottom: 15px; position: relative;
+        }
+
+        .action-section { margin: 0 auto 100px; }
+        .action-header { text-align: center; margin-bottom: 50px; margin-top: 50px; }
+        .action-title {
+            font-size: 30px; text-transform: uppercase; letter-spacing: 2px;
+            color: #1a1a1a; margin-bottom: 10px; font-weight: 400;
+        }
+        .action-subtitle {
+            font-size: 16px; color: #aaa; letter-spacing: 2px; font-weight: 300;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            /* Ví dụ: chia 5 cột đều nhau */
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px;
+        }
+        .lookbook-item { cursor: pointer; }
+        .lookbook-img {
+            aspect-ratio: 3/4.5; background: #eee; margin-bottom: 15px; overflow: hidden;
+        }
+        .lookbook-img img { transition: transform 0.6s ease; }
+        .lookbook-item:hover .lookbook-img img { transform: scale(1.05); }
+        .lb-name {
+            font-size: 10px; text-transform: uppercase; color: #999; letter-spacing: 0.5px;
+        }
+
+
+
 
         .footer { padding: 100px 0 20px; background-color: #fff;  }
         
@@ -561,17 +734,142 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
+    .header { padding: 0 20px; }
+        .nav { display: none; }
+        .desktop-icon { display: none; }
+        #mobile-menu-btn { display: block; }
+        .logo-img, .header-icons { width: auto; }
+
+        .card-image { margin: 0 5px; }
+            .card-info { margin-left: 5px; }
     .category-row { grid-template-columns: 1fr; }
     .category-row.reverse .cat-text-block { order: -1; }
     .cat-grid-block { height: 600px; }
     .lookbook-grid { grid-template-columns: repeat(3, 1fr); }
+
+
 }
 
+.product-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 5px; margin: 5px 5px 100px 5px; /* Updated to match the last definition in original */
+        }
+
+        .product-card { cursor: pointer; }
+
+        .card-image {
+            background-color: var(--color-bg-product); aspect-ratio: 3 / 4.2;
+            overflow: hidden; margin-bottom: 15px; position: relative;
+        }
+        /* Mobile margin adjustments from original code */
+        @media (max-width: 1024px) {
+            .header { padding: 0 20px; }
+            .nav { display: none; }
+            .desktop-icon { display: none; }
+            #mobile-menu-btn { display: block; }
+            .logo-img, .header-icons { width: auto; }
+            .product-grid { grid-template-columns: repeat(2, 1fr);
+                margin: 0 !important;
+            }
+            .lookbook-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+
+            .lookbook-item:nth-child(n+4) {
+                display: none;
+            }
+
+            .lookbook-grid {
+                grid-template-columns: repeat(3, 1fr); 
+            }
+            .product-card{
+                margin: 0 !important;
+            }
+            .card-image { margin: 0 5px; }
+            .card-info { margin-left: 5px; }
+        }
+
+        .card-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            mix-blend-mode: multiply; transition: transform 0.5s ease;
+        }
+
+        .card-info {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-right: 20px; margin-top: 10px;
+        }
+        .info-left { flex: 1; }
+
+        .price-row {
+            display: flex; align-items: center; font-size: 14px;
+            font-weight: 600; margin-bottom: 5px;
+        }
+        .current-price { color: var(--color-sale); margin-right: 8px; }
+        .old-price {
+            color: var(--color-text-light); text-decoration: line-through;
+            font-size: 13px; margin-right: 8px; font-weight: 400;
+        }
+        .discount-tag {
+            background: var(--color-sale); color: #fff; font-size: 10px;
+            padding: 1px 4px; font-weight: 700;
+        }
+
+        .product-name {
+            font-size: 12px; color: var(--color-text-gray);
+            text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;
+        }
+        .wishlist-icon {
+            color: #ccc; font-size: 18px; cursor: pointer; transition: color 0.3s;
+        }
+        .wishlist-icon:hover { color: var(--color-sale); }
+
+
+        .section-header {
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 60px; margin: 50px 20px 100px; /* Merged margins: 100px 20px + margin-top:50px override */
+        }
+
+        .header-title {
+            flex: 1; font-size: 28px; font-weight: 400; color: var(--color-primary);
+            text-transform: uppercase; letter-spacing: 3px; line-height: 1.4; margin: 0;
+        }
+        .header-desc {
+            flex: 1; font-size: 16px; font-weight: 300; color: #8898aa;
+            line-height: 1.6; margin: 0; text-align: left;
+        }
+        .section-image img { width: 100%; height: auto; }
+
+        /* =========================================
+           8. ACTION / LOOKBOOK
+           ========================================= */
+       .action-section { margin: 0 auto 100px; }
+        .action-header { text-align: center; margin-bottom: 50px; margin-top: 50px; }
+        .action-title {
+            font-size: 30px; text-transform: uppercase; letter-spacing: 2px;
+            color: #1a1a1a; margin-bottom: 10px; font-weight: 400;
+        }
+        .action-subtitle {
+            font-size: 16px; color: #aaa; letter-spacing: 2px; font-weight: 300;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            /* Ví dụ: chia 5 cột đều nhau */
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px;
+        }
+        .lookbook-item { cursor: pointer; }
+        .lookbook-img {
+            aspect-ratio: 3/4.5; background: #eee; margin-bottom: 15px; overflow: hidden;
+        }
+        .lookbook-img img { transition: transform 0.6s ease; }
+        .lookbook-item:hover .lookbook-img img { transform: scale(1.05); }
+        .lb-name {
+            font-size: 10px; text-transform: uppercase; color: #999; letter-spacing: 0.5px;
+        }
+
 @media (max-width: 768px) {
-    .intro-container { grid-template-columns: 1fr; }
-    .product-grid { grid-template-columns: 1fr; 
-        margin: 20px;
-    }
+
     .lookbook-grid { grid-template-columns: repeat(2, 1fr); }
     .standout-header { 
         margin-top: 40px;
@@ -579,6 +877,9 @@
         align-items: flex-start; 
         gap: 10px; 
 
+    }
+    .intro-container{
+        display: block;
     }
     .v64-title-section{ margin : 0 10px; }
     .standout-desc { text-align: left; }
@@ -593,20 +894,50 @@
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="ready-to-wear-header">
-        <h1 class="page-title">READY TO WEAR</h1>
-        
+    <header class="header">
         <div class="logo-img">
             <a href="/">
                 <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR"/>
             </a>
         </div>
 
-        <nav class="header-nav">
-            <a href="#">HIGHLIGHTS</a>
-            <a href="#">LOOKS</a>
+        <nav class="nav">
+            <a href="#">NỮ</a>
+            <a href="#">NAM</a>
+            <a href="#">PHỤ KIỆN</a>
+            <a href="/trang-chu.html">BỘ SƯU TẬP</a>
+            <a href="#">CỬA HÀNG</a>
         </nav>
+
+        <div class="header-icons">
+            <button class="icon-btn" id="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+            </button>
+            <button class="icon-btn desktop-icon" id="user-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A1.875 1.875 0 0118 22.5H6c-.966 0-1.794-.757-1.875-1.745z" />
+                </svg>
+            </button>
+            <button class="icon-btn desktop-icon" id="wishlist-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+                <span class="badge">1</span>
+            </button>
+            <button class="icon-btn" id="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="badge">0</span>
+            </button>
+            <button class="icon-btn" id="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
     </header>
 
     <section class="hero">
@@ -622,8 +953,20 @@
     <!-- 2. INTRO (SINGLE MODEL) -->
     <section class="intro-container">
         <div class="intro-img">
-            <img src="static/imgs/page-3/3.png" alt="Ready To Wear">
+            <div class="intro-viewport">
+                <div class="intro-slides-wrapper">
+                    <img src="static/imgs/page-3/image.png" alt="Ready To Wear 1">
+                    
+                    <img src="static/imgs/page-3/image1.png" alt="Ready To Wear 2"> 
+                    
+                    <img src="static/imgs/page-3/image2.png" alt="Ready To Wear 3"> 
+                </div>
+            </div>
+
+            <button class="nav-btn prev-btn" onclick="moveIntroSlide(-1)">&#10094;</button>
+            <button class="nav-btn next-btn" onclick="moveIntroSlide(1)">&#10095;</button>
         </div>
+
         <div class="intro-text">
             <h2>READY-TO-WEAR</h2>
             <p>
@@ -634,39 +977,75 @@
     </section>
 
     <!-- 3. SELECTED FOR YOU -->
-    <section class="container selected-section">
-        <span class="section-label">SELECTED FOR YOU</span>
-        <div class="product-grid">
-            <div class="p-card">
-                <div class="p-img"><img src="static/imgs/page-3/4.png" alt="P1"></div>
-                <div class="p-info">
-                    <div><span class="p-price">771.000₫</span><span class="p-old">964.000₫</span><span class="p-tag">-20%</span><div class="p-name">OMBRE DRESS</div></div>
-                    <i class="far fa-heart"></i>
-                </div>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="card-image">
+                <img src="static/imgs/page-2/4.png" class="main-img" alt="Product Front">
+                <img src="static/imgs/page-2/4-back.png" class="hover-img" alt="Product Back">
             </div>
-            <div class="p-card">
-                <div class="p-img"><img src="static/imgs/page-3/5.png" alt="P2"></div>
-                <div class="p-info">
-                    <div><span class="p-price">691.000₫</span><span class="p-old">864.000₫</span><span class="p-tag">-20%</span><div class="p-name">RELAXED JEANS</div></div>
-                    <i class="far fa-heart"></i>
+            <div class="card-info">
+                <div class="info-left">
+                    <div class="price-row">
+                        <span class="current-price">771.200₫</span>
+                        <span class="old-price">964.000₫</span>
+                        <span class="discount-tag">-20%</span>
+                    </div>
+                    <div class="product-name">Ombre Sleeveless<br>Shirt Dress</div>
                 </div>
-            </div>
-            <div class="p-card">
-                <div class="p-img"><img src="static/imgs/page-3/6.png" alt="P3"></div>
-                <div class="p-info">
-                    <div><span class="p-price">771.000₫</span><span class="p-old">964.000₫</span><span class="p-tag">-20%</span><div class="p-name">MEN'S TEE</div></div>
-                    <i class="far fa-heart"></i>
-                </div>
-            </div>
-            <div class="p-card">
-                <div class="p-img"><img src="static/imgs/page-3/7.png" alt="P3"></div>
-                <div class="p-info">
-                    <div><span class="p-price">771.000₫</span><span class="p-old">964.000₫</span><span class="p-tag">-20%</span><div class="p-name">MEN'S TEE</div></div>
-                    <i class="far fa-heart"></i>
-                </div>
+                <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
-    </section>
+        
+        <div class="product-card">
+            <div class="card-image">
+                <img src="static/imgs/page-2/5.png" class="main-img" alt="Product Front">
+                <img src="static/imgs/page-2/5-back.png" class="hover-img" alt="Product Back">
+            </div>
+            <div class="card-info">
+                <div class="info-left">
+                    <div class="price-row">
+                        <span class="current-price">691.200₫</span>
+                        <span class="old-price">864.000₫</span>
+                        <span class="discount-tag">-20%</span>
+                    </div>
+                    <div class="product-name">Relaxed High-Rise<br>Cuffed Jeans</div>
+                </div>
+                <i class="far fa-heart wishlist-icon"></i>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image">
+                <img src="static/imgs/page-2/6.png" class="main-img" alt="Product Front">
+                <img src="static/imgs/page-2/6-back.png" class="hover-img" alt="Product Back">
+            </div>
+            <div class="card-info">
+                <div class="info-left">
+                    <div class="price-row">
+                        <span class="current-price">771.200₫</span>
+                        <span class="old-price">964.000₫</span>
+                        <span class="discount-tag">-20%</span>
+                    </div>
+                    <div class="product-name">Ombre Sleeveless<br>Shirt Dress</div>
+                </div>
+                <i class="far fa-heart wishlist-icon"></i>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image">
+                <img src="static/imgs/page-2/7.png" class="main-img" alt="Product Front">
+                <img src="static/imgs/page-2/7-back.png" class="hover-img" alt="Product Back">
+            </div>
+            <div class="card-info">
+                <div class="info-left">
+                    <div class="price-row"><span class="current-price">691.200₫</span></div>
+                    <div class="product-name">Relaxed High-Rise<br>Cuffed...</div>
+                </div>
+                <i class="far fa-heart wishlist-icon"></i>
+            </div>
+        </div>
+    </div>
 
    <!-- 4. CATEGORY ESSENTIALS (PRODUCT GRID WITH TEXT) -->
     <section class="essentials-section">
@@ -780,55 +1159,42 @@
                 Sẵn sàng hoàn thiện phong cách cá nhân với những thiết kế tinh tế. Không chỉ dừng lại ở việc mặc đẹp, mà còn là cách thể hiện bản thân và năng lượng của bạn.
             </p>
         </div>
-        <div class="standout-banner">
-            <img src="static/imgs/page-3/18.png" alt="Banner">
+        <div class="section-image">
+            <img src="static/imgs/page-2/10.png" alt="Modern Workwear Image">
         </div>
     </section>
 
     <!-- 6. FOOTER LOOKBOOK (#V64INACTION) -->
-    <section class="lookbook-section">
-        <div class="v64-title-section">
-            <h2 class="v64-title">#V64INACTION</h2>
-            <p class="v64-subtitle">Khám phá những thiết kế tiêu biểu/chủ đạo từ các Bộ sưu tập mới nhất</p>
+    <section class="action-section container">
+        <div class="action-header">
+            <h3 class="action-title">#V64INACTION</h3>
+            <p class="action-subtitle">Khám phá những thiết kế tiêu biểu/chủ đạo từ các Bộ sưu tập mới nhất</p>
         </div>
-        <div class="lookbook-grid container">
-            <div class="lb-item">
-                <div class="lb-img"><img src="static/imgs/page-3/19.png" alt="L1"></div>
-                <div class="lb-info">
-                    <div class="lb-name">OMBRE SLEEVELESS</div>
-                    <div class="lb-sub">SHIRT DRESS</div>
-                </div>
+        <div class="lookbook-grid">
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/11.png" alt="LB 1"></div>
+                <div class="lb-name">OMBRE SLEEVELESS SHIRT DRESS</div>
             </div>
-            <div class="lb-item">
-                <div class="lb-img"><img src="static/imgs/page-3/20.png" alt="L2"></div>
-                <div class="lb-info">
-                    <div class="lb-name">RELAXED HIGH-RISE</div>
-                    <div class="lb-sub">CUFFED JEANS</div>
-                </div>
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/12.png" alt="LB 2"></div>
+                <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
             </div>
-            <div class="lb-item">
-                <div class="lb-img"><img src="static/imgs/page-3/21.png" alt="L3"></div>
-                <div class="lb-info">
-                    <div class="lb-name">OMBRE SLEEVELESS</div>
-                    <div class="lb-sub">SHIRT DRESS</div>
-                </div>
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/13.png" alt="LB 3"></div>
+                <div class="lb-name">OMBRE SLEEVELESS SHIRT DRESS</div>
             </div>
-            <div class="lb-item">
-                <div class="lb-img"><img src="static/imgs/page-3/22.png" alt="L4"></div>
-                <div class="lb-info">
-                    <div class="lb-name">RELAXED HIGH-RISE</div>
-                    <div class="lb-sub">CUFFED JEANS</div>
-                </div>
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/14.png" alt="LB 4"></div>
+                <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
             </div>
-            <div class="lb-item">
-                <div class="lb-img"><img src="static/imgs/page-3/23.png" alt="L5"></div>
-                <div class="lb-info">
-                    <div class="lb-name">OMBRE SLEEVELESS</div>
-                    <div class="lb-sub">SHIRT DRESS</div>
-                </div>
+            <div class="lookbook-item">
+                <div class="lookbook-img"><img src="static/imgs/page-2/15.png" alt="LB 5"></div>
+                <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
             </div>
         </div>
     </section>
+
+
 
 
     <footer class="footer">
@@ -909,15 +1275,53 @@
                 </div>
             </div>
         </div>
-
-        <div class="footer-big-logo">
-            <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR Logo">
-        </div>
-
         <div class="footer-bottom">
             <p>© 2025 V-SIXTYFOUR. Powered by VIET THANG JEAN Company Limited</p>
         </div>
     </footer>
+    <script>
+    let introIndex = 0;
+    // Chọn đúng dải hình của phần Intro
+    const introWrapper = document.querySelector('.intro-slides-wrapper');
+    const introImages = document.querySelectorAll('.intro-slides-wrapper img');
+    const introCount = introImages.length; // Tự động đếm là 3
+    let introTimer;
+
+    // Hàm thực hiện trượt
+    function showIntroSlide() {
+        // Dịch chuyển: index * 100%
+        introWrapper.style.transform = `translateX(-${introIndex * 100}%)`;
+    }
+
+    // Hàm điều hướng (Next/Prev)
+    function moveIntroSlide(step) {
+        introIndex += step;
+
+        // Xử lý vòng lặp: Hết ảnh 3 quay về 1, lùi quá 1 quay về 3
+        if (introIndex >= introCount) introIndex = 0;
+        if (introIndex < 0) introIndex = introCount - 1;
+
+        showIntroSlide();
+        resetIntroTimer(); // Reset bộ đếm 5s
+    }
+
+    // Hàm tự động chạy
+    function startIntroAuto() {
+        // 5000ms = 5 giây
+        introTimer = setInterval(() => {
+            moveIntroSlide(1);
+        }, 5000);
+    }
+
+    // Hàm reset bộ đếm khi người dùng bấm nút thủ công
+    function resetIntroTimer() {
+        clearInterval(introTimer);
+        startIntroAuto();
+    }
+
+    // Kích hoạt ngay khi web tải xong
+    startIntroAuto();
+</script>
 
 </body>
 </html>

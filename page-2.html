@@ -39,37 +39,52 @@
         ul { list-style: none; }
 
         /* General Layout */
-        .container { width: 100%; margin: 0 auto; } /* Original: width 100%, margin 0 auto */
+        .header {
+            position: sticky; top: 0; z-index: 1000;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            height: 60px;
+            padding: 0 40px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        /* Logo */
+        .logo-img { width: 200px; display: flex; align-items: center; }
+        .logo-img img { width: 100%; max-width: 180px; object-fit: contain; }
+
+        /* Nav */
+        .nav { display: flex; align-items: center; gap: 40px; flex: 1; justify-content: center; }
+        .nav a {
+            text-transform: uppercase; font-size: 15px; font-weight: 500;
+            color: var(--color-primary); letter-spacing: 0.5px;
+        }
+        .nav a:hover { color: var(--color-accent); }
+
+        /* Icons */
+        .header-icons { display: flex; align-items: center; justify-content: flex-end; gap: 25px; width: 200px; }
+        .icon-btn {
+            background: none; border: none; cursor: pointer;
+            color: #000; position: relative; display: flex; align-items: center; justify-content: center;
+        }
+        .icon-btn:hover { color: var(--color-accent); }
+        .icon-btn svg { width: 24px; height: 24px; stroke-width: 1.5; }
         
-        /* =========================================
-           2. HEADER
-           ========================================= */
-        .collection-header {
-            display: flex; flex-direction: column; align-items: center;
-            padding: 30px 0; background-color: #fff;
+        .badge {
+            position: absolute; top: -5px; right: -8px;
+            background-color: var(--color-accent); color: #fff;
+            border-radius: 50%; width: 16px; height: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: bold;
         }
 
-        .header-collection-name {
-            font-size: 28px; color: var(--color-primary); letter-spacing: 4px;
-            text-transform: uppercase; margin-bottom: 10px; font-weight: 400;
-        }
-
-        .logo-img { margin-bottom: 25px; }
-        .logo-img img { height: 14px; width: auto; display: block; }
-
-        .header-nav { display: flex; gap: 40px; }
-        .header-nav a {
-            color: #cbd5e0; font-size: 12px; letter-spacing: 1px;
-            text-transform: uppercase; font-weight: 300;
-        }
-        .header-nav a:hover { color: var(--color-primary); }
+        #mobile-menu-btn { display: none; }
 
         /* =========================================
            3. HERO BANNER
            ========================================= */
         .hero-banner {
             position: relative; margin: 0 auto 50px;
-            height: 85vh; width: 100%;
+            height: 93vh; width: 100%;
             background: url('static/imgs/page-2/2.png') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center; color: white;
         }
@@ -118,12 +133,67 @@
             letter-spacing: 1px; color: #000;
         }
 
+
+        /* Đảm bảo khung chứa giới hạn phạm vi hiển thị */
+.image-container.slider-container {
+    position: relative;
+    overflow: hidden; /* Ẩn các hình nằm ngoài khung */
+    width: 100%;
+    /* Giữ tỉ lệ khung hình nếu cần, hoặc height auto theo ảnh */
+}
+
+/* Phần bao quanh các ảnh: Dàn ngang (Flexbox) và có hiệu ứng chuyển động (Transition) */
+.slides-wrapper {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out; /* Hiệu ứng lướt mượt mà */
+}
+
+/* Định dạng ảnh: Chiếm 100% chiều rộng khung chứa */
+.model-image {
+    min-width: 100%; /* Bắt buộc mỗi ảnh phải rộng bằng khung cha */
+    width: 100%;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    display: block;
+}
+
+/* Style cho 2 nút mũi tên */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3); /* Nền mờ */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+    transition: background 0.3s;
+    border-radius: 50%;
+}
+
+.nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+
+
+
         /* =========================================
            5. PRODUCT GRID
            ========================================= */
         .product-grid {
             display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 15px; margin: 0 0 100px 0; /* Updated to match the last definition in original */
+            gap: 5px; margin: 5px 5px 100px 5px; /* Updated to match the last definition in original */
         }
 
         .product-card { cursor: pointer; }
@@ -132,17 +202,12 @@
             background-color: var(--color-bg-product); aspect-ratio: 3 / 4.2;
             overflow: hidden; margin-bottom: 15px; position: relative;
         }
-        /* Mobile margin adjustments from original code */
-        @media (max-width: 1024px) {
-            .card-image { margin: 0 20px; }
-            .card-info { margin-left: 20px; }
-        }
+
 
         .card-image img {
             width: 100%; height: 100%; object-fit: cover;
             mix-blend-mode: multiply; transition: transform 0.5s ease;
         }
-        .product-card:hover .card-image img { transform: scale(1.05); }
 
         .card-info {
             display: flex; justify-content: space-between; align-items: flex-start;
@@ -173,6 +238,45 @@
         }
         .wishlist-icon:hover { color: var(--color-sale); }
 
+.product-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.card-image {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg-product);
+    aspect-ratio: 3 / 4.2;
+    margin-bottom: 15px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* Ẩn hình hover mặc định */
+.card-image .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* Hiện hình hover khi hover */
+.product-card:hover .hover-img {
+    opacity: 1;
+}
+
+/* Ẩn hình chính khi hover */
+.product-card:hover .main-img {
+    opacity: 0;
+}
         /* =========================================
            6. SPLIT BANNER
            ========================================= */
@@ -193,7 +297,6 @@
         /* =========================================
            7. STYLING PROOF SECTION
            ========================================= */
-        .styling-section { padding: 60px 0; }
         
         .section-header {
             display: flex; justify-content: space-between; align-items: center;
@@ -214,7 +317,7 @@
            8. ACTION / LOOKBOOK
            ========================================= */
         .action-section { margin: 0 auto 100px; }
-        .action-header { text-align: center; margin-bottom: 50px; }
+        .action-header { text-align: center; margin-bottom: 50px; margin-top: 50px; }
         .action-title {
             font-size: 30px; text-transform: uppercase; letter-spacing: 2px;
             color: #1a1a1a; margin-bottom: 10px; font-weight: 400;
@@ -224,8 +327,10 @@
         }
 
         .lookbook-grid {
-            display: grid; grid-template-columns: repeat(5, 1fr);
-            gap: 10px; margin: 0 20px !important; /* Original had !important */
+            display: grid;
+            /* Ví dụ: chia 5 cột đều nhau */
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px;
         }
         .lookbook-item { cursor: pointer; }
         .lookbook-img {
@@ -238,7 +343,8 @@
         }
 
 
-        .footer { padding: 100px 0 20px; background-color: #fff; }
+
+        .footer { padding: 50px 0 20px; background-color: #fff; }
         
         .footer-top { display: flex; flex-wrap: wrap; gap: 40px; margin: 100px }
         .footer-col { min-width: 200px; }
@@ -311,7 +417,27 @@
 
         /* Tablet Specific */
         @media (max-width: 1024px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .header { padding: 0 20px; }
+            .nav { display: none; }
+            .desktop-icon { display: none; }
+            #mobile-menu-btn { display: block; }
+            .logo-img, .header-icons { width: auto; }
+            .product-grid { grid-template-columns: repeat(2, 1fr);
+                margin: 0 !important;
+            }
+
+            .lookbook-item:nth-child(n+4) {
+                display: none;
+            }
+
+            .lookbook-grid {
+                grid-template-columns: repeat(3, 1fr); 
+            }
+            .product-card{
+                margin: 0 !important;
+            }
+            .card-image { margin: 0 5px; }
+            .card-info { margin-left: 5px; }
             /* Note: .card-image margin adjust handled in base class above via media query */
         }
 
@@ -324,10 +450,12 @@
             .header-title { font-size: 22px; letter-spacing: 2px; }
 
             /* Grids */
-            .product-grid { grid-template-columns: 1fr; }
-            .split-banner { grid-template-columns: 1fr; height: auto; }
+
             .split-item { height: 70vh; }
             .split-text { left: 30px; }
+            .split-banner{
+                display: none;
+            }
 
             .footer-top { flex-direction: column; gap: 30px; margin: 30px }
             .wide-col, .narrow-col { flex: 1 1 100%; }
@@ -338,45 +466,88 @@
 </head>
 <body>
 
-    <header class="collection-header">
-        <div class="header-collection-name">OFFICE-CHIC</div>
+    <header class="header">
         <div class="logo-img">
             <a href="/">
                 <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR"/>
             </a>
         </div>
-        <nav class="header-nav">
-            <a href="#">HIGHLIGHTS</a>
-            <a href="#">LOOKS</a>
+
+        <nav class="nav">
+            <a href="#">NỮ</a>
+            <a href="#">NAM</a>
+            <a href="#">PHỤ KIỆN</a>
+            <a href="/trang-chu.html">BỘ SƯU TẬP</a>
+            <a href="#">CỬA HÀNG</a>
         </nav>
+
+        <div class="header-icons">
+            <button class="icon-btn" id="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+            </button>
+            <button class="icon-btn desktop-icon" id="user-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A1.875 1.875 0 0118 22.5H6c-.966 0-1.794-.757-1.875-1.745z" />
+                </svg>
+            </button>
+            <button class="icon-btn desktop-icon" id="wishlist-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+                <span class="badge">1</span>
+            </button>
+            <button class="icon-btn" id="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="badge">0</span>
+            </button>
+            <button class="icon-btn" id="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
     </header>
 
     <section class="hero-banner"></section>
 
     <section class="section-wrapper container">
-        <div class="content-grid">
-            <div class="col col-image">
-                <div class="image-container">
-                    <img src="static/imgs/page-2/3.png" alt="Model" class="model-image">
+    <div class="content-grid">
+        <div class="col col-image">
+            <div class="image-container slider-container">
+                <div class="slides-wrapper">
+                    <img src="static/imgs/page-2/3.png" alt="Model 1" class="model-image active">
+                    <img src="static/imgs/page-2/4.png" alt="Model 2" class="model-image">
+                    <img src="static/imgs/page-2/5.png" alt="Model 3" class="model-image">
                 </div>
-            </div>
-            <div class="col col-text">
-                <div class="text-wrapper">
-                    <h2 class="main-title">Office but make it fashion</h2>
-                    <p class="description">
-                        Giữa nhịp sống đô thị không ngừng chuyển động, phong cách công sở của thế hệ mới đã vượt ra khỏi giới hạn gò bó. V-SIXTYFOUR mang đến tuyên ngôn thời trang không khiến bạn tách biệt, nhưng phải đủ để bạn khác biệt.
-                    </p>
-                </div>
+                
+                <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="nav-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
             </div>
         </div>
-        <div class="bottom-label-container">
-            <h3 class="bottom-label">SELECTED FOR YOU</h3>
+        <div class="col col-text">
+            <div class="text-wrapper">
+                <h2 class="main-title">Office but make it fashion</h2>
+                <p class="description">
+                    Giữa nhịp sống đô thị không ngừng chuyển động, phong cách công sở của thế hệ mới đã vượt ra khỏi giới hạn gò bó. V-SIXTYFOUR mang đến tuyên ngôn thời trang không khiến bạn tách biệt, nhưng phải đủ để bạn khác biệt.
+                </p>
+            </div>
         </div>
-    </section>
+    </div>
+    <div class="bottom-label-container">
+        <h3 class="bottom-label">SELECTED FOR YOU</h3>
+    </div>
+</section>
 
     <div class="product-grid">
         <div class="product-card">
-            <div class="card-image"><img src="static/imgs/page-2/4.png" alt="SP1"></div>
+            <div class="card-image">
+                <img src="static/imgs/page-2/4.png" class="main-img" alt="Product Front">
+                <img src="static/imgs/page-2/4-back.png" class="hover-img" alt="Product Back">
+            </div>
             <div class="card-info">
                 <div class="info-left">
                     <div class="price-row">
@@ -389,8 +560,12 @@
                 <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
+        
         <div class="product-card">
-            <div class="card-image"><img src="static/imgs/page-2/5.png" alt="SP2"></div>
+            <div class="card-image">
+                <img src="static/imgs/page-2/5.png" class="main-img" alt="Product Front">
+                <img src="static/imgs/page-2/5-back.png" class="hover-img" alt="Product Back">
+            </div>
             <div class="card-info">
                 <div class="info-left">
                     <div class="price-row">
@@ -403,8 +578,12 @@
                 <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
+        
         <div class="product-card">
-            <div class="card-image"><img src="static/imgs/page-2/6.png" alt="SP3"></div>
+            <div class="card-image">
+                <img src="static/imgs/page-2/6.png" class="main-img" alt="Product Front">
+                <img src="static/imgs/page-2/6-back.png" class="hover-img" alt="Product Back">
+            </div>
             <div class="card-info">
                 <div class="info-left">
                     <div class="price-row">
@@ -417,8 +596,12 @@
                 <i class="far fa-heart wishlist-icon"></i>
             </div>
         </div>
+        
         <div class="product-card">
-            <div class="card-image"><img src="static/imgs/page-2/7.png" alt="SP4"></div>
+            <div class="card-image">
+                <img src="static/imgs/page-2/7.png" class="main-img" alt="Product Front">
+                <img src="static/imgs/page-2/7-back.png" class="hover-img" alt="Product Back">
+            </div>
             <div class="card-info">
                 <div class="info-left">
                     <div class="price-row"><span class="current-price">691.200₫</span></div>
@@ -555,14 +738,60 @@
             </div>
         </div>
 
-        <div class="footer-big-logo">
-            <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR Logo">
-        </div>
-
         <div class="footer-bottom">
             <p>© 2025 V-SIXTYFOUR. Powered by VIET THANG JEAN Company Limited</p>
         </div>
     </footer>
+
+    <script>
+    let slideIndex = 0;
+    const slidesWrapper = document.querySelector('.slides-wrapper');
+    const slides = document.querySelectorAll('.model-image');
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+
+    // Hàm di chuyển slide
+    function showSlides() {
+        // Tính toán khoảng cách dịch chuyển (mỗi ảnh chiếm 100% chiều rộng)
+        const translateX = -(slideIndex * 100); 
+        slidesWrapper.style.transform = `translateX(${translateX}%)`;
+    }
+
+    // Hàm được gọi khi bấm nút hoặc tự động chạy
+    function moveSlide(n) {
+        slideIndex += n;
+
+        // Nếu đi quá hình cuối cùng -> quay về hình đầu
+        if (slideIndex >= totalSlides) {
+            slideIndex = 0;
+        }
+        // Nếu lùi quá hình đầu tiên -> quay về hình cuối
+        if (slideIndex < 0) {
+            slideIndex = totalSlides - 1;
+        }
+
+        showSlides();
+        
+        // Reset lại bộ đếm giờ mỗi khi chuyển hình (tránh trường hợp vừa bấm xong nó lại tự nhảy tiếp ngay lập tức)
+        resetTimer(); 
+    }
+
+    // Hàm khởi tạo bộ đếm tự động
+    function startTimer() {
+        autoSlideInterval = setInterval(() => {
+            moveSlide(1); // Tự động chuyển sang hình tiếp theo (lướt từ phải qua trái)
+        }, 5000); // 3000ms = 3 giây
+    }
+
+    // Hàm reset bộ đếm
+    function resetTimer() {
+        clearInterval(autoSlideInterval);
+        startTimer();
+    }
+
+    // Bắt đầu chạy ngay khi tải trang
+    startTimer();
+</script>
 
 </body>
 </html>
