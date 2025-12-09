@@ -4,41 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>V-SIXTYFOUR - Office Chic Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <style>
         /* =========================================
-           1. SETUP & VARIABLES
+           1. RESET & VARIABLES (ĐỒNG BỘ)
            ========================================= */
         :root {
             --font-main: 'Roboto', sans-serif;
-            /* Colors */
+            --font-serif: 'Playfair Display', serif;
+            
             --color-primary: #0f172a;   /* Navy Dark */
-            --color-text-main: #1a1a1a;
+            --color-text: #1a1a1a;
             --color-text-gray: #666;
-            --color-text-light: #999; /* #aaa, #bbb, #cbd5e0 merged visually to generic light gray logic or kept specific if needed. Keeping original hexes in classes for safety. */
+            --color-text-light: #9ca3af;
             --color-sale: #cc0000;
             --color-bg-product: #f4f4f4;
+            --color-accent: #C5A059;
             
             --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body {
             font-family: var(--font-main);
-            color: var(--color-text-main);
+            color: var(--color-text);
             line-height: 1.6;
             background-color: #fff;
             overflow-x: hidden;
         }
 
         a { text-decoration: none; color: inherit; transition: var(--transition); }
-        img { width: 100%; height: 100%; object-fit: cover; display: block; }
         ul { list-style: none; }
+        img { max-width: 100%; display: block; }
 
-        /* General Layout */
+        /* =========================================
+           2. HEADER
+           ========================================= */
         .header {
             position: sticky; top: 0; z-index: 1000;
             background: #fff;
@@ -48,11 +52,8 @@
             display: flex; align-items: center; justify-content: space-between;
         }
 
-        /* Logo */
-        .logo-img { width: 200px; display: flex; align-items: center; }
         .logo-img img { width: 100%; max-width: 180px; object-fit: contain; }
 
-        /* Nav */
         .nav { display: flex; align-items: center; gap: 40px; flex: 1; justify-content: center; }
         .nav a {
             text-transform: uppercase; font-size: 15px; font-weight: 500;
@@ -60,164 +61,120 @@
         }
         .nav a:hover { color: var(--color-accent); }
 
-        /* Icons */
         .header-icons { display: flex; align-items: center; justify-content: flex-end; gap: 25px; width: 200px; }
         .icon-btn {
             background: none; border: none; cursor: pointer;
             color: #000; position: relative; display: flex; align-items: center; justify-content: center;
         }
-        .icon-btn:hover { color: var(--color-accent); }
         .icon-btn svg { width: 24px; height: 24px; stroke-width: 1.5; }
-        
         .badge {
             position: absolute; top: -5px; right: -8px;
-            background-color: var(--color-accent); color: #fff;
+            background-color: var(--color-sale); color: #fff;
             border-radius: 50%; width: 16px; height: 16px;
             display: flex; align-items: center; justify-content: center;
             font-size: 10px; font-weight: bold;
         }
-
         #mobile-menu-btn { display: none; }
 
         /* =========================================
            3. HERO BANNER
            ========================================= */
-        .hero-banner {
-            position: relative; margin: 0 auto 50px;
-            height: 93vh; width: 100%;
-            background: url('static/imgs/page-2/2.png') center/cover no-repeat;
-            display: flex; align-items: center; justify-content: center; color: white;
+        .hero-banner-container {
+            width: 100%;
+            margin: 0 auto 50px;
         }
+        .hero-banner-img { width: 100%; height: auto; object-fit: cover; min-height: 400px; }
 
         /* =========================================
-           4. INTRO SECTION
+           4. INTRO SECTION (ĐỒNG BỘ CẤU TRÚC)
            ========================================= */
-        .section-wrapper { padding: 50px 0; }
-        
-        .content-grid {
-            display: flex; flex-direction: column; align-items: center; gap: 70px;
-        }
-        
-        .col { width: 100%; }
-        .col-image { display: flex; justify-content: center; }
-        .col-text { text-align: center; }
-
-        .image-container {
-            position: relative; overflow: hidden; background-color: #f9fafb;
-            aspect-ratio: 3/4; width: 100%; height: 75vh; max-width: 500px;
-        }
-        .model-image {
-            width: 100%; height: 100%; object-fit: cover; object-position: top;
-            transition: transform 0.7s ease-in-out;
-        }
-        .image-container:hover .model-image { transform: scale(1.05); }
-
-        .text-wrapper {
-            display: flex; flex-direction: column; align-items: center; text-align: center;
-            margin: 20px; /* Kept from original .text-wrapper margin override */
+        .intro-container {
+            display: flex;
+            flex-direction: column; /* Mobile first: Dọc */
+            align-items: center;
+            gap: 40px;
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
-        .main-title {
-            font-size: 40px !important; font-weight: 400; text-transform: uppercase;
-            letter-spacing: 0.025em; max-width: 400px; color: #000; margin-bottom: 16px;
-        }
-        .description {
-            color: #9ca3af; font-size: 14px !important; line-height: 1.75;
-            margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto;
-            font-weight: 300; letter-spacing: 2px;
-        }
-
-        .bottom-label-container { margin-top: 60px; text-align: center; }
-        .bottom-label {
-            font-size: 20px; font-weight: 400; text-transform: uppercase;
-            letter-spacing: 1px; color: #000;
+        .intro-img {
+            width: 100%;
+            max-width: 500px; /* Giới hạn ảnh trên mobile */
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: #f9fafb;
         }
 
+        .intro-slides-wrapper {
+            display: flex; width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .intro-slides-wrapper img {
+            min-width: 100%; width: 100%; height: 100%; object-fit: cover;
+        }
 
-        /* Đảm bảo khung chứa giới hạn phạm vi hiển thị */
-.image-container.slider-container {
-    position: relative;
-    overflow: hidden; /* Ẩn các hình nằm ngoài khung */
-    width: 100%;
-    /* Giữ tỉ lệ khung hình nếu cần, hoặc height auto theo ảnh */
-}
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background-color: rgba(255,255,255,0.6); color: #333;
+            border: none; width: 35px; height: 35px; border-radius: 50%;
+            cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;
+        }
+        .nav-btn:hover { background-color: #fff; }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
 
-/* Phần bao quanh các ảnh: Dàn ngang (Flexbox) và có hiệu ứng chuyển động (Transition) */
-.slides-wrapper {
-    display: flex;
-    width: 100%;
-    transition: transform 0.5s ease-in-out; /* Hiệu ứng lướt mượt mà */
-}
+        .intro-text { width: 100%; text-align: center; }
+        .intro-text h2 {
+            font-size: 32px; letter-spacing: 3px; text-transform: uppercase;
+            margin-bottom: 20px; font-weight: 400; color: var(--color-primary); line-height: 1.3;
+        }
+        .intro-text p {
+            color: var(--color-text-light); font-size: 14px; line-height: 1.75;
+            font-weight: 300; letter-spacing: 1px; max-width: 100%; margin: 0 auto;
+        }
 
-/* Định dạng ảnh: Chiếm 100% chiều rộng khung chứa */
-.model-image {
-    min-width: 100%; /* Bắt buộc mỗi ảnh phải rộng bằng khung cha */
-    width: 100%;
-    object-fit: cover; /* Đảm bảo ảnh không bị méo */
-    display: block;
-}
-
-/* Style cho 2 nút mũi tên */
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.3); /* Nền mờ */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 18px;
-    z-index: 10;
-    transition: background 0.3s;
-    border-radius: 50%;
-}
-
-.nav-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
-
-
+        .section-label-container { text-align: center; margin-top: 40px; }
+        .bottom-label { 
+            font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: #aaa;
+        }
 
         /* =========================================
            5. PRODUCT GRID
            ========================================= */
         .product-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 5px; margin: 5px 5px 100px 5px; /* Updated to match the last definition in original */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 0 auto 80px;
+            padding: 0 5px;
         }
 
         .product-card { cursor: pointer; }
-
+        
         .card-image {
-            background-color: var(--color-bg-product); aspect-ratio: 3 / 4.2;
+            background-color: var(--color-bg-product);
+            aspect-ratio: 3 / 4.2;
             overflow: hidden; margin-bottom: 15px; position: relative;
         }
-
-
+        
         .card-image img {
             width: 100%; height: 100%; object-fit: cover;
-            mix-blend-mode: multiply; transition: transform 0.5s ease;
+            mix-blend-mode: multiply; transition: opacity 0.3s ease; display: block;
         }
+        
+        /* Hover Effect */
+        .card-image .hover-img { position: absolute; top: 0; left: 0; opacity: 0; }
+        .product-card:hover .hover-img { opacity: 1; }
+        .product-card:hover .main-img { opacity: 0; }
 
         .card-info {
             display: flex; justify-content: space-between; align-items: flex-start;
-            margin-right: 20px; margin-top: 10px;
         }
-        .info-left { flex: 1; }
-
+        
         .price-row {
-            display: flex; align-items: center; font-size: 14px;
-            font-weight: 600; margin-bottom: 5px;
+            display: flex; align-items: center; font-size: 14px; font-weight: 600; margin-bottom: 5px;
         }
         .current-price { color: var(--color-sale); margin-right: 8px; }
         .old-price {
@@ -228,96 +185,75 @@
             background: var(--color-sale); color: #fff; font-size: 10px;
             padding: 1px 4px; font-weight: 700;
         }
-
         .product-name {
             font-size: 12px; color: var(--color-text-gray);
             text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;
         }
         .wishlist-icon {
-            color: #ccc; font-size: 18px; cursor: pointer; transition: color 0.3s;
+            color: #ccc; font-size: 18px; cursor: pointer; transition: color 0.3s; margin-top: 5px;
         }
         .wishlist-icon:hover { color: var(--color-sale); }
 
-.product-card {
-    position: relative;
-    cursor: pointer;
-}
-
-.card-image {
-    position: relative;
-    overflow: hidden;
-    background-color: var(--color-bg-product);
-    aspect-ratio: 3 / 4.2;
-    margin-bottom: 15px;
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    mix-blend-mode: multiply;
-    display: block;
-    transition: opacity 0.3s ease;
-}
-
-/* Ẩn hình hover mặc định */
-.card-image .hover-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-}
-
-/* Hiện hình hover khi hover */
-.product-card:hover .hover-img {
-    opacity: 1;
-}
-
-/* Ẩn hình chính khi hover */
-.product-card:hover .main-img {
-    opacity: 0;
-}
         /* =========================================
            6. SPLIT BANNER
            ========================================= */
         .split-banner {
             display: grid; grid-template-columns: 1fr 1fr;
-            width: 100%; margin: 0 auto 100px; overflow: hidden;
+            width: 100%; margin: 0 auto 100px;
         }
         .split-item {
-            position: relative; width: 100%; height: 100%; overflow: hidden;
-            background: #f4f4f4; /* Added from original split-item */
+            position: relative; width: 100%; overflow: hidden;
         }
         .split-item img {
-            width: 100%; height: 100%; object-fit: cover; object-position: top center;
-            transition: transform 1s ease; border: 0.5px solid #999999;
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 1s ease;
         }
         .split-item:hover img { transform: scale(1.05); }
 
         /* =========================================
-           7. STYLING PROOF SECTION
+           7. STANDOUT / STYLING PROOF (CĂN GIỮA)
            ========================================= */
-        
-        .section-header {
-            display: flex; justify-content: space-between; align-items: center;
-            gap: 60px; margin: 50px 20px 100px; /* Merged margins: 100px 20px + margin-top:50px override */
+        .standout-section { 
+            margin-bottom: 80px; 
         }
 
-        .header-title {
-            flex: 1; font-size: 28px; font-weight: 400; color: var(--color-primary);
-            text-transform: uppercase; letter-spacing: 3px; line-height: 1.4; margin: 0;
+        .standout-header {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;    
+            text-align: center;     
+            margin: 60px 0 40px;    
+            gap: 20px;              
         }
-        .header-desc {
-            flex: 1; font-size: 16px; font-weight: 300; color: #8898aa;
-            line-height: 1.6; margin: 0; text-align: left;
+
+        .standout-title {
+            font-size: 30px;        
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1.4;
+            color: var(--color-primary);
+            margin: 0;
         }
-        .section-image img { width: 100%; height: auto; }
+
+        .standout-desc {
+            font-size: 14px;
+            color: #8898aa;
+            max-width: 600px;      
+            margin: 0 auto;         
+            line-height: 1.8;
+            letter-spacing: 1px;
+            text-align: center;     
+        }
+
+        .section-image img { 
+            width: 100%; height: auto; display: block;
+        }
 
         /* =========================================
-           8. ACTION / LOOKBOOK
+           8. LOOKBOOK / ACTION SECTION
            ========================================= */
-        .action-section { margin: 0 auto 100px; }
-        .action-header { text-align: center; margin-bottom: 50px; margin-top: 50px; }
+        .action-section { margin-bottom: 100px; padding: 0 5px; }
+        .action-header { text-align: center; margin-bottom: 50px; }
         .action-title {
             font-size: 30px; text-transform: uppercase; letter-spacing: 2px;
             color: #1a1a1a; margin-bottom: 10px; font-weight: 400;
@@ -325,142 +261,110 @@
         .action-subtitle {
             font-size: 16px; color: #aaa; letter-spacing: 2px; font-weight: 300;
         }
-
+        
         .lookbook-grid {
-            display: grid;
-            /* Ví dụ: chia 5 cột đều nhau */
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 10px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
         }
         .lookbook-item { cursor: pointer; }
         .lookbook-img {
             aspect-ratio: 3/4.5; background: #eee; margin-bottom: 15px; overflow: hidden;
         }
-        .lookbook-img img { transition: transform 0.6s ease; }
+        .lookbook-img img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover;}
         .lookbook-item:hover .lookbook-img img { transform: scale(1.05); }
         .lb-name {
             font-size: 10px; text-transform: uppercase; color: #999; letter-spacing: 0.5px;
         }
 
-
-
-        .footer { padding: 50px 0 20px; background-color: #fff; }
-        
-        .footer-top { display: flex; flex-wrap: wrap; gap: 40px; margin: 100px }
+        /* =========================================
+           9. FOOTER
+           ========================================= */
+        .footer { padding: 80px 0 20px; background-color: #fff; border-top: 1px solid #eee; margin: 50px;}
+        .footer-top { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
         .footer-col { min-width: 200px; }
         .wide-col { flex: 1.4; }
         .narrow-col { flex: 1; }
-
-        .footer-col h3 { font-size: 15px; font-weight: 700; color: #272727; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; }
         
-        /* Newsletter */
+        .footer-col h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+        
         .newsletter-form { display: flex; border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; }
-        .newsletter-form input { border: none; outline: none; flex-grow: 1; font-size: 13px; color: #333; }
+        .newsletter-form input { border: none; outline: none; flex-grow: 1; font-size: 13px; }
         .newsletter-form button { border: none; background: none; color: #999; cursor: pointer; font-size: 12px; text-transform: uppercase; font-weight: bold; }
         .desc { font-size: 12px; color: #999; margin-bottom: 30px; text-align: justify; line-height: 1.5; }
-
-        /* Socials */
-        .social-media h3 { margin-bottom: 15px; margin-top: 20px; }
+        
         .social-icons { display: flex; gap: 12px; align-items: center; }
         .social-btn {
             width: 38px; height: 38px; background-color: #6d6d6d; color: #fff;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             font-size: 18px;
         }
-        .social-btn:hover { background-color: #333; transform: translateY(-2px); }
-
-        /* Zalo Custom Icon */
-        .zalo-btn img { display: none; }
+        .social-btn:hover { background-color: #333; }
         .zalo-bubble {
             width: 22px; height: 22px; background-color: #fff; color: #6d6d6d;
             border-radius: 8px; border-bottom-left-radius: 2px;
             display: flex; align-items: center; justify-content: center;
-            font-family: sans-serif; font-weight: 900; font-size: 10px; line-height: 1; letter-spacing: -0.5px;
+            font-family: sans-serif; font-weight: 900; font-size: 10px; line-height: 1;
         }
-        .social-btn:hover .zalo-bubble { color: #333; }
+        .bct-logo img { width: 140px; margin-top: 25px; }
         
-        .bct-logo { margin-top: 25px; }
-        .bct-logo img { width: 140px; height: auto; object-fit: contain; }
-
-        /* Info Links */
-        .info-group { margin-bottom: 25px; }
-        .footer-col p, .address-list a, .contact-info a, .footer-links a {
+        .info-group p, .info-group a, .footer-links a {
             display: block; font-size: 13px; color: #777; line-height: 1.6; margin-bottom: 6px;
         }
-        .contact-info a { font-weight: 500; color: #555; }
-        .footer-links a:hover, .address-list a:hover, .contact-info a:hover { color: #000; padding-left: 3px; }
-        .contact-info a:hover { color: var(--color-accent); }
-
-        /* Big Logo & Bottom */
-        .footer-big-logo { text-align: center; margin: 0 20px 100px; padding: 0 20px; }
-        .footer-big-logo img { width: 100%; max-width: 80%; height: auto; margin: 0 auto; }
+        .footer-links a:hover { color: #000; padding-left: 3px; }
         .footer-bottom { text-align: center; border-top: 1px solid #eee; padding-top: 25px; font-size: 12px; color: #999; }
 
-
         /* =========================================
-           9. RESPONSIVE (MEDIA QUERIES)
+           10. RESPONSIVE MEDIA QUERIES
            ========================================= */
-        /* Tablet & Desktop Adjustments */
-        @media (min-width: 768px) {
-            .content-grid { flex-direction: row; gap: 120px; }
-            .col { width: 41.666667%; }
-            .col-image { justify-content: flex-end; }
-            .col-text { text-align: left; }
-            .main-title { font-size: 48px; }
-            .subtitle, .description { font-size: 14px; }
-            .cta-text { font-size: 12px; }
-        }
-
-        @media (min-width: 1024px) {
-            .main-title { font-size: 60px; }
-        }
-
-        /* Tablet Specific */
+        
+        /* Tablet & Desktop Nhỏ (max-width: 1024px) */
         @media (max-width: 1024px) {
             .header { padding: 0 20px; }
             .nav { display: none; }
             .desktop-icon { display: none; }
             #mobile-menu-btn { display: block; }
-            .logo-img, .header-icons { width: auto; }
-            .product-grid { grid-template-columns: repeat(2, 1fr);
-                margin: 0 !important;
-            }
-
-            .lookbook-item:nth-child(n+4) {
-                display: none;
-            }
-
-            .lookbook-grid {
-                grid-template-columns: repeat(3, 1fr); 
-            }
-            .product-card{
-                margin: 0 !important;
-            }
-            .card-image { margin: 0 5px; }
-            .card-info { margin-left: 5px; }
-            /* Note: .card-image margin adjust handled in base class above via media query */
+            
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .lookbook-grid { grid-template-columns: repeat(3, 1fr); }
+            .lookbook-item:nth-child(n+4) { display: none; }
         }
 
-        /* Mobile Specific */
+        /* Mobile (max-width: 768px) */
         @media (max-width: 768px) {
-            .section-wrapper { padding: 50px 0; }
+            .hero-banner-img { min-height: 300px; }
             
-            /* Styling Proof Header */
-            .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .header-title { font-size: 22px; letter-spacing: 2px; }
+            .intro-text h2 { font-size: 28px; }
+            .intro-text p { text-align: center; }
+            
+            .split-banner { grid-template-columns: 1fr; } /* Stack split banner */
+            
+            .footer-top { flex-direction: column; gap: 30px; }
+            .wide-col, .narrow-col { width: 100%; flex: auto; }
+            
+            .lookbook-grid { grid-template-columns: repeat(3, 1fr); }
+        }
 
-            /* Grids */
-
-            .split-item { height: 70vh; }
-            .split-text { left: 30px; }
-            .split-banner{
-                display: none;
+        /* Desktop Lớn (min-width: 992px) */
+        @media (min-width: 992px) {
+            .intro-container {
+                flex-direction: row; /* Ngang */
+                justify-content: center;
+                gap: 80px;
             }
+            .intro-img { width: 45%; max-width: none; }
+            .intro-text { width: 45%; text-align: left; }
+            .intro-text h2 { font-size: 48px; text-align: left; }
+            .intro-text p { margin: 0; max-width: 450px; text-align: left; }
+            .section-label-container { text-align: left; }
+            
+            .standout-title { font-size: 40px; }
+        }
 
-            .footer-top { flex-direction: column; gap: 30px; margin: 30px }
-            .wide-col, .narrow-col { flex: 1 1 100%; }
-            .footer-big-logo { margin: 20px 0; }
-            .footer-big-logo img { width: 90%; max-width: 100%; }
+        @media (max-width: 450px) {
+            .product-card{
+                margin-bottom: 20px;
+            }
+            
+            
         }
     </style>
 </head>
@@ -472,7 +376,6 @@
                 <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR"/>
             </a>
         </div>
-
         <nav class="nav">
             <a href="#">NỮ</a>
             <a href="#">NAM</a>
@@ -480,7 +383,6 @@
             <a href="/trang-chu.html">BỘ SƯU TẬP</a>
             <a href="#">CỬA HÀNG</a>
         </nav>
-
         <div class="header-icons">
             <button class="icon-btn" id="search-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -512,35 +414,32 @@
         </div>
     </header>
 
-    <section class="hero-banner"></section>
+    <section class="hero-banner-container">
+        <img src="static/imgs/page-2/2.png" alt="Office Chic Hero" class="hero-banner-img">
+    </section>
 
-    <section class="section-wrapper container">
-    <div class="content-grid">
-        <div class="col col-image">
-            <div class="image-container slider-container">
-                <div class="slides-wrapper">
-                    <img src="static/imgs/page-2/3.png" alt="Model 1" class="model-image active">
-                    <img src="static/imgs/page-2/4.png" alt="Model 2" class="model-image">
-                    <img src="static/imgs/page-2/5.png" alt="Model 3" class="model-image">
-                </div>
-                
-                <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="nav-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+    <section class="intro-container">
+        <div class="intro-img">
+            <div class="intro-slides-wrapper">
+                <img src="static/imgs/page-2/image1.png" alt="Model 1" class="model-image">
+                <img src="static/imgs/page-2/image2.png" alt="Model 2" class="model-image">
+                <img src="static/imgs/page-2/image3.png" alt="Model 3" class="model-image">
+            </div>
+            
+            <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="nav-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="intro-text">
+            <h2 class="main-title">OFFICE BUT<br>MAKE IT FASHION</h2>
+            <p class="description">
+                Giữa nhịp sống đô thị không ngừng chuyển động, phong cách công sở của thế hệ mới đã vượt ra khỏi giới hạn gò bó. V-SIXTYFOUR mang đến tuyên ngôn thời trang không khiến bạn tách biệt, nhưng phải đủ để bạn khác biệt.
+            </p>
+            <div class="section-label-container">
+                <h3 class="bottom-label">SELECTED FOR YOU</h3>
             </div>
         </div>
-        <div class="col col-text">
-            <div class="text-wrapper">
-                <h2 class="main-title">Office but make it fashion</h2>
-                <p class="description">
-                    Giữa nhịp sống đô thị không ngừng chuyển động, phong cách công sở của thế hệ mới đã vượt ra khỏi giới hạn gò bó. V-SIXTYFOUR mang đến tuyên ngôn thời trang không khiến bạn tách biệt, nhưng phải đủ để bạn khác biệt.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="bottom-label-container">
-        <h3 class="bottom-label">SELECTED FOR YOU</h3>
-    </div>
-</section>
+    </section>
 
     <div class="product-grid">
         <div class="product-card">
@@ -617,10 +516,10 @@
         <div class="split-item"><a href="#"><img src="static/imgs/page-2/9.png" alt="Women"></a></div>
     </section>
 
-    <section class="styling-section container">
-        <div class="section-header">
-            <h2 class="header-title">THE STYLING PROOF:<br>MODERN WORKWEAR</h2>
-            <p class="header-desc">
+    <section class="standout-section container">
+        <div class="standout-header">
+            <h2 class="standout-title">THE STYLING PROOF:<br>MODERN WORKWEAR</h2>
+            <p class="standout-desc">
                 Cảm hứng mặc đẹp từ cộng đồng. Chiêm ngưỡng cách Khách hàng và Influencers ứng dụng Office-Chic Denim thanh lịch và linh hoạt nơi công sở, kiến tạo phong cách cá nhân.
             </p>
         </div>
@@ -651,13 +550,8 @@
                 <div class="lookbook-img"><img src="static/imgs/page-2/14.png" alt="LB 4"></div>
                 <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
             </div>
-            <div class="lookbook-item">
-                <div class="lookbook-img"><img src="static/imgs/page-2/15.png" alt="LB 5"></div>
-                <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
-            </div>
         </div>
     </section>
-
 
     <footer class="footer">
         <div class="container">
@@ -737,61 +631,40 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>© 2025 V-SIXTYFOUR. Powered by VIET THANG JEAN Company Limited</p>
         </div>
     </footer>
 
     <script>
-    let slideIndex = 0;
-    const slidesWrapper = document.querySelector('.slides-wrapper');
-    const slides = document.querySelectorAll('.model-image');
-    const totalSlides = slides.length;
-    let autoSlideInterval;
+    let introIndex = 0;
+    const introWrapper = document.querySelector('.intro-slides-wrapper');
+    const introImages = document.querySelectorAll('.intro-slides-wrapper img');
+    const introCount = introImages.length;
+    let introTimer;
 
-    // Hàm di chuyển slide
-    function showSlides() {
-        // Tính toán khoảng cách dịch chuyển (mỗi ảnh chiếm 100% chiều rộng)
-        const translateX = -(slideIndex * 100); 
-        slidesWrapper.style.transform = `translateX(${translateX}%)`;
+    function showSlide() {
+        introWrapper.style.transform = `translateX(-${introIndex * 100}%)`;
     }
 
-    // Hàm được gọi khi bấm nút hoặc tự động chạy
-    function moveSlide(n) {
-        slideIndex += n;
-
-        // Nếu đi quá hình cuối cùng -> quay về hình đầu
-        if (slideIndex >= totalSlides) {
-            slideIndex = 0;
-        }
-        // Nếu lùi quá hình đầu tiên -> quay về hình cuối
-        if (slideIndex < 0) {
-            slideIndex = totalSlides - 1;
-        }
-
-        showSlides();
-        
-        // Reset lại bộ đếm giờ mỗi khi chuyển hình (tránh trường hợp vừa bấm xong nó lại tự nhảy tiếp ngay lập tức)
-        resetTimer(); 
+    function moveSlide(step) {
+        introIndex += step;
+        if (introIndex >= introCount) introIndex = 0;
+        if (introIndex < 0) introIndex = introCount - 1;
+        showSlide();
+        resetIntroTimer();
     }
 
-    // Hàm khởi tạo bộ đếm tự động
-    function startTimer() {
-        autoSlideInterval = setInterval(() => {
-            moveSlide(1); // Tự động chuyển sang hình tiếp theo (lướt từ phải qua trái)
-        }, 5000); // 3000ms = 3 giây
+    function startIntroAuto() {
+        introTimer = setInterval(() => { moveSlide(1); }, 5000);
     }
 
-    // Hàm reset bộ đếm
-    function resetTimer() {
-        clearInterval(autoSlideInterval);
-        startTimer();
+    function resetIntroTimer() {
+        clearInterval(introTimer);
+        startIntroAuto();
     }
-
-    // Bắt đầu chạy ngay khi tải trang
-    startTimer();
-</script>
+    startIntroAuto();
+    </script>
 
 </body>
 </html>

@@ -4,33 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>V-SIXTYFOUR - Ready To Wear</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@400;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
-    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <style>
-        /* --- 1. RESET & VARIABLES --- */
+        /* =========================================
+           1. RESET & VARIABLES (KHAI BÁO 1 LẦN)
+           ========================================= */
         :root {
             --font-main: 'Roboto', sans-serif;
             --font-serif: 'Playfair Display', serif;
-            --font-hand: 'Caveat', cursive; /* Font chữ viết tay cho tờ giấy */
+            --font-hand: 'Caveat', cursive;
             
-            --color-gold: #C5A059;
-            --color-text: #1a1a1a;
-            --color-gray: #666;
-            --color-light: #f9f9f9;
-            --color-red: #cc0000;
-
-
-                        --font-main: 'Roboto', sans-serif;
-            /* Colors */
             --color-primary: #0f172a;   /* Navy Dark */
-            --color-text-main: #1a1a1a;
+            --color-text: #1a1a1a;
             --color-text-gray: #666;
-            --color-text-light: #999; /* #aaa, #bbb, #cbd5e0 merged visually to generic light gray logic or kept specific if needed. Keeping original hexes in classes for safety. */
+            --color-text-light: #9ca3af;
             --color-sale: #cc0000;
             --color-bg-product: #f4f4f4;
+            --color-accent: #C5A059;
             
             --transition: all 0.3s ease;
         }
@@ -45,10 +37,10 @@
             overflow-x: hidden;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
         img { max-width: 100%; display: block; }
-
+        .container { margin: 5px auto;}
 
         /* =========================================
            2. HEADER
@@ -62,11 +54,8 @@
             display: flex; align-items: center; justify-content: space-between;
         }
 
-        /* Logo */
-        .logo-img { width: 200px; display: flex; align-items: center; }
         .logo-img img { width: 100%; max-width: 180px; object-fit: contain; }
 
-        /* Nav */
         .nav { display: flex; align-items: center; gap: 40px; flex: 1; justify-content: center; }
         .nav a {
             text-transform: uppercase; font-size: 15px; font-weight: 500;
@@ -74,584 +63,225 @@
         }
         .nav a:hover { color: var(--color-accent); }
 
-        /* Icons */
         .header-icons { display: flex; align-items: center; justify-content: flex-end; gap: 25px; width: 200px; }
         .icon-btn {
             background: none; border: none; cursor: pointer;
             color: #000; position: relative; display: flex; align-items: center; justify-content: center;
         }
-        .icon-btn:hover { color: var(--color-accent); }
         .icon-btn svg { width: 24px; height: 24px; stroke-width: 1.5; }
-        
         .badge {
             position: absolute; top: -5px; right: -8px;
-            background-color: var(--color-accent); color: #fff;
+            background-color: var(--color-sale); color: #fff;
             border-radius: 50%; width: 16px; height: 16px;
             display: flex; align-items: center; justify-content: center;
             font-size: 10px; font-weight: bold;
         }
-
         #mobile-menu-btn { display: none; }
 
-
-
-        /* --- 2. HEADER --- */
-       /* Container chính: Căn giữa tất cả nội dung theo chiều dọc */
-.ready-to-wear-header {
-    display: flex;
-    flex-direction: column; /* Xếp chồng lên nhau: Tiêu đề -> Logo -> Menu */
-    align-items: center;    /* Căn giữa theo trục ngang */
-    justify-content: center;
-    padding: 30px 0;        /* Khoảng cách trên dưới cho thoáng */
-    background-color: #fff; /* Nền trắng */
-    font-family: sans-serif;
-}
-
-/* 1. Tiêu đề: READY TO WEAR */
-.page-title {
-    font-size: 32px;           /* Cỡ chữ lớn */
-    font-weight: 400;          /* Chữ thường, không quá đậm */
-    color: #0f172a;            /* Màu xanh đen đậm (Dark Navy) */
-    text-transform: uppercase; /* Viết hoa toàn bộ */
-    letter-spacing: 4px;       /* Dãn chữ rộng ra (quan trọng để giống mẫu) */
-    margin: 0 0 15px 0;        /* Khoảng cách dưới xuống logo */
-}
-
-
-/* 3. Menu: HIGHLIGHTS LOOKS */
-.header-nav {
-    display: flex;
-    gap: 30px;                 /* Khoảng cách giữa 2 link */
-}
-
-.header-nav a {
-    text-decoration: none;     /* Bỏ gạch chân */
-    color: #cbd5e0;            /* Màu xám rất nhạt (Light Gray) giống hệt ảnh */
-    font-size: 11px;           /* Cỡ chữ nhỏ */
-    letter-spacing: 1px;       /* Dãn chữ nhẹ */
-    text-transform: uppercase; /* Viết hoa */
-    transition: color 0.3s;
-}
-
-/* Hiệu ứng khi di chuột vào link (tùy chọn) */
-.header-nav a:hover {
-    color: #0f172a;            /* Đậm lên khi trỏ chuột */
-}
-
-/* Khung chính của phần hình ảnh intro */
-.intro-img {
-    position: relative; /* Để định vị nút mũi tên */
-}
-
-/* Khung giới hạn, ẩn các hình chưa trượt tới */
-.intro-viewport {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Dải chứa 3 ảnh: Dùng flex để xếp hàng ngang */
-.intro-slides-wrapper {
-    display: flex;
-    width: 100%;
-    transition: transform 0.5s ease-in-out; /* Hiệu ứng lướt êm */
-}
-
-/* Bắt buộc mỗi ảnh phải rộng bằng 100% khung chứa */
-.intro-slides-wrapper img {
-    min-width: 100%;
-    width: 100%;
-    height: 100%;       /* Hoặc height auto tùy bố cục của bạn */
-    object-fit: cover;  /* Giữ ảnh không bị méo */
-    display: block;
-}
-
-/* Nút bấm (Tận dụng lại class nav-btn cũ hoặc viết mới) */
-.intro-img .nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.3);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
-}
-.intro-img .prev-btn { left: 10px; }
-.intro-img .next-btn { right: 10px; }
-
-        .page-title {
-            font-size: 24px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-            color: #000;
-        }
-
-        .brand-sub {
-            font-size: 12px;
-            color: var(--color-gold);
-            letter-spacing: 2px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        /* --- 3. MOODBOARD COLLAGE (GRID PHỨC TẠP) --- */
-
-        .hero {
-            
-            margin: 0 auto;
-        }
-
-        /* Container chứa ảnh để giới hạn chiều rộng tối đa */
+        /* =========================================
+           3. HERO BANNER
+           ========================================= */
         .hero-banner-container {
             width: 100%;
-         
             margin: 0 auto;
-            
-            /* Đổ bóng nhẹ cho banner nổi bật lên (tùy chọn) */
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
+        .hero-banner-img { width: 100%; height: auto; object-fit: contain; }
 
-        /* Ảnh Banner chính */
-        .hero-banner-img {
-            width: 100%;
-            height: auto; /* Quan trọng: Giữ tỷ lệ ảnh không bị méo */
-            display: block; /* Loại bỏ khoảng trắng thừa dưới chân ảnh */
-            object-fit: contain;
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .intro-text{
-                margin: 20px;
-            }
-        }
-   
-
-
-
-
-        /* Các ô ảnh nhỏ xung quanh */
-        .mb-item { background: #fff; overflow: hidden; }
-        .mb-item img { transition: transform 0.5s; }
-        .mb-item:hover img { transform: scale(1.05); }
-
-        /* Ô giấy ghi chú ở giữa (Chiếm cột 3, hàng 1-2) */
-        .mb-note {
-            grid-column: 3 / 4;
-            grid-row: 1 / 3;
-            background: #fff;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            position: relative;
-            transform: rotate(-2deg); /* Nghiêng nhẹ giống giấy thật */
-        }
-
-        /* Cái ghim đỏ */
-        .pin {
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle at 30% 30%, #ff4d4d, #cc0000);
-            border-radius: 50%;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-        }
-
-        .note-text {
-            font-family: var(--font-hand);
-            font-size: 40px;
-            line-height: 1;
-            color: #333;
-            transform: rotate(2deg); /* Xoay chữ lại cho thẳng hoặc nghệ thuật */
-        }
-
-        /* --- 4. INTRO (SINGLE MODEL) --- */
+        /* =========================================
+           4. INTRO SECTION (ĐÃ FIX GỌN GÀNG)
+           ========================================= */
         .intro-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            display: flex;
+            flex-direction: column; /* Mobile first: Dọc */
             align-items: center;
-            margin: 0 auto 50px;
-            max-width: 1000px;
-
-            margin-top: 40px;
+            gap: 40px;
+            margin: 50px auto;
         }
 
         .intro-img {
-           
-            height: auto;
-            background: #eee;
+            width: 100%;
+            max-width: 500px; /* Giới hạn ảnh trên mobile */
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: #f9fafb;
         }
 
+        .intro-slides-wrapper {
+            display: flex; width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .intro-slides-wrapper img {
+            min-width: 100%; width: 100%; height: 100%; object-fit: cover;
+        }
+
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background-color: rgba(255,255,255,0.6); color: #333;
+            border: none; width: 35px; height: 35px; border-radius: 50%;
+            cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;
+        }
+        .nav-btn:hover { background-color: #fff; }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        .intro-text { width: 100%; text-align: center; }
         .intro-text h2 {
-            font-size: 40px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            font-weight: 400;
-            text-align: center;
+            font-size: 32px; letter-spacing: 3px; text-transform: uppercase;
+            margin-bottom: 20px; font-weight: 400; color: var(--color-primary);
         }
-
         .intro-text p {
-            color: #9ca3af;
-            font-size: 14px !important;
-            line-height: 1.75;
-            margin-bottom: 48px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-            letter-spacing: 2px;
+            color: var(--color-text-light); font-size: 14px; line-height: 1.75;
+            font-weight: 300; letter-spacing: 1px; max-width: 100%; margin: 0 auto;
         }
 
-        /* --- 5. SELECTED FOR YOU --- */
-        .selected-section { margin-bottom: 100px;
-          
-            margin: 0 auto;
-         }
-        .section-label {
-            text-align: center;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #aaa;
-            margin-bottom: 40px;
-            display: block;
-        }
-
+        /* =========================================
+           5. PRODUCT GRID (SELECTED FOR YOU)
+           ========================================= */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .p-card { cursor: pointer; }
-        .p-img { aspect-ratio: 3/4.2; background: #f9f9f9; margin-bottom: 15px; }
-        .p-img img { mix-blend-mode: multiply; transition: transform 0.5s; }
-        .p-card:hover .p-img img { transform: scale(1.05); }
-
-        .p-info { display: flex; justify-content: space-between; font-size: 12px; }
-        .p-price { font-weight: 700; color: var(--color-red); margin-right: 5px; }
-        .p-old { text-decoration: line-through; color: #bbb; font-size: 11px; }
-        .p-tag { background: var(--color-red); color: #fff; font-size: 9px; padding: 1px 3px; font-weight: 700; margin-left: 5px; }
-        .p-name { color: #666; text-transform: uppercase; margin-top: 5px; font-size: 11px; }
-
-        /* --- 6. ESSENTIALS CATEGORY GRID (COMPLEX LAYOUT) --- */
-        .selected-section { margin-bottom: 100px; }
-.section-label {
-    text-align: center;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: 40px;
-    display: block;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.p-card { cursor: pointer; }
-.p-img { aspect-ratio: 3/4.2; background: #f9f9f9; margin-bottom: 15px; }
-.p-img img { mix-blend-mode: multiply; transition: transform 0.5s; }
-.p-card:hover .p-img img { transform: scale(1.05); }
-
-.p-info { display: flex; justify-content: space-between; font-size: 12px; }
-.p-price { font-weight: 700; color: var(--color-red); margin-right: 5px; }
-.p-old { text-decoration: line-through; color: #bbb; font-size: 11px; }
-.p-tag { background: var(--color-red); color: #fff; font-size: 9px; padding: 1px 3px; font-weight: 700; margin-left: 5px; }
-.p-name { color: #666; text-transform: uppercase; margin-top: 5px; font-size: 11px; }
-
-/* --- 6. ESSENTIALS CATEGORY GRID --- */
-.essentials-section {
-    margin-bottom: 100px;
-
-    margin: 0 auto;
-}
-
-.category-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 600px;
-
-}
-
-.cat-text-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    text-align: center;
-}
-
-.cat-title {
-    font-size: 20px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    line-height: 1.6;
-    color: #333;
-}
-
-.cat-grid-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0;
-    background: #fff;
-}
-
-.cat-item {
-    position: relative;
-    background: #fff;
-    border: 1px solid #f0f0f0;
-    overflow: hidden;
-}
-
-.cat-item.cat-product {
-    position: relative;
-}
-
-.cat-item.cat-product img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.cat-product-info {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    color: #999;
-    font-size: 10px;
-    letter-spacing: 1px;
-    line-height: 1.4;
-}
-
-.cat-product-name {
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.cat-product-sub {
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-/* Heart icon */
-.cat-item.cat-product::after {
-    content: '♡';
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: #999;
-    font-size: 18px;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.cat-item.cat-product:hover::after {
-    color: var(--color-red);
-}
-
-.cat-item.view-all {
-    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.cat-item.view-all:hover { background: #dcdcdc; }
-
-.view-link {
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #666;
-    font-weight: 500;
-}
-
-.category-row.reverse .cat-text-block { order: 2; }
-.category-row.reverse .cat-grid-block { order: 1; }
-
-/* --- 7. READY TO STAND OUT --- */
-.standout-section {
-    margin-bottom: 50px;
-}
-
-.standout-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin: 100px;
-    margin-bottom: 50px;
-}
-
-.standout-title {
-    font-size: 18px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    line-height: 1.4;
-    color: #666;
-}
-
-.standout-desc {
-    font-size: 13px;
-    color: #aaa;
-    max-width: 500px;
-    text-align: right;
-    line-height: 1.6;
-    letter-spacing: 1px;
-}
-
-.standout-banner {
-    background: #eee;
-    position: relative;
-}
-
-/* --- 8. FOOTER LOOKBOOK --- */
-
-.v64-hero {
-    height: 60vh;
-    margin-bottom: 0;
-    background: #f9f9f9;
-}
-
-.v64-hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.v64-title-section {
-    text-align: center;
-    padding: 60px 20px;
-    background: #fff;
-}
-
-.v64-title {
-    font-size: 32px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    font-weight: 400;
-    color: #000;
-}
-
-.v64-subtitle {
-    font-size: 13px;
-    color: #aaa;
-    letter-spacing: 1px;
-}
-
-.lookbook-grid {
-            display: grid;
-            /* Ví dụ: chia 5 cột đều nhau */
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 10px;
-        }
-
-.lb-item { cursor: pointer; }
-.lb-img { 
-    aspect-ratio: 3/4.5; 
-    background: #f9f9f9; 
-    margin-bottom: 15px;
-    overflow: hidden;
-}
-
-.lb-img img {
-    transition: transform 0.5s;
-}
-
-.lb-item:hover .lb-img img {
-    transform: scale(1.05);
-}
-
-.lb-info { 
-    font-size: 10px; 
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.5;
-}
-
-.lb-name {
-    font-weight: 400;
-}
-
-.lb-sub {
-    font-weight: 400;
-}
-
-.product-card {
-    position: relative;
-    cursor: pointer;
-}
-
-.card-image {
-    position: relative;
-    overflow: hidden;
-    background-color: var(--color-bg-product);
-    aspect-ratio: 3 / 4.2;
-    margin-bottom: 15px;
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    mix-blend-mode: multiply;
-    display: block;
-    transition: opacity 0.3s ease;
-}
-
-/* Ẩn hình hover mặc định */
-.card-image .hover-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-}
-
-/* Hiện hình hover khi hover */
-.product-card:hover .hover-img {
-    opacity: 1;
-}
-
-/* Ẩn hình chính khi hover */
-.product-card:hover .main-img {
-    opacity: 0;
-}
-
-
- .product-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 5px; margin: 5px 5px 100px 5px; /* Updated to match the last definition in original */
+            margin: 0 auto 100px;
         }
 
         .product-card { cursor: pointer; }
-
+        
         .card-image {
-            background-color: var(--color-bg-product); aspect-ratio: 3 / 4.2;
+            background-color: var(--color-bg-product);
+            aspect-ratio: 3 / 4.2;
             overflow: hidden; margin-bottom: 15px; position: relative;
+            margin: 5px;
+        }
+        
+        .card-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            mix-blend-mode: multiply; transition: opacity 0.3s ease; display: block;
+        }
+        
+        /* Hover Effect: Đổi ảnh */
+        .card-image .hover-img { position: absolute; top: 0; left: 0; opacity: 0; }
+        .product-card:hover .hover-img { opacity: 1; }
+        .product-card:hover .main-img { opacity: 0; }
+
+        .card-info {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin: 5px;
+        }
+        
+        .price-row {
+            display: flex; align-items: center; font-size: 14px; font-weight: 600; margin-bottom: 5px;
+        }
+        .current-price { color: var(--color-sale); margin-right: 8px; }
+        .old-price {
+            color: var(--color-text-light); text-decoration: line-through;
+            font-size: 13px; margin-right: 8px; font-weight: 400;
+        }
+        .discount-tag {
+            background: var(--color-sale); color: #fff; font-size: 10px;
+            padding: 1px 4px; font-weight: 700;
+        }
+        .product-name {
+            font-size: 12px; color: var(--color-text-gray);
+            text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;
+        }
+        .wishlist-icon {
+            color: #ccc; font-size: 18px; cursor: pointer; transition: color 0.3s; margin-top: 5px;
+        }
+        .wishlist-icon:hover { color: var(--color-sale); }
+
+        /* =========================================
+           6. ESSENTIALS CATEGORY (GRID PHỨC TẠP)
+           ========================================= */
+        .essentials-section { margin-bottom: 100px; }
+        
+        .category-row {
+            display: grid; grid-template-columns: 1fr 1fr; min-height: 600px;
+        }
+        .cat-text-block {
+            display: flex; align-items: center; justify-content: center;
+            padding: 40px; text-align: center;
+        }
+        .cat-title {
+            font-size: 20px; letter-spacing: 4px; text-transform: uppercase;
+            line-height: 1.6; color: #333;
+        }
+        .cat-grid-block {
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+            gap: 0; background: #fff;
+        }
+        .cat-item {
+            position: relative; background: #fff; border: 1px solid #f0f0f0; overflow: hidden;
+        }
+        .cat-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .cat-product-info {
+            position: absolute; top: 15px; left: 15px;
+            color: #999; font-size: 10px; letter-spacing: 1px; line-height: 1.4;
+        }
+        .cat-item.cat-product::after {
+            content: '♡'; position: absolute; top: 15px; right: 15px;
+            color: #999; font-size: 18px; cursor: pointer; transition: color 0.3s;
+        }
+        .cat-item.cat-product:hover::after { color: var(--color-sale); }
+        
+        .cat-item.view-all {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+        }
+        .view-link {
+            font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+            color: #666; font-weight: 500;
+        }
+        .category-row.reverse .cat-text-block { order: 2; }
+        .category-row.reverse .cat-grid-block { order: 1; }
+
+        /* =========================================
+           7. STANDOUT SECTION
+           ========================================= */
+        .standout-section { 
+            margin-bottom: 80px; 
         }
 
-        .action-section { margin: 0 auto 100px; }
-        .action-header { text-align: center; margin-bottom: 50px; margin-top: 50px; }
+        .standout-header {
+            display: flex;
+            flex-direction: column; /* Xếp dọc: Tiêu đề trên, chữ dưới */
+            align-items: center;    /* Căn giữa trục dọc */
+            text-align: center;     /* Căn giữa văn bản */
+            margin: 60px 0 40px;    /* Khoảng cách trên dưới */
+            gap: 20px;              /* Khoảng cách giữa H2 và P */
+        }
+
+        .standout-title {
+            font-size: 32px;        /* Tăng cỡ chữ tiêu đề lên chút cho nổi bật */
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1.4;
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        .standout-desc {
+            font-size: 14px;
+            color: #8898aa;
+            max-width: 600px;       /* Giới hạn độ rộng để dòng chữ không bị dài tràn lan */
+            margin: 0 auto;         /* Canh giữa block đoạn văn */
+            line-height: 1.8;
+            letter-spacing: 1px;
+            text-align: center;     /* Bắt buộc căn giữa */
+        }
+
+        .section-image img { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+        }
+
+        /* =========================================
+           8. LOOKBOOK / ACTION SECTION
+           ========================================= */
+        .action-section { margin: 5px; margin-bottom: 100px; }
+        .action-header { text-align: center; margin-bottom: 50px; }
         .action-title {
             font-size: 30px; text-transform: uppercase; letter-spacing: 2px;
             color: #1a1a1a; margin-bottom: 10px; font-weight: 400;
@@ -659,34 +289,31 @@
         .action-subtitle {
             font-size: 16px; color: #aaa; letter-spacing: 2px; font-weight: 300;
         }
-
+        
         .lookbook-grid {
-            display: grid;
-            /* Ví dụ: chia 5 cột đều nhau */
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 10px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
         }
         .lookbook-item { cursor: pointer; }
         .lookbook-img {
             aspect-ratio: 3/4.5; background: #eee; margin-bottom: 15px; overflow: hidden;
         }
-        .lookbook-img img { transition: transform 0.6s ease; }
+        .lookbook-img img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover;}
         .lookbook-item:hover .lookbook-img img { transform: scale(1.05); }
         .lb-name {
             font-size: 10px; text-transform: uppercase; color: #999; letter-spacing: 0.5px;
         }
 
-
-
-
+        /* =========================================
+           9. FOOTER
+           ========================================= */
         .footer { padding: 100px 0 20px; background-color: #fff;  }
         
-        .footer-top { display: flex; flex-wrap: wrap; gap: 40px; margin: 100px }
+        .footer-top { display: flex; flex-wrap: wrap; gap: 40px; margin: 50px }
         .footer-col { min-width: 200px; }
         .wide-col { flex: 1.4; }
         .narrow-col { flex: 1; }
 
-        .footer-col h3 { font-size: 15px; font-weight: 700; color: #272727;; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; }
+        .footer-col h3 { font-size: 15px; font-weight: 700; color: #272727; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; }
         
         /* Newsletter */
         .newsletter-form { display: flex; border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; }
@@ -732,164 +359,65 @@
         .footer-bottom { text-align: center; border-top: 1px solid #eee; padding-top: 25px; font-size: 12px; color: #999; }
 
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
-    .header { padding: 0 20px; }
-        .nav { display: none; }
-        .desktop-icon { display: none; }
-        #mobile-menu-btn { display: block; }
-        .logo-img, .header-icons { width: auto; }
-
-        .card-image { margin: 0 5px; }
-            .card-info { margin-left: 5px; }
-    .category-row { grid-template-columns: 1fr; }
-    .category-row.reverse .cat-text-block { order: -1; }
-    .cat-grid-block { height: 600px; }
-    .lookbook-grid { grid-template-columns: repeat(3, 1fr); }
-
-
-}
-
-.product-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 5px; margin: 5px 5px 100px 5px; /* Updated to match the last definition in original */
-        }
-
-        .product-card { cursor: pointer; }
-
-        .card-image {
-            background-color: var(--color-bg-product); aspect-ratio: 3 / 4.2;
-            overflow: hidden; margin-bottom: 15px; position: relative;
-        }
-        /* Mobile margin adjustments from original code */
+        /* =========================================
+           10. RESPONSIVE (MEDIA QUERIES GỘP)
+           ========================================= */
+        
+        /* Tablet & Desktop nhỏ (max-width: 1024px) */
         @media (max-width: 1024px) {
             .header { padding: 0 20px; }
             .nav { display: none; }
             .desktop-icon { display: none; }
             #mobile-menu-btn { display: block; }
-            .logo-img, .header-icons { width: auto; }
+            
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            
+            .category-row { grid-template-columns: 1fr; }
+            .category-row.reverse .cat-text-block { order: -1; }
+            
+            .lookbook-grid { grid-template-columns: repeat(3, 1fr); }
+            .lookbook-item:nth-child(n+4) { display: none; } /* Ẩn bớt ảnh trên mobile */
+        }
+
+        /* Mobile (max-width: 768px) */
+        @media (max-width: 768px) {
+            .intro-text h2 { font-size: 28px; }
+            
+            .standout-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .standout-desc { text-align: left; max-width: 100%; }
+            
+            .footer-top { flex-direction: column; gap: 30px; }
+            .wide-col, .narrow-col { width: 100%; flex: auto; }
+            
+            .lookbook-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-top { flex-direction: column; gap: 30px; margin: 30px }
+            .wide-col, .narrow-col { flex: 1 1 100%; }
+            .footer-big-logo { margin: 20px 0; }
+            .footer-big-logo img { width: 90%; max-width: 100%; }
+
+        }
+
+        @media (max-width: 480px) {
             .product-grid { grid-template-columns: repeat(2, 1fr);
-                margin: 0 !important;
-            }
-            .lookbook-grid {
-                grid-template-columns: repeat(3, 1fr) !important;
-            }
-
-            .lookbook-item:nth-child(n+4) {
-                display: none;
-            }
-
-            .lookbook-grid {
-                grid-template-columns: repeat(3, 1fr); 
-            }
+                gap: 0;
+             }
             .product-card{
-                margin: 0 !important;
+                margin: 0;
             }
-            .card-image { margin: 0 5px; }
-            .card-info { margin-left: 5px; }
         }
 
-        .card-image img {
-            width: 100%; height: 100%; object-fit: cover;
-            mix-blend-mode: multiply; transition: transform 0.5s ease;
+        /* Desktop Lớn (min-width: 992px) - ĐỂ FIX INTRO NHƯ BẠN MUỐN */
+        @media (min-width: 992px) {
+            .intro-container {
+                flex-direction: row; /* Ngang */
+                justify-content: center;
+                gap: 80px;
+            }
+            .intro-img { width: 45%; max-width: none; }
+            .intro-text { width: 45%; text-align: left; }
+            .intro-text h2 { font-size: 48px; }
+            .intro-text p { margin: 0; max-width: 450px; }
         }
-
-        .card-info {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            margin-right: 20px; margin-top: 10px;
-        }
-        .info-left { flex: 1; }
-
-        .price-row {
-            display: flex; align-items: center; font-size: 14px;
-            font-weight: 600; margin-bottom: 5px;
-        }
-        .current-price { color: var(--color-sale); margin-right: 8px; }
-        .old-price {
-            color: var(--color-text-light); text-decoration: line-through;
-            font-size: 13px; margin-right: 8px; font-weight: 400;
-        }
-        .discount-tag {
-            background: var(--color-sale); color: #fff; font-size: 10px;
-            padding: 1px 4px; font-weight: 700;
-        }
-
-        .product-name {
-            font-size: 12px; color: var(--color-text-gray);
-            text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;
-        }
-        .wishlist-icon {
-            color: #ccc; font-size: 18px; cursor: pointer; transition: color 0.3s;
-        }
-        .wishlist-icon:hover { color: var(--color-sale); }
-
-
-        .section-header {
-            display: flex; justify-content: space-between; align-items: center;
-            gap: 60px; margin: 50px 20px 100px; /* Merged margins: 100px 20px + margin-top:50px override */
-        }
-
-        .header-title {
-            flex: 1; font-size: 28px; font-weight: 400; color: var(--color-primary);
-            text-transform: uppercase; letter-spacing: 3px; line-height: 1.4; margin: 0;
-        }
-        .header-desc {
-            flex: 1; font-size: 16px; font-weight: 300; color: #8898aa;
-            line-height: 1.6; margin: 0; text-align: left;
-        }
-        .section-image img { width: 100%; height: auto; }
-
-        /* =========================================
-           8. ACTION / LOOKBOOK
-           ========================================= */
-       .action-section { margin: 0 auto 100px; }
-        .action-header { text-align: center; margin-bottom: 50px; margin-top: 50px; }
-        .action-title {
-            font-size: 30px; text-transform: uppercase; letter-spacing: 2px;
-            color: #1a1a1a; margin-bottom: 10px; font-weight: 400;
-        }
-        .action-subtitle {
-            font-size: 16px; color: #aaa; letter-spacing: 2px; font-weight: 300;
-        }
-
-        .lookbook-grid {
-            display: grid;
-            /* Ví dụ: chia 5 cột đều nhau */
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 10px;
-        }
-        .lookbook-item { cursor: pointer; }
-        .lookbook-img {
-            aspect-ratio: 3/4.5; background: #eee; margin-bottom: 15px; overflow: hidden;
-        }
-        .lookbook-img img { transition: transform 0.6s ease; }
-        .lookbook-item:hover .lookbook-img img { transform: scale(1.05); }
-        .lb-name {
-            font-size: 10px; text-transform: uppercase; color: #999; letter-spacing: 0.5px;
-        }
-
-@media (max-width: 768px) {
-
-    .lookbook-grid { grid-template-columns: repeat(2, 1fr); }
-    .standout-header { 
-        margin-top: 40px;
-        flex-direction: column; 
-        align-items: flex-start; 
-        gap: 10px; 
-
-    }
-    .intro-container{
-        display: block;
-    }
-    .v64-title-section{ margin : 0 10px; }
-    .standout-desc { text-align: left; }
-    .v64-title { font-size: 24px; }
-    .v64-subtitle { font-size: 11px; }
-    .footer-top { flex-direction: column; gap: 30px; margin: 30px; }
-    .wide-col, .narrow-col { flex: 1 1 100%; }
-    .footer-big-logo { margin: 20px 0; }
-    .footer-big-logo img { width: 90%; max-width: 100%; }
-}
     </style>
 </head>
 <body>
@@ -900,7 +428,6 @@
                 <img src="static/imgs/trang-chu/12.png" alt="V-SIXTYFOUR"/>
             </a>
         </div>
-
         <nav class="nav">
             <a href="#">NỮ</a>
             <a href="#">NAM</a>
@@ -908,7 +435,6 @@
             <a href="/trang-chu.html">BỘ SƯU TẬP</a>
             <a href="#">CỬA HÀNG</a>
         </nav>
-
         <div class="header-icons">
             <button class="icon-btn" id="search-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -942,27 +468,17 @@
 
     <section class="hero">
         <div class="hero-banner-container">
-            <!-- Thay đường dẫn ảnh của bạn vào src -->
-            <!-- Đây là ảnh giả lập cho tấm ảnh moodboard đã ghép sẵn của bạn -->
-            <img src="static/imgs/page-3/2.png" 
-                 alt="Ready To Wear Moodboard" 
-                 class="hero-banner-img">
+            <img src="static/imgs/page-3/2.png" alt="Ready To Wear Moodboard" class="hero-banner-img">
         </div>
     </section>
 
-    <!-- 2. INTRO (SINGLE MODEL) -->
     <section class="intro-container">
         <div class="intro-img">
-            <div class="intro-viewport">
-                <div class="intro-slides-wrapper">
-                    <img src="static/imgs/page-3/image.png" alt="Ready To Wear 1">
-                    
-                    <img src="static/imgs/page-3/image1.png" alt="Ready To Wear 2"> 
-                    
-                    <img src="static/imgs/page-3/image2.png" alt="Ready To Wear 3"> 
-                </div>
+            <div class="intro-slides-wrapper">
+                <img src="static/imgs/page-3/image.png" alt="Ready To Wear 1">
+                <img src="static/imgs/page-3/image1.png" alt="Ready To Wear 2"> 
+                <img src="static/imgs/page-3/image2.png" alt="Ready To Wear 3"> 
             </div>
-
             <button class="nav-btn prev-btn" onclick="moveIntroSlide(-1)">&#10094;</button>
             <button class="nav-btn next-btn" onclick="moveIntroSlide(1)">&#10095;</button>
         </div>
@@ -976,7 +492,6 @@
         </div>
     </section>
 
-    <!-- 3. SELECTED FOR YOU -->
     <div class="product-grid">
         <div class="product-card">
             <div class="card-image">
@@ -1047,10 +562,7 @@
         </div>
     </div>
 
-   <!-- 4. CATEGORY ESSENTIALS (PRODUCT GRID WITH TEXT) -->
-    <section class="essentials-section">
-        
-        <!-- WOMEN ROW -->
+   <section class="essentials-section">
         <div class="category-row">
             <div class="cat-text-block">
                 <h3 class="cat-title">WOMEN'S<br>RTW<br>ESSENTIALS</h3>
@@ -1083,7 +595,6 @@
             </div>
         </div>
 
-        <!-- MEN ROW (REVERSE) -->
         <div class="category-row reverse">
             <div class="cat-text-block">
                 <h3 class="cat-title">MEN'S<br>RTW<br>ESSENTIALS</h3>
@@ -1116,7 +627,6 @@
             </div>
         </div>
 
-        <!-- UNISEX ROW -->
         <div class="category-row">
             <div class="cat-text-block">
                 <h3 class="cat-title">UNISEX<br>RTW<br>ESSENTIALS</h3>
@@ -1148,10 +658,8 @@
                 </div>
             </div>
         </div>
-
     </section>
 
-    <!-- 5. READY TO STAND OUT -->
     <section class="standout-section container">
         <div class="standout-header">
             <h2 class="standout-title">READY TO WEAR,<br>READY TO STAND OUT</h2>
@@ -1164,7 +672,6 @@
         </div>
     </section>
 
-    <!-- 6. FOOTER LOOKBOOK (#V64INACTION) -->
     <section class="action-section container">
         <div class="action-header">
             <h3 class="action-title">#V64INACTION</h3>
@@ -1187,15 +694,8 @@
                 <div class="lookbook-img"><img src="static/imgs/page-2/14.png" alt="LB 4"></div>
                 <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
             </div>
-            <div class="lookbook-item">
-                <div class="lookbook-img"><img src="static/imgs/page-2/15.png" alt="LB 5"></div>
-                <div class="lb-name">RELAXED HIGH-RISE CUFFED JEANS</div>
-            </div>
         </div>
     </section>
-
-
-
 
     <footer class="footer">
         <div class="container">
@@ -1275,53 +775,40 @@
                 </div>
             </div>
         </div>
+
         <div class="footer-bottom">
             <p>© 2025 V-SIXTYFOUR. Powered by VIET THANG JEAN Company Limited</p>
         </div>
     </footer>
+    
     <script>
     let introIndex = 0;
-    // Chọn đúng dải hình của phần Intro
     const introWrapper = document.querySelector('.intro-slides-wrapper');
     const introImages = document.querySelectorAll('.intro-slides-wrapper img');
-    const introCount = introImages.length; // Tự động đếm là 3
+    const introCount = introImages.length;
     let introTimer;
 
-    // Hàm thực hiện trượt
     function showIntroSlide() {
-        // Dịch chuyển: index * 100%
         introWrapper.style.transform = `translateX(-${introIndex * 100}%)`;
     }
 
-    // Hàm điều hướng (Next/Prev)
     function moveIntroSlide(step) {
         introIndex += step;
-
-        // Xử lý vòng lặp: Hết ảnh 3 quay về 1, lùi quá 1 quay về 3
         if (introIndex >= introCount) introIndex = 0;
         if (introIndex < 0) introIndex = introCount - 1;
-
         showIntroSlide();
-        resetIntroTimer(); // Reset bộ đếm 5s
+        resetIntroTimer();
     }
 
-    // Hàm tự động chạy
     function startIntroAuto() {
-        // 5000ms = 5 giây
-        introTimer = setInterval(() => {
-            moveIntroSlide(1);
-        }, 5000);
+        introTimer = setInterval(() => { moveIntroSlide(1); }, 5000);
     }
 
-    // Hàm reset bộ đếm khi người dùng bấm nút thủ công
     function resetIntroTimer() {
         clearInterval(introTimer);
         startIntroAuto();
     }
-
-    // Kích hoạt ngay khi web tải xong
     startIntroAuto();
-</script>
-
+    </script>
 </body>
 </html>
